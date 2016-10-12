@@ -14,7 +14,7 @@
   // They have their update-ability controlled by custom form fields like the other custom fields.
   // In fact they will also have a alternative field key associated that will work as you where accessing them directly.
   "description": 'asdfg',
-  "category_id: 22,
+  "category_id": 22,
   
   // Custom fields:
   // They have their key using the following format and might accept:

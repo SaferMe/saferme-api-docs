@@ -1,4 +1,6 @@
 {
+  // This is the currently recommended format accepted by the V4 Reports API.
+  
   "account_id": 123, // required
   
   // location or address are alternatively required: you must provide at least one of them
@@ -27,8 +29,7 @@
   // Integrated forms
   // those fields are plugged in from extensions added to the account.
   // Impac, for example, will have those extra fields.
-  "integrated_forms":
-    {
+  "integrated_forms": {
       "impac_form": {
         "event_type_id": 234, 
         "category_id": 345,

@@ -17,7 +17,7 @@
     {
       "impac_form": {
         "event_type_id": 234, 
-        "category_id: 345,
+        "category_id": 345,
       }
     }
   }

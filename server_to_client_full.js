@@ -1,0 +1,234 @@
+{
+  // This is a more complete example of a response including all the optional report fields.
+  // 
+  "id":49,
+  "account_id":1,
+  "account_logo":"missing/logos/original.png",
+  "account_name":"Cleaner streams",
+  "address":"New York, NY, USA",
+  "category_id":2,
+  "description":"descripa",
+  "integrated_forms":{  
+    "impac_form":{  
+      "incident_id":455726,
+      "event_type_id":59439,
+      "category_id":230
+    }
+  },
+  "is_anonymous":false,
+  "is_manageable_by":true,
+  "iso_created_at":"2016-10-10T16:13:27.142+13:00",
+  "location":{  
+    "latitude":-36.8667,
+    "longitude":174.76670000000001
+  },
+  "map_url":"https://maps.googleapis.com/maps/api/staticmap?center=-36.8667%2C174.76670000000001\u0026maptype=roadmap\u0026markers=icon%3Ahttp%3A%2F%2Fwww.thundermaps.com%2Fassets%2Fmaps%2Fpins%2Fdefault%2Fpin-green%402x.png%7C-36.8667%2C174.76670000000001\u0026sensor=false\u0026size=640x200\u0026zoom=10",
+  "report_state_id":2,
+  "report_state_name":"Label",
+  "title":"Effluent runoff",
+  "user_id": 2
+  "extension_fields":[  
+    {  
+      "namespace":"integrated_forms__impac_form",
+      "key":"incident_id",
+      "label":"RM Incident ID",
+      "value":455726,
+      "value_label":455726
+    },
+    {  
+      "namespace":"integrated_forms__impac_form",
+      "key":"event_type_id",
+      "label":"RM Event Type",
+      "value":59439,
+      "value_label":"Near Miss"
+    },
+    {  
+      "namespace":"integrated_forms__impac_form",
+      "key":"category_id",
+      "label":"RM Category",
+      "value":230,
+      "value_label":"Equipment or Plant Damage"
+    }
+  ],
+  "form_fields":[  
+    {  
+      "id":1,
+      "label":"Category",
+      "key":"f_1_1_1",
+      "field_type":"Category",
+      "form_order":0,
+      "data":"",
+      "mandatory":null,
+      "visibility":"public",
+      "field_visibility":"public",
+      "value":2,
+      "editable":true
+    },
+    {  
+      "id":2,
+      "label":"Time \u0026 Date Select",
+      "key":"f_1_2_2",
+      "field_type":"DateAndTime",
+      "form_order":1,
+      "data":"",
+      "mandatory":null,
+      "visibility":"public",
+      "field_visibility":"public",
+      "value":"2016-10-10T16:12:47.000+13:00",
+      "editable":true
+    },
+    {  
+      "id":3,
+      "label":"Check Box",
+      "key":"f_1_3_3",
+      "field_type":"CheckBox",
+      "form_order":2,
+      "data":"{\"multi_select\":true,\"options\":[{\"label\":\"Label\",\"value\":\"f_1_3_3_3_1\",\"enabled\":true,\"multi_option_id\":null,\"display_order\":0,\"is_default\":false},{\"label\":\"ok\",\"value\":\"f_1_3_3_4_2\",\"enabled\":true,\"multi_option_id\":null,\"display_order\":1,\"is_default\":false}]}",
+      "mandatory":null,
+      "visibility":"public",
+      "field_visibility":"public",
+      "value":[  
+        "f_1_3_3_4_2"
+      ],
+      "editable":true
+    },
+    {  
+      "id":8,
+      "label":"Description",
+      "key":"f_1_17_8",
+      "field_type":"Description",
+      "form_order":3,
+      "data":"",
+      "mandatory":null,
+      "visibility":"public",
+      "field_visibility":"public",
+      "value":"descripa",
+      "editable":true
+    },
+    {  
+      "id":4,
+      "label":"public edit field",
+      "key":"f_1_6_4",
+      "field_type":"ShortTextBox",
+      "form_order":4,
+      "data":"",
+      "mandatory":false,
+      "visibility":"public",
+      "field_visibility":"public",
+      "value":"puba",
+      "editable":true
+    },
+    {  
+      "id":7,
+      "label":"admin only",
+      "key":"f_1_13_7",
+      "field_type":"ShortTextBox",
+      "form_order":5,
+      "data":"",
+      "mandatory":null,
+      "visibility":"public",
+      "field_visibility":"private",
+      "value":"admina",
+      "editable":true
+    },
+    {  
+      "id":5,
+      "label":"\u003cp\u003eInstruction or Information text\u003c/p\u003e",
+      "key":"f_1_7_5",
+      "field_type":"FreeText",
+      "form_order":6,
+      "data":"",
+      "mandatory":null,
+      "visibility":"public",
+      "field_visibility":"public",
+      "value":null,
+      "editable":true
+    },
+    {  
+      "id":6,
+      "label":"Amazing pictures",
+      "key":"f_1_8_6",
+      "field_type":"Image",
+      "form_order":1,
+      "data":"",
+      "mandatory":null,
+      "visibility":"public",
+      "field_visibility":"public",
+      "value":[  
+        {  
+          "id":15,
+          "original_url":"https://s3-ap-southeast-2.amazonaws.com/thundermaps-developers/raf/development/paperclipped/incident_report_images-attachments/15/original-c774896451cc165e4a3cb8f230803021391fad30.png",
+          "filename":"test.png",
+          "style_url":{  
+            "thumb":"https://s3-ap-southeast-2.amazonaws.com/thundermaps-developers/raf/development/paperclipped/incident_report_images-attachments/15/thumb-4eab0ac0176fc1a77b6ecb775e0ae58ceaf79dc8.png",
+            "medium":"https://s3-ap-southeast-2.amazonaws.com/thundermaps-developers/raf/development/paperclipped/incident_report_images-attachments/15/medium-2e7d56cb4febf5fa089cd16161da183c60d7f7f4.png"
+          }
+        },
+        {  
+          "id":16,
+          "original_url":"https://s3-ap-southeast-2.amazonaws.com/thundermaps-developers/raf/development/paperclipped/incident_report_images-attachments/16/original-8b0457389fda1f73a00947f2557f57f00a12a815.png",
+          "filename":"webRaf.png",
+          "style_url":{  
+            "thumb":"https://s3-ap-southeast-2.amazonaws.com/thundermaps-developers/raf/development/paperclipped/incident_report_images-attachments/16/thumb-2285458e0f0cbbb478aad2a9277cc66b057fc97b.png",
+            "medium":"https://s3-ap-southeast-2.amazonaws.com/thundermaps-developers/raf/development/paperclipped/incident_report_images-attachments/16/medium-783d436d0479b54d3ee258a7c0c68aa8a91d674f.png"
+          }
+        }
+      ],
+      "editable":true
+    },
+    {  
+      "id":9,
+      "label":"Awesome files",
+      "key":"f_1_18_9",
+      "field_type":"FileUpload",
+      "form_order":2,
+      "data":"",
+      "mandatory":null,
+      "visibility":"public",
+      "field_visibility":"public",
+      "value":[  
+        {  
+          "id":17,
+          "original_url":"https://s3-ap-southeast-2.amazonaws.com/thundermaps-developers/raf/development/paperclipped/incident_report_images-attachments/17/original-a8ee674d52823df1e371132279f502702e10d7e2.zip",
+          "filename":"Archive.zip",
+          "style_url":{  
+
+          }
+        }
+      ],
+      "editable":true
+    },
+    {  
+      "id":10,
+      "label":"Important files",
+      "key":"f_1_19_10",
+      "field_type":"FileUpload",
+      "form_order":3,
+      "data":"",
+      "mandatory":null,
+      "visibility":"public",
+      "field_visibility":"public",
+      "value":[  
+        {  
+          "id":18,
+          "original_url":"https://s3-ap-southeast-2.amazonaws.com/thundermaps-developers/raf/development/paperclipped/incident_report_images-attachments/18/original-c445452ca967fd83860dea23e0917180b24ab7ba.jpg",
+          "filename":"galaxy.jpg",
+          "style_url":{  
+
+          }
+        },
+        {  
+          "id":19,
+          "original_url":"https://s3-ap-southeast-2.amazonaws.com/thundermaps-developers/raf/development/paperclipped/incident_report_images-attachments/19/original-d04c6330b5cc98a49322c955aaa0cf6fa65006e6.png",
+          "filename":"test.png",
+          "style_url":{  
+
+          }
+        }
+      ],
+      "editable":true
+    }
+  ],
+  "note_comment_ids":[1,2]
+  "report_comment_ids":[2,3]
+}

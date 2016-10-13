@@ -42,7 +42,7 @@ Get report adding optional [fields](#available-fields)
 GET /api/v4/reports/49?fields=account_logo,account_name,user_image,user_short_name
 ```
 
-Get report combining addition and exclusion of [fields](#Available Fields)
+Get report combining addition and exclusion of [fields](#available-fields)
 ```
 GET /api/v4/reports/49?fields=account_logo,-address,user_image,-title
 ```

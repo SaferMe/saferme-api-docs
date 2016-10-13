@@ -116,27 +116,27 @@ method will respond with the required fields accordingly. Some fields are
 included by default but you can opt-out from them on request. Obviously, this
 will make no difference on `204-No Content` responses.
 
-* _id_
-* _account_id_
+* **id**
+* **account_id**
 * account_logo
 * account_name
-* _address_
-* _category_id_
-* _description_
+* **address**
+* **category_id**
+* **description**
 * extension_fields
 * form_fields
 * integrated_forms
-* _is_anonymous_
+* **is_anonymous**
 * is_manageable_by
-* _iso_created_at_
-* _location_
+* **iso_created_at**
+* **location**
 * map_url
 * note_comments
 * report_comments
-* _report_state_id_
+* **report_state_id**
 * report_state_name
-* _title_
-* _user_id_
+* **title**
+* **user_id**
 * user_image
 * user_short_name
 

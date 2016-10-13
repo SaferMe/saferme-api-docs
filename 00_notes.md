@@ -142,4 +142,5 @@ will make no difference on `204-No Content` responses.
 
 > Note: the highlighted fields by default included on the response.
 
+
 > Note: User fields are not returned if report is anonymous

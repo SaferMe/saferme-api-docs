@@ -141,4 +141,5 @@ will make no difference on `204-No Content` responses.
 * user_short_name
 
 > **Note:** The highlighted fields by default included on the response.
+
 > User fields are not returned if report is anonymous

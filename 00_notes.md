@@ -89,7 +89,7 @@ Content-Type: application/json
   }
 }
 ```
-> Note: the comments included above are for illustrative purpose only and must
+> **Note:** the comments included above are for illustrative purpose only and must
 not be used on real requests.
 
 > Description and Category can be set both via their respective
@@ -140,7 +140,5 @@ will make no difference on `204-No Content` responses.
 * user_image
 * user_short_name
 
-> Note: the highlighted fields by default included on the response.
-
-
-> Note: User fields are not returned if report is anonymous
+> **Note:** the highlighted fields by default included on the response.
+> **Note:** User fields are not returned if report is anonymous

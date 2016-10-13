@@ -1,16 +1,23 @@
-# default get report
+# Authentication
+Any of the requests bellow will need to be Authenticated. To do so you will have to add Authorization header.
+```
+Authorization: Token token=user_api_token
+```
+
+# GET
+## default get report
 GET /api/v4/reports/49
 
-# get report excluding default fields
+## get report excluding default fields
 GET /api/v4/reports/49?fields=-address,-title,-is_anonimous
 
-# get report adding optional fields
+## get report adding optional fields
 GET /api/v4/reports/49?fields=account_logo,account_name,user_image,user_short_name
 
-# get report combining addition and exclusion of fields
+## get report combining addition and exclusion of fields
 GET /api/v4/reports/49?fields=account_logo,-address,user_image,-title
 
-# Available fields
+### Available fields
 * id
 * account_id
 * account_logo
@@ -35,5 +42,7 @@ GET /api/v4/reports/49?fields=account_logo,-address,user_image,-title
 * user_image
 * user_short_name
 
-
 ## Note: user fields are not returned if report is anonymous
+
+# POST
+POST /api/v4/reports

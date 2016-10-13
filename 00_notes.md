@@ -112,31 +112,33 @@ Content-Type: application/json
 
 ### Available fields
 You can use the fields parameter in any of the Report API methods. The requested
-method will respond accordingly. Obviously, this will make no difference on
-`204-No Content` responses.
+method will respond with the required fields accordingly. Some fields are
+included by default but you can opt-out from them on request. Obviously, this
+will make no difference on `204-No Content` responses.
 
-* id
-* account_id
+* _id_
+* _account_id_
 * account_logo
 * account_name
-* address
-* category_id
-* description
+* _address_
+* _category_id_
+* _description_
 * extension_fields
 * form_fields
 * integrated_forms
-* is_anonymous
+* _is_anonymous_
 * is_manageable_by
-* iso_created_at
-* location
+* _iso_created_at_
+* _location_
 * map_url
 * note_comments
 * report_comments
-* report_state_id
+* _report_state_id_
 * report_state_name
-* title
-* user_id
+* _title_
+* _user_id_
 * user_image
 * user_short_name
 
-> Note: user fields are not returned if report is anonymous
+> Note: the highlighted fields by default included on the response.
+> Note: User fields are not returned if report is anonymous

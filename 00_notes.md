@@ -19,7 +19,7 @@ account form and their details from channels form api.
 GET /api/v4/channels/:channel_id/form
 ```
 
-> Description and Category fields can be read both via their respective
+> **Note:** Description and Category fields can be read both via their respective
 `description` and `category_id` properties or through value on their specific
 field information on form_fields list of the report.
 
@@ -89,8 +89,8 @@ Content-Type: application/json
   }
 }
 ```
-> **Note:** the comments included above are for illustrative purpose only and must
-not be used on real requests.
+> **Note:** The comments included in the `JSON` above are for illustrative purpose
+ only and must not be used on real requests.
 
 > Description and Category can be set both via their respective
 `description` and `category_id` properties or through their specific field key
@@ -140,5 +140,5 @@ will make no difference on `204-No Content` responses.
 * user_image
 * user_short_name
 
-> **Note:** the highlighted fields by default included on the response.
-> **Note:** User fields are not returned if report is anonymous
+> **Note:** The highlighted fields by default included on the response.
+> User fields are not returned if report is anonymous

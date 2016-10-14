@@ -2,7 +2,8 @@
 With Report api V4 you can create, fetch and update a report.
 
 ### Fetch a report
-Default
+
+Get a report with its default [fields](#available-fields)
 ```
 GET /api/v4/reports/49
 ```

@@ -271,9 +271,10 @@ Get report selecting only desired [fields](#available-fields) can be achieved us
 GET /api/v4/reports/49?fields=account_logo,-address,user_image,-title
 ```
 
-> **Note:** Description and Category fields can be read both via their respective
-`description` and `category_id` properties or through value on their specific
-field information on form_fields list of the report.
+> **Notes:**
+> - Description and Category fields can be read both via their respective
+> `description` and `category_id` properties or through value on their specific
+> field information on form_fields list of the report.
 
 ### Create a Report
 ```
@@ -316,12 +317,12 @@ Content-Type: application/json
   }
 }
 ```
-> **Note:** The comments included in the `JSON` above are for illustrative purpose
- only and must not be used on real requests.
-
-> Description and Category can be set both via their respective
-`description` and `category_id` properties or through their specific field key
-like any other kind of field.
+> **Notes:**
+> - The comments included in the `JSON` above are for illustrative purpose
+> only and must not be used on real requests.
+> - Description and Category can be set both via their respective
+> `description` and `category_id` properties or through their specific field key
+> like any other kind of field.
 
 ### Update a Report
 Excluding `account_id` and with addition of `report_state_id` the same fields
@@ -366,6 +367,6 @@ will make no difference on `204-No Content` responses.
 * user_image
 * user_short_name
 
-> **Note:** The highlighted fields by default included on the response.
-
-> User fields are not returned if report is anonymous
+> **Notes:**
+> - The highlighted fields by default included on the response.
+> - User fields are not returned if report is anonymous

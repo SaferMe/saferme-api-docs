@@ -2,9 +2,9 @@
 This document put some information together to exemplify how to use api/v4 of
 Thundermaps to create, fetch and update reports
 
-[Authentication](#authentication)
-[Forms API](#forms-api)
-[Reports API](#reports-api)
-[Categories API](#categories-api)
-[File Attachments API](#file-attachments-api)
-[Report States API](#report-states-api)
+- [Authentication](#authentication)
+- [Forms API](#forms-api)
+- [Reports API](#reports-api)
+- [Categories API](#categories-api)
+- [File Attachments API](#file-attachments-api)
+- [Report States API](#report-states-api)

@@ -99,3 +99,6 @@ POST /api/v4/file_attachments
   }
 }
 ```
+
+> **Notes:**
+> - The id returned here will be used when creating or updating a report.

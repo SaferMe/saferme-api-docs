@@ -338,6 +338,32 @@ Content-Type: application/json
 }
 ```
 
+### Filling FileUpload and Image fields
+The `content_type` of the attachment matters when attaching images to reports.
+`Image` fields will only allow image attachments be made. `FileUpload` fields
+accepts not only images but some other file formats.
+```
+{
+  "f_1_8_6": [1,2,3],
+  "f_1_18_9": [7,8,9],
+  // ...
+}
+```
+> **Notes:**
+> - The same attachment_id cannot be specified in more than one field.
+> - File types supported on `Image` fields:
+>   * png
+>   * jpeg
+>   * gif
+>
+>
+> - File types supported on `FileUpload` fields:
+>   * all the images formats above
+>   * plain text
+>   * PDFs
+>   * MS-Office files (Word, Excel)
+>   * iWork files (Numbers, Keynote, Pages)
+
 ### Available fields
 You can use the fields parameter in any of the Report API methods. The requested
 method will respond with the required fields accordingly. Some fields are

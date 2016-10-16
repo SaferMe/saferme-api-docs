@@ -297,6 +297,9 @@ Content-Type: application/json
   // In fact they will also have a alternative field key associated that will work as you where accessing them directly.
   "description": 'asdfg',
   "category_id": 22,
+  
+  // field to have its content defined by integrations like ThunderBot
+  "source_id": 'free_text',
 
   // Custom fields:
   // They have their key using the following format and might accept:
@@ -334,6 +337,10 @@ Content-Type: application/json
 
 {
   "report_state_id": 123 // optional and only available on update
+
+  // field to have its content defined by integrations like ThunderBot
+  "source_id": 'free_text',
+
   // ...
 }
 ```

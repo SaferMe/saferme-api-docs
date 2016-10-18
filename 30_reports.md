@@ -335,6 +335,8 @@ Content-Type: application/json
 > - Description and Category can be set both via their respective
 > `description` and `category_id` properties or through their specific field key
 > like any other kind of field.
+> - There is no constraint applied to `source_id` on this context. So bear in
+> mind you have the power to create multiple reports with same `source_id`.
 
 ### Update a Report
 Excluding `account_id` and with addition of `report_state_id` the same fields
@@ -352,6 +354,9 @@ Content-Type: application/json
   // ...
 }
 ```
+> **Notes:**
+> - There is no constraint applied to `source_id` on this context. So bear in
+> mind you have the power to update multiple reports to the same `source_id`.
 
 ### Create or Update a Report
 _This method is being provided for use with ThunderBot integrations, but It might
@@ -362,7 +367,9 @@ There are a few things that are worth noting about this method:
 
 1. A `source_id` must be provided to identify the report being created.
 1. A `account_id` must be provided to scope the search for `source_id`. _This
-means a `source_id` have to be unique by `account_id`._
+means that the key for the report will be the combination of `source_id` and
+`account_id`._ **Be aware that duplicated keys might be produced via create or
+update api endpoints.**
 1. Fields `location` or `address` are only required (one of them) if the report
 does not exist. And, obviously, if provided and a report exists it will have its
 values updated.

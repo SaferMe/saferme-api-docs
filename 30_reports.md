@@ -345,67 +345,6 @@ Content-Type: application/json
 }
 ```
 
-### Filling FileUpload and Image fields
-The `content_type` of the attachment matters when attaching images to reports.
-`Image` fields will only allow image attachments be made. `FileUpload` fields
-accepts not only images but some other file formats.
-```
-{
-  "f_1_8_6": [1,2,3],
-  "f_1_18_9": [7,8,9],
-  // ...
-}
-```
-> **Notes:**
-> - The same attachment_id cannot be specified in more than one field.
-> - File types supported on `Image` fields:
->   * png
->   * jpeg
->   * gif
->
->
-> - File types supported on `FileUpload` fields:
->   * all the images formats above
->   * plain text
->   * PDFs
->   * MS-Office files (Word, Excel)
->   * iWork files (Numbers, Keynote, Pages)
-
-### Available fields
-You can use the fields parameter in any of the Report API methods. The requested
-method will respond with the required fields accordingly. Some fields are
-included by default but you can opt-out from them on request. Obviously, this
-will make no difference on `204-No Content` responses.
-
-* **id**
-* **account_id**
-* account_logo
-* account_name
-* **address**
-* **category_id**
-* **description**
-* extension_fields
-* form_fields
-* integrated_forms
-* **is_anonymous**
-* is_manageable_by
-* **iso_created_at**
-* **location**
-* map_url
-* note_comments
-* report_comments
-* **report_state_id**
-* report_state_name
-* **title**
-* **user_id**
-* user_image
-* user_short_name
-
-> **Notes:**
-> - The highlighted fields by default included on the response.
-> - User fields are not returned if report is anonymous
-
-
 ### Create or Update a Report
 _This method is being provided for use with ThunderBot integrations, but It might
 evetually get deprecated_.
@@ -487,3 +426,63 @@ Content-Type: application/json
 > respective `description` and `category_id` properties or through their
 > specific field key like any other kind of field. `category_names` is a static
 > key and this is the only available access to this property.
+
+### Filling FileUpload and Image fields
+The `content_type` of the attachment matters when attaching images to reports.
+`Image` fields will only allow image attachments be made. `FileUpload` fields
+accepts not only images but some other file formats.
+```
+{
+  "f_1_8_6": [1,2,3],
+  "f_1_18_9": [7,8,9],
+  // ...
+}
+```
+> **Notes:**
+> - The same attachment_id cannot be specified in more than one field.
+> - File types supported on `Image` fields:
+>   * png
+>   * jpeg
+>   * gif
+>
+>
+> - File types supported on `FileUpload` fields:
+>   * all the images formats above
+>   * plain text
+>   * PDFs
+>   * MS-Office files (Word, Excel)
+>   * iWork files (Numbers, Keynote, Pages)
+
+### Available fields
+You can use the fields parameter in any of the Report API methods. The requested
+method will respond with the required fields accordingly. Some fields are
+included by default but you can opt-out from them on request. Obviously, this
+will make no difference on `204-No Content` responses.
+
+* **id**
+* **account_id**
+* account_logo
+* account_name
+* **address**
+* **category_id**
+* **description**
+* extension_fields
+* form_fields
+* integrated_forms
+* **is_anonymous**
+* is_manageable_by
+* **iso_created_at**
+* **location**
+* map_url
+* note_comments
+* report_comments
+* **report_state_id**
+* report_state_name
+* **title**
+* **user_id**
+* user_image
+* user_short_name
+
+> **Notes:**
+> - The highlighted fields by default included on the response.
+> - User fields are not returned if report is anonymous

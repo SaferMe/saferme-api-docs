@@ -1,5 +1,13 @@
 ## Reports API
-With Report api V4 you can create, fetch and update a report.
+With Report api V4 you can:
+
+- [Fetch a report](#fetch-a-report)
+- [Create a Report](#create-a-report)
+- [Update a Report](#update-a-report)
+- [Create or Update a Report](#create-or-update-a-report)
+- [Filling FileUpload and Image fields](#filling-fileupload-and-image-fields)
+- [Available fields](#available-fields)
+
 
 ### Fetch a report
 

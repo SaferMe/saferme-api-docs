@@ -359,6 +359,7 @@ evetually get deprecated_.
 This method is to be used to create a report if there is no such report and will
 also update it if by any reason it already exists.
 There are a few things that are worth noting about this method:
+
 1. A `source_id` must be provided to identify the report being created.
 1. A `account_id` must be provided to scope the search for `source_id`. _This
 means a `source_id` have to be unique by `account_id`._

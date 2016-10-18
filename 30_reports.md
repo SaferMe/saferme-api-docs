@@ -297,7 +297,7 @@ Content-Type: application/json
   // In fact they will also have a alternative field key associated that will work as you where accessing them directly.
   "description": 'asdfg',
   "category_id": 22,
-  
+
   // field to have its content defined by integrations like ThunderBot
   "source_id": 'free_text',
 
@@ -310,7 +310,7 @@ Content-Type: application/json
   "f_1_1_4": [1,2,3],
 
   // Integrated forms
-  // those fields are plugged in from extensions added to the account.
+  // those fields are plugged in from extensions added to the channel.
   // Impac, for example, will have the extra fields bellow.
   "integrated_forms": {
       "impac_form": {
@@ -404,3 +404,86 @@ will make no difference on `204-No Content` responses.
 > **Notes:**
 > - The highlighted fields by default included on the response.
 > - User fields are not returned if report is anonymous
+
+
+### Create or Update a Report
+_This method is being provided for use with ThunderBot integrations, but It might
+evetually get deprecated_.
+This method is to be used to create a report if there is no such report and will
+also update it if by any reason it already exists.
+There are a few things that are worth noting about this method:
+1. A `source_id` must be provided to identify the report being created.
+1. A `account_id` must be provided to scope the search for `source_id`. _This
+means a `source_id` have to be unique by `account_id`._
+1. Fields `location` or `address` are only required (one of them) if the report
+does not exist. And, obviously, if provided and a report exists it will have its
+values updated.
+1. For internal consistency, the `report_state_id` is ignored on report
+creation. Every report will always be created on its channel defined initial
+state. To set `report_status_id` another request have to be made to update the
+report.
+1. If `category_id` is not provided or provided as null the report category will
+be set to the channel root category.
+1. If `category_id` and `category_names` are both provided than `category_names`
+will be completely ignored.
+1. Category names not found will be created on demand following the hierarchy
+provided by the order of the names on the `category_names` list.
+1. You can provide from 0 to 3 names on `category_names`:
+  1. `category_names: []` will set report category to its account root category.
+  1. `category_names: ['primary']` will set report category to "primary".
+  1. `category_names: ['primary', 'secondary']` will set report category to
+  "secondary".
+  1. `category_names: ['primary', 'secondary', 'tertiary']` will set report
+  category to "tertiary".
+```
+POST /api/v4/reports/upsert
+Content-Type: application/json
+
+{
+  "source_id": "external_identification_for_report", // required
+  "account_id": 123, // required
+
+  // location or address are alternatively required for report creation: you must provide at least one of them
+  "location": {
+    "latitude": 12,
+    "longitude": 34.56,
+  },
+  "address": "123 Somewhere rd. In the World",
+
+  // Description and category_id fields:
+  // They have their update-ability controlled by custom form fields like the other custom fields.
+  // In fact they will also have a alternative field key associated that will work as you where accessing them directly.
+  "description": 'asdfg',
+
+  // `category_id` will override the category `category_names` attribute
+  "category_id": 22,
+  "category_names": ["Some primary category name", "Fantastic secondary category name", "Specific tertiary category name"],
+
+  // field to have its content defined by integrations like ThunderBot
+  "source_id": 'free_text',
+
+  // Custom fields:
+  // They have their key using the following format and might accept:
+  // strings, numbers, arrays of strings and array of numbers.
+  "f_1_1_1": 'custom',
+  "f_1_1_2": 4,
+  "f_1_1_3": ['1','2','3'],
+  "f_1_1_4": [1,2,3],
+
+  // Integrated forms
+  // those fields are plugged in from extensions added to the channel.
+  // Impac, for example, will have the extra fields bellow.
+  "integrated_forms": {
+      "impac_form": {
+        "event_type_id": 234,
+        "category_id": 345,
+      }
+    }
+  }
+}
+```
+> **Notes:**
+> - Just like report create Description and Category can be set both via their
+> respective `description` and `category_id` properties or through their
+> specific field key like any other kind of field. `category_names` is a static
+> key and this is the only available access to this property.

@@ -289,41 +289,42 @@ GET /api/v4/reports/49?fields=account_logo,-address,user_image,-title
 ```
 POST /api/v4/reports
 Content-Type: application/json
-
 {
-  "account_id": 123, // required
+  "report": {
+    "account_id": 123, // required
 
-  // location or address are alternatively required: you must provide at least one of them
-  "location": {
-    "latitude": 12,
-    "longitude": 34.56,
-  },
-  "address": "123 Somewhere rd. In the World",
+    // location or address are alternatively required: you must provide at least one of them
+    "location": {
+      "latitude": 12,
+      "longitude": 34.56,
+    },
+    "address": "123 Somewhere rd. In the World",
 
-  // Description and category_id fields:
-  // They have their update-ability controlled by custom form fields like the other custom fields.
-  // In fact they will also have a alternative field key associated that will work as you where accessing them directly.
-  "description": 'asdfg',
-  "category_id": 22,
+    // Description and category_id fields:
+    // They have their update-ability controlled by custom form fields like the other custom fields.
+    // In fact they will also have a alternative field key associated that will work as you where accessing them directly.
+    "description": 'asdfg',
+    "category_id": 22,
 
-  // field to have its content defined by integrations like ThunderBot
-  "source_id": 'free_text',
+    // field to have its content defined by integrations like ThunderBot
+    "source_id": 'free_text',
 
-  // Custom fields:
-  // They have their key using the following format and might accept:
-  // strings, numbers, arrays of strings and array of numbers.
-  "f_1_1_1": 'custom',
-  "f_1_1_2": 4,
-  "f_1_1_3": ['1','2','3'],
-  "f_1_1_4": [1,2,3],
+    // Custom fields:
+    // They have their key using the following format and might accept:
+    // strings, numbers, arrays of strings and array of numbers.
+    "f_1_1_1": 'custom',
+    "f_1_1_2": 4,
+    "f_1_1_3": ['1','2','3'],
+    "f_1_1_4": [1,2,3],
 
-  // Integrated forms
-  // those fields are plugged in from extensions added to the channel.
-  // Impac, for example, will have the extra fields bellow.
-  "integrated_forms": {
-      "impac_form": {
-        "event_type_id": 234,
-        "category_id": 345,
+    // Integrated forms
+    // those fields are plugged in from extensions added to the channel.
+    // Impac, for example, will have the extra fields bellow.
+    "integrated_forms": {
+        "impac_form": {
+          "event_type_id": 234,
+          "category_id": 345,
+        }
       }
     }
   }
@@ -346,12 +347,14 @@ PATCH /api/v4/reports/:report_id
 Content-Type: application/json
 
 {
-  "report_state_id": 123 // optional and only available on update
+  "report": {
+    "report_state_id": 123 // optional and only available on update
 
-  // field to have its content defined by integrations like ThunderBot
-  "source_id": 'free_text',
+    // field to have its content defined by integrations like ThunderBot
+    "source_id": 'free_text',
 
-  // ...
+    // ...
+  }
 }
 ```
 > **Notes:**
@@ -395,43 +398,45 @@ POST /api/v4/reports/upsert
 Content-Type: application/json
 
 {
-  "source_id": "external_identification_for_report", // required
-  "account_id": 123, // required
+  "report": {
+    "source_id": "external_identification_for_report", // required
+    "account_id": 123, // required
 
-  // location or address are alternatively required for report creation: you must provide at least one of them
-  "location": {
-    "latitude": 12,
-    "longitude": 34.56,
-  },
-  "address": "123 Somewhere rd. In the World",
+    // location or address are alternatively required for report creation: you must provide at least one of them
+    "location": {
+      "latitude": 12,
+      "longitude": 34.56,
+    },
+    "address": "123 Somewhere rd. In the World",
 
-  // Description and category_id fields:
-  // They have their update-ability controlled by custom form fields like the other custom fields.
-  // In fact they will also have a alternative field key associated that will work as you where accessing them directly.
-  "description": 'asdfg',
+    // Description and category_id fields:
+    // They have their update-ability controlled by custom form fields like the other custom fields.
+    // In fact they will also have a alternative field key associated that will work as you where accessing them directly.
+    "description": 'asdfg',
 
-  // `category_id` will override the category `category_names` attribute
-  "category_id": 22,
-  "category_names": ["Some primary category name", "Fantastic secondary category name", "Specific tertiary category name"],
+    // `category_id` will override the category `category_names` attribute
+    "category_id": 22,
+    "category_names": ["Some primary category name", "Fantastic secondary category name", "Specific tertiary category name"],
 
-  // field to have its content defined by integrations like ThunderBot
-  "source_id": 'free_text',
+    // field to have its content defined by integrations like ThunderBot
+    "source_id": 'free_text',
 
-  // Custom fields:
-  // They have their key using the following format and might accept:
-  // strings, numbers, arrays of strings and array of numbers.
-  "f_1_1_1": 'custom',
-  "f_1_1_2": 4,
-  "f_1_1_3": ['1','2','3'],
-  "f_1_1_4": [1,2,3],
+    // Custom fields:
+    // They have their key using the following format and might accept:
+    // strings, numbers, arrays of strings and array of numbers.
+    "f_1_1_1": 'custom',
+    "f_1_1_2": 4,
+    "f_1_1_3": ['1','2','3'],
+    "f_1_1_4": [1,2,3],
 
-  // Integrated forms
-  // those fields are plugged in from extensions added to the channel.
-  // Impac, for example, will have the extra fields bellow.
-  "integrated_forms": {
-      "impac_form": {
-        "event_type_id": 234,
-        "category_id": 345,
+    // Integrated forms
+    // those fields are plugged in from extensions added to the channel.
+    // Impac, for example, will have the extra fields bellow.
+    "integrated_forms": {
+        "impac_form": {
+          "event_type_id": 234,
+          "category_id": 345,
+        }
       }
     }
   }

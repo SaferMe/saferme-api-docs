@@ -5,4 +5,6 @@ provided by Thundermaps ~~at https://staging.thundermaps.com/api/keys/show~~ . T
 
 ```
 Authorization: Token token=user_api_token
+X-AppId: com.thundermaps.main
+X-InstallationId: somethingUniqueForThisClientAppAndApiKey
 ```

@@ -503,6 +503,7 @@ will make no difference on `204-No Content` responses.
 * **user_id**
 * user_image
 * user_short_name
+* users_opened
 
 > **Notes:**
 > - The highlighted fields by default included on the response.

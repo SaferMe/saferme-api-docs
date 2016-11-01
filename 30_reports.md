@@ -336,8 +336,6 @@ Content-Type: application/json
 > - Description and Category can be set both via their respective
 > `description` and `category_id` properties or through their specific field key
 > like any other kind of field.
-> - There is no constraint applied to `source_id` on this context. So bear in
-> mind you have the power to create multiple reports with same `source_id`.
 
 ### Update a Report
 Excluding `account_id` and with addition of `report_state_id` the same fields
@@ -351,15 +349,13 @@ Content-Type: application/json
     "report_state_id": 123 // optional and only available on update
 
     // field to have its content defined by integrations like ThunderBot
+    // not required but must be unique per channel if provided.
     "source_id": 'free_text',
 
     // ...
   }
 }
 ```
-> **Notes:**
-> - There is no constraint applied to `source_id` on this context. So bear in
-> mind you have the power to update multiple reports to the same `source_id`.
 
 ### Create or Update a Report
 _This method is being provided for use with ThunderBot integrations, but It might
@@ -399,7 +395,7 @@ Content-Type: application/json
 
 {
   "report": {
-    "source_id": "external_identification_for_report", // required
+    "source_id": "external_identification_for_report", // required and must be unique per account
     "account_id": 123, // required
 
     // location or address are alternatively required for report creation: you must provide at least one of them
@@ -419,6 +415,7 @@ Content-Type: application/json
     "category_names": ["Some primary category name", "Fantastic secondary category name", "Specific tertiary category name"],
 
     // field to have its content defined by integrations like ThunderBot
+    // not required but must be unique per channel if provided.
     "source_id": 'free_text',
 
     // Custom fields:

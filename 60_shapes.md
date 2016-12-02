@@ -16,7 +16,7 @@ GET /api/v4/shapes?fields=branded_app
       "color": "#ffff00"
     }
   },
-  {  
+  {
     "id": 2,
     "branded_app_id": 1,
     "geom":"LINESTREAM(0 13, 14 12)",
@@ -26,6 +26,35 @@ GET /api/v4/shapes?fields=branded_app
   }
   ...
 ]
+```
+
+### Create a Shape
+The created shape will be associated with the Branded App specified with header
+`X-AppID`.
+
+```
+POST /api/v4/file_attachments
+
+{
+  "shape": {  
+    "geom":"LINESTREAM(0 0, 1 21)",
+    "metadata": {
+      "color": "#ffffaa"
+    }
+  }
+}
+```
+
+```
+{
+  {  
+    "id": 3,
+    "geom":"LINESTREAM(0 0, 1 21)",
+    "metadata": {
+      "color": "#ffffaa"
+    }
+  }
+}
 ```
 
 ### Available fields

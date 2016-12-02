@@ -8,3 +8,4 @@ Thundermaps to create, fetch and update reports
 - [Categories API](#categories-api)
 - [File Attachments API](#file-attachments-api)
 - [Report States API](#report-states-api)
+- [Shapes API](#shapes-api)

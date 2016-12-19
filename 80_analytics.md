@@ -80,24 +80,3 @@ Only `total_reads` is returned if none is selected. Otherwise only what has been
 * unique_reads
 * report_readers
 * reports_seen
-
-### *[WIP]* User awareness API
-
-```
-GET /api/v4/analytics/user_awareness?start_date=...&end_date=....
-```
-
-```
-{
-  new_user: 23,
-  reports_viewed: 34,
-  rpeorts_made: 12,
-  avg_risk_awareness: 0.7,
-  user_ids: [
-    1,
-    3,
-    24,
-    15
-  ]
-}
-```

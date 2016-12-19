@@ -1,4 +1,10 @@
 ## Analytics API
+With analytics api V4 you can get insights and metrics about the reports under specified criteria.
+
+All api endpoints require 3 parameters:
+* channel_id (integer)
+* start_date (ISO8601 formatted timestamp)
+* end_date (ISO8601 formatted timestamp)
 
 ### Reports per state API
 ```

@@ -6,21 +6,13 @@ All api endpoints require 3 parameters:
 * start_date (ISO8601 formatted timestamp)
 * end_date (ISO8601 formatted timestamp)
 
-### Reports per state API
+### Awareness API
 ```
-GET /api/v4/analytics/reports_per_state?channel_id=1&start_date=2016-01-01T00:00:00Z&end_date=2016-11-11T00:00:00Z
+GET /api/v4/analytics/awareness?channel_id=1&start_date=2016-01-01T00:00:00Z&end_date=2016-11-11T00:00:00Z
 ```
 
 ```
-[
-  {
-    id: 1,
-    name: 'state name',
-    account_id: 1,
-    report_count: 23
-  },
-  ...
-]
+ TO BE DEFINED
 ```
 
 ### Reports over time API
@@ -36,6 +28,23 @@ GET /api/v4/analytics/reports_over_time?channel_id=1&start_date=2016-01-01T00:00
     "datetime_range_start": "2016-11-07T00:00:00.000Z",
     "report_count": 2,
     "datetime_range_width": "week"
+  },
+  ...
+]
+```
+
+### Reports per state API
+```
+GET /api/v4/analytics/reports_per_state?channel_id=1&start_date=2016-01-01T00:00:00Z&end_date=2016-11-11T00:00:00Z
+```
+
+```
+[
+  {
+    id: 1,
+    name: 'state name',
+    account_id: 1,
+    report_count: 23
   },
   ...
 ]

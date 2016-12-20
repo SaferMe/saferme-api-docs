@@ -6,15 +6,6 @@ All api endpoints require 3 parameters:
 * start_date (ISO8601 formatted timestamp)
 * end_date (ISO8601 formatted timestamp)
 
-### Awareness API
-```
-GET /api/v4/analytics/awareness?channel_id=1&start_date=2016-01-01T00:00:00Z&end_date=2016-11-11T00:00:00Z
-```
-
-```
- TO BE DEFINED
-```
-
 ### Reports over time API
 
 ```
@@ -89,3 +80,31 @@ Only `total_reads` is returned if none is selected. Otherwise only what has been
 * unique_reads
 * report_readers
 * reports_seen
+
+### User Awareness API
+```
+GET /api/v4/analytics/user_awareness?channel_id=1&start_date=2016-01-01T00:00:00Z&end_date=2016-11-11T00:00:00Z&fields=total_alerts,alert_source_reports,unique_alerts,alerts_opened
+```
+
+```
+[
+  {
+    "total_alerts": 5,
+    "alert_source_reports": 1,
+    "unique_alerts": 1,
+    "alerts_opened": 1,
+    "user_id": 3,
+    "first_name": "John",
+    "last_name": "Doe"
+  },
+  ...
+]
+```
+
+#### Available Optional Fields
+Only `total_alerts` is returned if none is selected. Otherwise only what has been asked for will be returned.
+
+* **total_alerts**
+* alert_source_reports
+* unique_alerts
+* alerts_opened

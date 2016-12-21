@@ -33,7 +33,7 @@ The created shape will be associated with the Branded App specified with header
 `X-AppID`.
 
 ```
-POST /api/v4/file_attachments
+POST /api/v4/shapes
 
 {
   "shape": {  

@@ -24,6 +24,25 @@ GET /api/v4/analytics/reports_over_time?channel_id=1&start_date=2016-01-01T00:00
 ]
 ```
 
+### Reports per field selection API
+
+```
+GET /api/v4/analytics/reports_per_field_selection?field_id=2&channel_id=1&start_date=2016-01-01T00:00:00Z&end_date=2016-11-11T00:00:00Z
+```
+
+```
+[
+  {
+    "field_id": 2,
+    "account_id": 1,
+    "name": "Resolved",
+    "value": "f_1_2_2_2_1",
+    "report_count": 1
+  },
+  ...
+]
+```
+
 ### Reports per state API
 ```
 GET /api/v4/analytics/reports_per_state?channel_id=1&start_date=2016-01-01T00:00:00Z&end_date=2016-11-11T00:00:00Z

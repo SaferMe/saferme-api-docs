@@ -25,7 +25,7 @@ GET /api/v4/analytics/reports_over_time?channel_id=1&start_date=2016-01-01T00:00
 ```
 
 ### Reports per field selection API
-field Id is required you, can use [Forms API](#forms-api) to fetch `field_id`. Calls to this api are supported only for `field_type` equals to `Category`, `DropDown` and `Radio`.
+field Id is required you, can use [Forms API](#forms-api) to fetch `field_id`. Calls to this api are supported only for field which `field_type` is equals to `Category`, `DropDown` and `Radio`.
 
 ```
 GET /api/v4/analytics/reports_per_field_selection?field_id=2&channel_id=1&start_date=2016-01-01T00:00:00Z&end_date=2016-11-11T00:00:00Z

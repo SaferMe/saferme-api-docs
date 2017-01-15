@@ -77,6 +77,23 @@ GET /api/v4/analytics/reports_per_user?channel_id=1&start_date=2016-01-01T00:00:
 ]
 ```
 
+### Reports per day hour API
+
+```
+GET /api/v4/analytics/reports_per_day_hour?channel_id=1&start_date=2016-01-01T00:00:00Z&end_date=2016-11-11T00:00:00Z
+```
+
+```
+[
+  {
+    "account_id": 1,
+    "hour": 1,
+    "report_count": 6
+  },
+  ...
+]
+```
+
 ### Reports per week day API
 
 ```

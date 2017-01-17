@@ -11,9 +11,10 @@ filename).
 POST /api/v4/reports/42/signatures
 
 {
-  "signature": {
-    attachment_id: 11
-  }
+  "report_signature": {
+    "attachment_id: 11,
+    "signee_name": '-'
+  }
 }
 ```
 

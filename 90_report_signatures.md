@@ -19,5 +19,10 @@ POST /api/v4/reports/42/signatures
 ```
 
 ```
-204 No Content
+{
+  "id": 1,
+  "original_url": "https://s3-ap-southeast-2.amazonaws.com/to-image.",
+  "filename": "data",
+  "style_url":{}
+}
 ```

@@ -6,6 +6,28 @@ All api endpoints require 3 parameters:
 * start_date (ISO8601 formatted timestamp)
 * end_date (ISO8601 formatted timestamp)
 
+### Reports images API
+
+```
+GET /api/v4/analytics/reports_images?channel_id=1&start_date=2016-01-01T00:00:00Z&end_date=2016-11-11T00:00:00Z
+```
+
+```
+[
+  {
+    "report_image_id": 3,
+    "account_id": 1,
+    "report_id": 2,
+    "created_at": "2016-11-07T00:00:00.000Z",
+    "styles": {
+      "thumb": "https://s3.to/thumb-image.url",
+      "medium": "https://s3.to/medium-image.url"
+    }
+  },
+  ...
+]
+```
+
 ### Reports over time API
 
 ```

@@ -4,7 +4,6 @@ With Shapes api V4 you can:
 - [Create a Shape](#create-a-shape)
 - [Fetch a Shape](#fetch-a-shape)
 - [List Shapes](#list-shapes)
-- [Update a Shape](#update-a-shape)
 - [Delete a Shape](#delete-a-shape)
 - [Available fields](#available-fields)
 
@@ -88,16 +87,20 @@ GET /api/v4/shapes?fields=branded_app,cache_key,highlight_color,metadata,normal_
       "color": "#ffff00"
     }
   },
-  {
-    "id": 2,
-    "branded_app_id": 1,
-    "geom":"LINESTRING(0 13, 14 12)",
-    "metadata": {
-      "color": "#ff0000"
-    }
-  }
   ...
 ]
+```
+
+### Delete a shape
+The branded app for the identified shape is required to match Branded App
+specified with header `X-AppID`.
+
+```
+DELETE /api/v4/shapes/14
+```
+
+```
+204 No Content
 ```
 
 ### Available fields

@@ -97,7 +97,7 @@ GET /api/v4/channels/:channel_id/categories?fields=id,name,label_name,depth,max_
 }
 ```
 
-### Available fields
+### Available category fields
 You can use the fields parameter with `List` and `Get` methods of the categories
 API. The requested method will respond with the required fields accordingly.
 The `id` field is default for `List` method and you have to specify it if you

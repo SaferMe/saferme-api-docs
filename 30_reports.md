@@ -6,12 +6,12 @@ With Report api V4 you can:
 - [Update a Report](#update-a-report)
 - [Create or Update a Report](#create-or-update-a-report)
 - [Filling FileUpload and Image fields](#filling-fileupload-and-image-fields)
-- [Available fields](#available-fields)
+- [Available fields](#available-report-fields)
 
 
 ### Fetch a report
 
-Get a report with its default [fields](#available-fields)
+Get a report with its default [fields](#available-report-fields)
 ```
 GET /api/v4/reports/49
 ```
@@ -35,7 +35,7 @@ GET /api/v4/reports/49
 }
 ```
 
-Get report adding **all** optional [fields](#available-fields)
+Get report adding **all** optional [fields](#available-report-fields)
 ```
 GET /api/v4/reports/49?fields=account_logo,account_name,extension_fields,form_fields,integrated_forms,is_manageable_by,map_url,note_comments,report_comments,report_state_name,user_image,user_short_name
 ```
@@ -275,7 +275,7 @@ GET /api/v4/reports/49?fields=account_logo,account_name,extension_fields,form_fi
 }
 ```
 
-Get report selecting only desired [fields](#available-fields) can be achieved using the `-` prefix on the default field names to exclude them from the request in combination with addition of optional fields.
+Get report selecting only desired [fields](#available-report-fields) can be achieved using the `-` prefix on the default field names to exclude them from the request in combination with addition of optional fields.
 ```
 GET /api/v4/reports/49?fields=account_logo,-address,user_image,-title
 ```
@@ -471,7 +471,7 @@ accepts not only images but some other file formats.
 >   * MS-Office files (Word, Excel)
 >   * iWork files (Numbers, Keynote, Pages)
 
-### Available fields
+### Available report fields
 You can use the fields parameter in any of the Report API methods. The requested
 method will respond with the required fields accordingly. Some fields are
 included by default but you can opt-out from them on request. Obviously, this

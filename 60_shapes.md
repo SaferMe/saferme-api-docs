@@ -5,7 +5,7 @@ With Shapes api V4 you can:
 - [Fetch a Shape](#fetch-a-shape)
 - [List Shapes](#list-shapes)
 - [Delete a Shape](#delete-a-shape)
-- [Available fields](#available-fields)
+- [Available fields](#available-shape-fields)
 
 ### Create a Shape
 The created shape will be associated with the Branded App specified with header
@@ -53,7 +53,7 @@ POST /api/v4/shapes
 
 ### Fetch a shape
 
-Get a shape. See the optional [available fields](#available-fields).
+Get a shape. See the optional [available fields](#available-shape-fields).
 ```
 GET /api/v4/shapes/14
 ```
@@ -103,7 +103,7 @@ DELETE /api/v4/shapes/14
 204 No Content
 ```
 
-### Available fields
+### Available shape fields
 You can use the fields parameter in any of the Shapes API methods. The requested
 method will respond with the required fields accordingly. Some fields are
 included by default but you can opt-out from them on request.

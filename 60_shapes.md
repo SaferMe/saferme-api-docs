@@ -52,6 +52,20 @@ POST /api/v4/shapes
 }
 ```
 
+### Fetch a shape
+
+Get a shape. See the optional [available fields](#available-fields).
+```
+GET /api/v4/shapes/14
+```
+
+```
+{
+  "id": 14,
+  "geom":"LINESTRING(0 0, 1 21)"
+}
+```
+
 ### List shapes
 
 Fetch a paginated list of shapes. If provided a shape_search_id param the shapes

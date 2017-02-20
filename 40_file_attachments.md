@@ -102,3 +102,5 @@ POST /api/v4/file_attachments
 
 > **Notes:**
 > - The id returned here will be used when creating or updating a report.
+> - This endpoint might return 202 or 200 depending whether or not the file has had its initial processig done.
+> - TODO: explain better the 202 status and use of it. Add docs for /file/attachment/:id endpoint.

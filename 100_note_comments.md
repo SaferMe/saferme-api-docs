@@ -1,4 +1,4 @@
-## Shapes API
+## Note Comments API
 With Note Comments api V4 you can:
 
 - [Fetch a Note Comment](#fetch-a-note-comment)

@@ -12,3 +12,4 @@ Thundermaps to create, fetch and update reports
 - [Users API](#users-api)
 - [Analytics API](#analytics-api)
 - [Report Signatures API](#report-signatures-api)
+- [Note Comments API](#note-comments-api)

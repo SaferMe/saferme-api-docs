@@ -7,7 +7,7 @@ With Note Comments api V4 you can:
 
 ### Fetch a note comment
 
-Get a note comment. See the optional [available fields](#available-shape-fields).
+Get a note comment. See the optional [available fields](#available-note-comment-fields).
 ```
 GET /api/v4/note_comment/14
 ```
@@ -21,7 +21,7 @@ GET /api/v4/note_comment/14
 }
 ```
 
-### List note comment
+### List note comments
 
 Fetch a paginated list of note comments for a specified report
 

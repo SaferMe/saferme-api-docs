@@ -482,6 +482,8 @@ will make no difference on `204-No Content` responses.
 * account_logo
 * account_name
 * **address**
+* assignee_id
+* assignment_due_at
 * **category_id**
 * **description**
 * extension_fields

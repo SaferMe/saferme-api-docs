@@ -13,6 +13,27 @@ With Alert Areas api V4 you can:
 GET /api/v4/alert_areas
 ```
 
+```
+[
+  {
+    "id": 11,
+    "shape_type": "circle",
+    "radius": 1660,
+    "area": "POINT (174.737 -41.287306)",
+    "latitude": -41.2873,
+    "longitude": 174.737
+  },
+  {
+    "id": 12,
+    "shape_type": "poly",
+    "radius": null,
+    "area": "POLYGON ((174.7639 -41.2701, 174.7778 -41.2584, 174.785 -41.2798, 174.7639 -41.270130))",
+    "latitude": -41.269129,
+    "longitude": 174.77479
+  },
+  ...
+```
+
 ### Create Alert Area
 
 ```
@@ -30,6 +51,18 @@ POST /api/v4/alert_areas
 
 ```
 GET /api/v4/alert_areas/14
+```
+```
+{
+  "alert_area": {
+    "id": 12,
+    "shape_type": "poly",
+    "radius": null,
+    "area": "POLYGON ((174.7639 -41.2701, 174.7778 -41.2584, 174.785 -41.2798, 174.7639 -41.270130))",
+    "latitude": -41.269129,
+    "longitude": 174.77479
+  }
+}
 ```
 
 ### Update Alert Area

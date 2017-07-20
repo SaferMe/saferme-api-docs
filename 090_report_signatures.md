@@ -12,7 +12,7 @@ POST /api/v4/reports/42/signatures
 
 {
   "report_signature": {
-    "attachment_id: 11,
+    "attachment_id": 11,
     "signee_name": '-'
   }
 }

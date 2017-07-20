@@ -3,6 +3,7 @@ This document put some information together to exemplify how to use api/v4 of
 Thundermaps to create, fetch and update reports
 
 - [Authentication](#authentication)
+- [Alert Areas API](#alert-area-api)
 - [Forms API](#forms-api)
 - [Reports API](#reports-api)
 - [Categories API](#categories-api)

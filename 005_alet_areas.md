@@ -54,14 +54,12 @@ GET /api/v4/alert_areas/14
 ```
 ```
 {
-  "alert_area": {
-    "id": 12,
-    "shape_type": "poly",
-    "radius": null,
-    "area": "POLYGON ((174.7639 -41.2701, 174.7778 -41.2584, 174.785 -41.2798, 174.7639 -41.270130))",
-    "latitude": -41.269129,
-    "longitude": 174.77479
-  }
+  "id": 12,
+  "shape_type": "poly",
+  "radius": null,
+  "area": "POLYGON ((174.7639 -41.2701, 174.7778 -41.2584, 174.785 -41.2798, 174.7639 -41.270130))",
+  "latitude": -41.269129,
+  "longitude": 174.77479
 }
 ```
 

@@ -8,7 +8,7 @@ This will send an email and (if able) a text message to the user with a Reset Co
 Tokens expire after 24 hours, and a new call to this endpoint will be required to generate a new one.
 
 ```
-GET api/v4/reset_passwords/request_token
+POST api/v4/reset_passwords/request_token
 ```
 
 Required Headers:
@@ -20,10 +20,10 @@ Body:
 ```
 {  "email": "test@example.com" }
 ```
-Responses:
-404: Email does not exist
-422: Invalid email provided
-200: Sucess. Response body:
+Responses:  
+**404** Email does not exist  
+**422** Invalid email provided  
+**200** Sucess. Response body:  
 ```
 { "email": "test@example.com"  }
 ```
@@ -55,8 +55,8 @@ Body:
   "password_confirmation" : "newpassword"
 }
 ```
-Responses:
-422: Invalid parameters / Passwords don't match / Incorrect token
+Responses:  
+**422** Invalid parameters / Passwords don't match / Incorrect token  
 Missing Parameter:
 ```
 {
@@ -81,11 +81,11 @@ Invalid Parameter:
     }
 }
 ```
-420: Enhance your calm - too many retries too quickly. Wait a moment before tryig again. Backoff strategy:
+**420** Enhance your calm - too many retries too quickly. Wait a moment before tryig again. Backoff strategy:
 ```
 TimeToWait: (TimeOfLastTry + (0.1) * 2^NumberOfAttempts) - CurrentTime
 ```
-200: Success. response:
+**200** Success. response:
 ```
 {
     "user_id": 6,

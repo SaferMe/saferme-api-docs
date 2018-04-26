@@ -1,7 +1,7 @@
 ## Reset Passwords API
 This API can be used for resetting a userts password. There are two steps:
-#1 Generate a reset code
-#2 Submit a new password
+1. Generate a reset code
+2. Submit a new password
 
 # Request Token
 This will send an email and (if able) a text message to the user with a Reset Code and link to change thier password.

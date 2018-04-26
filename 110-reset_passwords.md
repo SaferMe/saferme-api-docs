@@ -1,9 +1,9 @@
-## Reset Passwords API
+# Reset Passwords API
 This API can be used for resetting a userts password. There are two steps:
 1. Generate a reset code
 2. Submit a new password
 
-# Request Token
+## Request Token
 This will send an email and (if able) a text message to the user with a Reset Code and link to change thier password.
 Tokens expire after 24 hours, and a new call to this endpoint will be required to generate a new one.
 
@@ -35,7 +35,7 @@ Or, If user has a valid SMS number associated with thier account:
 }
 ```
 
-# Update Password
+## Update Password
 ```
 PATCH api/v4/reset_passwords/update_pasword
 PUT api/v4/reset_passwords/update_pasword

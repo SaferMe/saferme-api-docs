@@ -1,28 +1,94 @@
-GET api/v4/reset_passwords/request_token
-Paramaters: email
-Headers: Requires X-AppID Header
+## Reset Passwords API
+This API can be used for resetting a userts password. There are two steps:
+#1 Generate a reset code
+#2 Submit a new password
 
-Response:
-Invalid Email: 404
-Valid Email, User does not have an SMS number on their account:
-200: { email: <email_address_provided> }
-Valid Email, User DOES have an SMS number on their account:
-200: {email: <email_address_provided>, sms_number: +12*****345 }
-Missing email param or required headers: 422
-
+# Request Token
 This will send an email and (if able) a text message to the user with a Reset Code and link to change thier password.
+Tokens expire after 24 hours, and a new call to this endpoint will be required to generate a new one.
 
+```
+GET api/v4/reset_passwords/request_token
+```
 
-PUT/PATCH api/v4/reset_passwords/update_password
-Parameters: email, reset_code, password, password_confirmation
-Headers: Requires X-AppID Header
+Required Headers:
+```
+X-AppID
+```
 
-Response:
-Invalid params/ Passwords dont match: 422 with details in the body
-Successful change: 200, With userID and API Key for login
-Throttling: 420
+Body:
+```
+{  "email": "test@example.com" }
+```
+Responses:
+404: Email does not exist
+422: Invalid email provided
+200: Sucess. Response body:
+```
+{ "email": "test@example.com"  }
+```
+Or, If user has a valid SMS number associated with thier account:
+```
+{ 
+  "email": "test@example.com", 
+  "sms_number": "+12******789"
+}
+```
 
-Throttling uses the following equation: TimeOfLastTry + (0.1) * 2^NumberOfAttempts
-This means users will get about 5 attempts before they start to notice throttling, and 19 attempts within a 24 hour period.
+# Update Password
+```
+PATCH api/v4/reset_passwords/update_pasword
+PUT api/v4/reset_passwords/update_pasword
+```
 
-Tokens expire after 24 hours
+Required Headers:
+```
+X-AppID
+```
+
+Body:
+```
+{  
+  "email": "test@example.com",
+  "reset_token": "ABCDE",
+  "password" : "newpassword",
+  "password_confirmation" : "newpassword"
+}
+```
+Responses:
+422: Invalid parameters / Passwords don't match / Incorrect token
+Missing Parameter:
+```
+{
+    "message": "client error",
+    "param": "reset_token"
+}
+```
+Invalid Parameter:
+```
+{
+    "failures": {
+        "email": [],
+        "reset_token": [
+            "Reset token Invalid Token"
+        ]
+    },
+    "errors": {
+        "email": [],
+        "reset_token": [
+            "Reset token Invalid Token"
+        ]
+    }
+}
+```
+420: Enhance your calm - too many retries too quickly. Wait a moment before tryig again. Backoff strategy:
+```
+TimeToWait: (TimeOfLastTry + (0.1) * 2^NumberOfAttempts) - CurrentTime
+```
+200: Success. response:
+```
+{
+    "user_id": 6,
+    "auth_token": "6e68...c023c"
+}
+```

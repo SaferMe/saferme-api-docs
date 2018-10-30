@@ -53,9 +53,9 @@ PATCH /api/v4/teams/1
 ```
 {
 	"id":1,
-	"name":"Sam Test Team 13 from sam.cheung",
-	"industry":"industry1",
-	"location":"1location",
+	"name":"Team 1 updated",
+	"industry":"industry updated",
+	"location":"location updated",
 	"is_manager_of":true,
 	"is_owner_of":true
 }

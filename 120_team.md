@@ -60,3 +60,75 @@ PATCH /api/v4/teams/1
 	"is_owner_of":true
 }
 ```
+
+Add One or Multiple Users to One or Multiple Team Channels
+
+```
+POST /api/v4/teams/1/add_users_to_team_channels
+```
+
+Params required
+```
+{
+	"users": [
+		{"user_id":6,"role":"operator","send_email":false},
+		{"user_id":54,"role":"operator","send_email":false}
+	],
+	"channels": [
+		{"name":"Team channel","id":4,"isSelected":true},
+		{"name":"Team channel 2","id":5,"isSelected":true}
+	]
+}
+```
+
+Response
+```
+{
+    "teams": [
+        [
+            {
+                "object": {
+                    "user_id": 6,
+                    "role": "operator",
+                    "send_email": false
+                },
+                "http_status": 200,
+                "status": "success",
+                "errors": {}
+            },
+            {
+                "object": {
+                    "user_id": 54,
+                    "role": "operator",
+                    "send_email": false
+                },
+                "http_status": 201,
+                "status": "success",
+                "errors": {}
+            }
+        ],
+        [
+            {
+                "object": {
+                    "user_id": 6,
+                    "role": "operator",
+                    "send_email": false
+                },
+                "http_status": 200,
+                "status": "success",
+                "errors": {}
+            },
+            {
+                "object": {
+                    "user_id": 54,
+                    "role": "operator",
+                    "send_email": false
+                },
+                "http_status": 201,
+                "status": "success",
+                "errors": {}
+            }
+        ]
+    ]
+}
+```

@@ -61,6 +61,20 @@ PATCH /api/v4/teams/1
 }
 ```
 
+Create Team
+
+```
+POST /api/v4/teams
+```
+
+```
+{
+	"name":"Team 1",
+	"industry":"industry",
+	"location":"location"
+}
+```
+
 Add One or Multiple Users to One or Multiple Team Channels
 
 ```

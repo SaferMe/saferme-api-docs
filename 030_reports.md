@@ -37,7 +37,7 @@ GET /api/v4/reports/49
 
 Get report adding **all** optional [fields](#available-report-fields)
 ```
-GET /api/v4/reports/49?fields=account_logo,account_name,extension_fields,form_fields,integrated_forms,is_manageable_by,map_url,note_comments,report_comments,report_state_name,user_image,user_short_name
+GET /api/v4/reports/49?fields=account_logo,account_name,form_fields,is_manageable_by,map_url,note_comments,report_comments,report_state_name,user_image,user_short_name
 ```
 
 ```
@@ -48,13 +48,6 @@ GET /api/v4/reports/49?fields=account_logo,account_name,extension_fields,form_fi
   "account_name":"Cleaner streams",
   "address":"New York, NY, USA",
   "category_id":2,
-  "integrated_forms":{  
-    "impac_form":{  
-      "incident_id":455726,
-      "event_type_id":59439,
-      "category_id":230
-    }
-  },
   "is_anonymous":false,
   "is_manageable_by":true,
   "iso_created_at":"2016-10-10T16:13:27.142+13:00",
@@ -67,29 +60,6 @@ GET /api/v4/reports/49?fields=account_logo,account_name,extension_fields,form_fi
   "report_state_name":"Label",
   "title":"Effluent runoff",
   "user_id": 2
-  "extension_fields":[  
-    {  
-      "namespace":"integrated_forms__impac_form",
-      "key":"incident_id",
-      "label":"RM Incident ID",
-      "value":455726,
-      "value_label":455726
-    },
-    {  
-      "namespace":"integrated_forms__impac_form",
-      "key":"event_type_id",
-      "label":"RM Event Type",
-      "value":59439,
-      "value_label":"Near Miss"
-    },
-    {  
-      "namespace":"integrated_forms__impac_form",
-      "key":"category_id",
-      "label":"RM Category",
-      "value":230,
-      "value_label":"Equipment or Plant Damage"
-    }
-  ],
   "form_fields":[  
     {  
       "id":1,
@@ -298,17 +268,6 @@ Content-Type: application/json
     "f_1_1_2": 4,
     "f_1_1_3": ['1','2','3'],
     "f_1_1_4": [1,2,3],
-
-    // Integrated forms
-    // those fields are plugged in from extensions added to the channel.
-    // Impac, for example, will have the extra fields bellow.
-    "integrated_forms": {
-        "impac_form": {
-          "event_type_id": 234,
-          "category_id": 345,
-        }
-      }
-    }
   }
 }
 ```
@@ -403,16 +362,6 @@ Content-Type: application/json
     "f_1_1_3": ['1','2','3'],
     "f_1_1_4": [1,2,3],
 
-    // Integrated forms
-    // those fields are plugged in from extensions added to the channel.
-    // Impac, for example, will have the extra fields bellow.
-    "integrated_forms": {
-        "impac_form": {
-          "event_type_id": 234,
-          "category_id": 345,
-        }
-      }
-    }
   }
 }
 ```
@@ -461,9 +410,7 @@ will make no difference on `204-No Content` responses.
 * assignee_id
 * assignment_due_at
 * **category_id**
-* extension_fields
 * form_fields
-* integrated_forms
 * **is_anonymous**
 * is_manageable_by
 * **iso_created_at**

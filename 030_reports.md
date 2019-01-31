@@ -297,6 +297,62 @@ Content-Type: application/json
 }
 ```
 
+### Search for Reports
+Report search is a asynchronous process and requires a couple of steps.
+Here you will see the first step, how to build and start a report search.
+
+The search accept tree groups of parameters:
+  - `filter` to specify what is included in the search
+  - `exclude` to specify what is not included in the search
+  - `order` to specify the order of the record in the resultset
+
+List of parameters allowed:
+  - `filter[tile_id]`=ZmZmZmbWZUBmZmZmZqZEwJqZmZmZmak/
+  - `filter[tile][latitude]`=23.234
+  - `filter[tile][longitude]`=177.432
+  - `filter[tile][scale]`=0.5
+  - `filter[channels]=`[23,38,42]
+  - `filter[updated_after]`=2018-12-31T23:45:45+13:00
+  - `filter[updated_before]`=2019-01-15T23:45:58+13:00
+  - `filter[appearance]`=loud
+  - `filter[id]`[id_array]=1,2,3
+  - `filter[id]`[report_search_id]=87654321
+  - `exclude[tile_id]`=ZmZmZmbWZUBmZmZmZqZEwJqZmZmZmak/
+  - `exclude[tile][latitude]`=23.234
+  - `exclude[tile][longitude]`=177.432
+  - `exclude[tile][scale]`=0.5
+  - `exclude[channels]=`[23,38,42]
+  - `exclude[updated_after]`=2018-12-31T23:45:45+13:00
+  - `exclude[updated_before]`=2019-01-15T23:45:58+13:00
+  - `exclude[appearance]`=normal
+  - `exclude[id][id_array]`=1,2,3
+  - `exclude[id][report_search_id]`=87654321
+  - `order[updated_at]`=desc
+  - `order[id]`=asc
+
+where:
+- `tile_id` is the id returned from tiles search api.
+- `tile[latitude]`, `tile[longitude]` and `tile[scale]` can be used in combination as alternative to `tile_id` above.
+- `channels` contain a list of channel ids comma separated and wrapped in square brackets.
+- `updated_before` and `updated_after` are dates in ISO8601 format.
+- `appearance` is one of "invisible", "normal", "attention" or "loud"
+- `id_array` is a comma separated list of report_ids
+- `report_search_id` is the id resulting from a previous report_search
+- `order[updated_at]` and `order[id]` allowed values are "asc" or "desc"
+
+Combining the fields above a report search can be created as follows:
+```
+GET /api/v4/reports/search?filter[channels]=[1,2]&updated_after=2018-12-31T23:45:45+13:00
+Content-Type: application/json
+
+{
+  id: 12345678,
+  url: "https://api1.thundermaps.com/api/v4/report_searches/12345678"
+}
+```
+
+This `id` or `url` will be used to retrieve the search result using [Report Searches API](032_report_searches.md).
+
 ### Create or Update a Report
 _This method is being provided for use with ThunderBot integrations, but It might
 evetually get deprecated_.

@@ -1,6 +1,6 @@
-# Api workflows for Thundermaps V4
+# Api workflows for SaferMe V4
 This document put some information together to exemplify how to use api/v4 of
-Thundermaps to create, fetch and update reports
+SaferMe to create, fetch and update reports
 
 - [Authentication](005_authentication.md)
 - [Alert Areas API](010_alert_areas.md)

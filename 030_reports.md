@@ -4,6 +4,7 @@ With Report api V4 you can:
 - [Fetch a report](#fetch-a-report)
 - [Create a Report](#create-a-report)
 - [Update a Report](#update-a-report)
+- [Search for Reports](#search-for-reports)
 - [Create or Update a Report](#create-or-update-a-report)
 - [Filling FileUpload and Image fields](#filling-fileupload-and-image-fields)
 - [Available fields](#available-report-fields)
@@ -22,7 +23,6 @@ GET /api/v4/reports/49
   "account_id":1,
   "address":"New York, NY, USA",
   "category_id":2,
-  "description":"descripa",
   "is_anonymous":false,
   "iso_created_at":"2016-10-10T16:13:27.142+13:00",
   "location":{  
@@ -48,7 +48,6 @@ GET /api/v4/reports/49?fields=account_logo,account_name,extension_fields,form_fi
   "account_name":"Cleaner streams",
   "address":"New York, NY, USA",
   "category_id":2,
-  "description":"descripa",
   "integrated_forms":{  
     "impac_form":{  
       "incident_id":455726,
@@ -131,19 +130,6 @@ GET /api/v4/reports/49?fields=account_logo,account_name,extension_fields,form_fi
       "value":[  
         "f_1_3_3_4_2"
       ],
-      "editable":true
-    },
-    {  
-      "id":8,
-      "label":"Description",
-      "key":"f_1_17_8",
-      "field_type":"Description",
-      "form_order":3,
-      "data":"",
-      "mandatory":null,
-      "visibility":"public",
-      "field_visibility":"public",
-      "value":"descripa",
       "editable":true
     },
     {  
@@ -281,9 +267,8 @@ GET /api/v4/reports/49?fields=account_logo,-address,user_image,-title
 ```
 
 > **Notes:**
-> - Description and Category fields can be read both via their respective
-> `description` and `category_id` properties or through value on their specific
-> field information on form_fields list of the report.
+> - Category field can be read via `category_id` properties on report or through
+> value on its specific field information on form_fields list of the report.
 
 ### Create a Report
 ```
@@ -300,10 +285,7 @@ Content-Type: application/json
     },
     "address": "123 Somewhere rd. In the World",
 
-    // Description and category_id fields:
-    // They have their update-ability controlled by custom form fields like the other custom fields.
-    // In fact they will also have a alternative field key associated that will work as you where accessing them directly.
-    "description": 'asdfg',
+    // category_id field need to be changed using its value from respective form_field value.
     "category_id": 22,
 
     // field to have its content defined by integrations like ThunderBot
@@ -333,9 +315,8 @@ Content-Type: application/json
 > **Notes:**
 > - The comments included in the `JSON` above are for illustrative purpose
 > only and must not be used on real requests.
-> - Description and Category can be set both via their respective
-> `description` and `category_id` properties or through their specific field key
-> like any other kind of field.
+> - Category field can be read via `category_id` properties on report or through
+> value on its specific field information on form_fields list of the report.
 
 ### Update a Report
 Excluding `account_id` and with addition of `report_state_id` the same fields
@@ -405,11 +386,7 @@ Content-Type: application/json
     },
     "address": "123 Somewhere rd. In the World",
 
-    // Description and category_id fields:
-    // They have their update-ability controlled by custom form fields like the other custom fields.
-    // In fact they will also have a alternative field key associated that will work as you where accessing them directly.
-    "description": 'asdfg',
-
+    // category_id field need to be changed using its value from respective form_field value.
     // `category_id` will override the category `category_names` attribute
     "category_id": 22,
     "category_names": ["Some primary category name", "Fantastic secondary category name", "Specific tertiary category name"],
@@ -440,10 +417,9 @@ Content-Type: application/json
 }
 ```
 > **Notes:**
-> - Just like report create Description and Category can be set both via their
-> respective `description` and `category_id` properties or through their
-> specific field key like any other kind of field. `category_names` is a static
-> key and this is the only available access to this property.
+> - Category field can be read via `category_id` properties on report or through
+> value on its specific field information on form_fields list of the report.
+> `category_names` is a static key and this is the only available access to this property.
 
 ### Filling FileUpload and Image fields
 The `content_type` of the attachment matters when attaching images to reports.
@@ -485,7 +461,6 @@ will make no difference on `204-No Content` responses.
 * assignee_id
 * assignment_due_at
 * **category_id**
-* **description**
 * extension_fields
 * form_fields
 * integrated_forms

@@ -4,6 +4,7 @@ With Report api V4 you can:
 - [Fetch a report](#fetch-a-report)
 - [Create a Report](#create-a-report)
 - [Update a Report](#update-a-report)
+- [Search for Reports](#search-for-reports)
 - [Create or Update a Report](#create-or-update-a-report)
 - [Filling FileUpload and Image fields](#filling-fileupload-and-image-fields)
 - [Available fields](#available-report-fields)
@@ -22,7 +23,6 @@ GET /api/v4/reports/49
   "account_id":1,
   "address":"New York, NY, USA",
   "category_id":2,
-  "description":"descripa",
   "is_anonymous":false,
   "iso_created_at":"2016-10-10T16:13:27.142+13:00",
   "location":{  
@@ -37,7 +37,7 @@ GET /api/v4/reports/49
 
 Get report adding **all** optional [fields](#available-report-fields)
 ```
-GET /api/v4/reports/49?fields=account_logo,account_name,extension_fields,form_fields,integrated_forms,is_manageable_by,map_url,note_comments,report_comments,report_state_name,user_image,user_short_name
+GET /api/v4/reports/49?fields=account_logo,account_name,form_fields,is_manageable_by,map_url,note_comments,report_comments,report_state_name,user_image,user_short_name
 ```
 
 ```
@@ -48,14 +48,6 @@ GET /api/v4/reports/49?fields=account_logo,account_name,extension_fields,form_fi
   "account_name":"Cleaner streams",
   "address":"New York, NY, USA",
   "category_id":2,
-  "description":"descripa",
-  "integrated_forms":{  
-    "impac_form":{  
-      "incident_id":455726,
-      "event_type_id":59439,
-      "category_id":230
-    }
-  },
   "is_anonymous":false,
   "is_manageable_by":true,
   "iso_created_at":"2016-10-10T16:13:27.142+13:00",
@@ -68,29 +60,6 @@ GET /api/v4/reports/49?fields=account_logo,account_name,extension_fields,form_fi
   "report_state_name":"Label",
   "title":"Effluent runoff",
   "user_id": 2
-  "extension_fields":[  
-    {  
-      "namespace":"integrated_forms__impac_form",
-      "key":"incident_id",
-      "label":"RM Incident ID",
-      "value":455726,
-      "value_label":455726
-    },
-    {  
-      "namespace":"integrated_forms__impac_form",
-      "key":"event_type_id",
-      "label":"RM Event Type",
-      "value":59439,
-      "value_label":"Near Miss"
-    },
-    {  
-      "namespace":"integrated_forms__impac_form",
-      "key":"category_id",
-      "label":"RM Category",
-      "value":230,
-      "value_label":"Equipment or Plant Damage"
-    }
-  ],
   "form_fields":[  
     {  
       "id":1,
@@ -131,19 +100,6 @@ GET /api/v4/reports/49?fields=account_logo,account_name,extension_fields,form_fi
       "value":[  
         "f_1_3_3_4_2"
       ],
-      "editable":true
-    },
-    {  
-      "id":8,
-      "label":"Description",
-      "key":"f_1_17_8",
-      "field_type":"Description",
-      "form_order":3,
-      "data":"",
-      "mandatory":null,
-      "visibility":"public",
-      "field_visibility":"public",
-      "value":"descripa",
       "editable":true
     },
     {  
@@ -281,9 +237,8 @@ GET /api/v4/reports/49?fields=account_logo,-address,user_image,-title
 ```
 
 > **Notes:**
-> - Description and Category fields can be read both via their respective
-> `description` and `category_id` properties or through value on their specific
-> field information on form_fields list of the report.
+> - Category field can be read via `category_id` properties on report or through
+> value on its specific field information on form_fields list of the report.
 
 ### Create a Report
 ```
@@ -300,10 +255,7 @@ Content-Type: application/json
     },
     "address": "123 Somewhere rd. In the World",
 
-    // Description and category_id fields:
-    // They have their update-ability controlled by custom form fields like the other custom fields.
-    // In fact they will also have a alternative field key associated that will work as you where accessing them directly.
-    "description": 'asdfg',
+    // category_id field need to be changed using its value from respective form_field value.
     "category_id": 22,
 
     // field to have its content defined by integrations like ThunderBot
@@ -316,26 +268,14 @@ Content-Type: application/json
     "f_1_1_2": 4,
     "f_1_1_3": ['1','2','3'],
     "f_1_1_4": [1,2,3],
-
-    // Integrated forms
-    // those fields are plugged in from extensions added to the channel.
-    // Impac, for example, will have the extra fields bellow.
-    "integrated_forms": {
-        "impac_form": {
-          "event_type_id": 234,
-          "category_id": 345,
-        }
-      }
-    }
   }
 }
 ```
 > **Notes:**
 > - The comments included in the `JSON` above are for illustrative purpose
 > only and must not be used on real requests.
-> - Description and Category can be set both via their respective
-> `description` and `category_id` properties or through their specific field key
-> like any other kind of field.
+> - Category field can be read via `category_id` properties on report or through
+> value on its specific field information on form_fields list of the report.
 
 ### Update a Report
 Excluding `account_id` and with addition of `report_state_id` the same fields
@@ -356,6 +296,62 @@ Content-Type: application/json
   }
 }
 ```
+
+### Search for Reports
+Report search is a asynchronous process and requires a couple of steps.
+Here you will see the first step, how to build and start a report search.
+
+The search accept tree groups of parameters:
+  - `filter` to specify what is included in the search
+  - `exclude` to specify what is not included in the search
+  - `order` to specify the order of the record in the resultset
+
+List of parameters allowed:
+  - `filter[tile_id]`=ZmZmZmbWZUBmZmZmZqZEwJqZmZmZmak/
+  - `filter[tile][latitude]`=23.234
+  - `filter[tile][longitude]`=177.432
+  - `filter[tile][scale]`=0.5
+  - `filter[channels]=`[23,38,42]
+  - `filter[updated_after]`=2018-12-31T23:45:45+13:00
+  - `filter[updated_before]`=2019-01-15T23:45:58+13:00
+  - `filter[appearance]`=loud
+  - `filter[id]`[id_array]=1,2,3
+  - `filter[id]`[report_search_id]=87654321
+  - `exclude[tile_id]`=ZmZmZmbWZUBmZmZmZqZEwJqZmZmZmak/
+  - `exclude[tile][latitude]`=23.234
+  - `exclude[tile][longitude]`=177.432
+  - `exclude[tile][scale]`=0.5
+  - `exclude[channels]=`[23,38,42]
+  - `exclude[updated_after]`=2018-12-31T23:45:45+13:00
+  - `exclude[updated_before]`=2019-01-15T23:45:58+13:00
+  - `exclude[appearance]`=normal
+  - `exclude[id][id_array]`=1,2,3
+  - `exclude[id][report_search_id]`=87654321
+  - `order[updated_at]`=desc
+  - `order[id]`=asc
+
+where:
+- `tile_id` is the id returned from tiles search api.
+- `tile[latitude]`, `tile[longitude]` and `tile[scale]` can be used in combination as alternative to `tile_id` above.
+- `channels` contain a list of channel ids comma separated and wrapped in square brackets.
+- `updated_before` and `updated_after` are dates in ISO8601 format.
+- `appearance` is one of "invisible", "normal", "attention" or "loud"
+- `id_array` is a comma separated list of report_ids
+- `report_search_id` is the id resulting from a previous report_search
+- `order[updated_at]` and `order[id]` allowed values are "asc" or "desc"
+
+Combining the fields above a report search can be created as follows:
+```
+GET /api/v4/reports/search?filter[channels]=[1,2]&updated_after=2018-12-31T23:45:45+13:00
+Content-Type: application/json
+
+{
+  id: 12345678,
+  url: "https://api1.thundermaps.com/api/v4/report_searches/12345678"
+}
+```
+
+This `id` or `url` will be used to retrieve the search result using [Report Searches API](032_report_searches.md).
 
 ### Create or Update a Report
 _This method is being provided for use with ThunderBot integrations, but It might
@@ -405,11 +401,7 @@ Content-Type: application/json
     },
     "address": "123 Somewhere rd. In the World",
 
-    // Description and category_id fields:
-    // They have their update-ability controlled by custom form fields like the other custom fields.
-    // In fact they will also have a alternative field key associated that will work as you where accessing them directly.
-    "description": 'asdfg',
-
+    // category_id field need to be changed using its value from respective form_field value.
     // `category_id` will override the category `category_names` attribute
     "category_id": 22,
     "category_names": ["Some primary category name", "Fantastic secondary category name", "Specific tertiary category name"],
@@ -426,24 +418,13 @@ Content-Type: application/json
     "f_1_1_3": ['1','2','3'],
     "f_1_1_4": [1,2,3],
 
-    // Integrated forms
-    // those fields are plugged in from extensions added to the channel.
-    // Impac, for example, will have the extra fields bellow.
-    "integrated_forms": {
-        "impac_form": {
-          "event_type_id": 234,
-          "category_id": 345,
-        }
-      }
-    }
   }
 }
 ```
 > **Notes:**
-> - Just like report create Description and Category can be set both via their
-> respective `description` and `category_id` properties or through their
-> specific field key like any other kind of field. `category_names` is a static
-> key and this is the only available access to this property.
+> - Category field can be read via `category_id` properties on report or through
+> value on its specific field information on form_fields list of the report.
+> `category_names` is a static key and this is the only available access to this property.
 
 ### Filling FileUpload and Image fields
 The `content_type` of the attachment matters when attaching images to reports.
@@ -485,10 +466,7 @@ will make no difference on `204-No Content` responses.
 * assignee_id
 * assignment_due_at
 * **category_id**
-* **description**
-* extension_fields
 * form_fields
-* integrated_forms
 * **is_anonymous**
 * is_manageable_by
 * **iso_created_at**

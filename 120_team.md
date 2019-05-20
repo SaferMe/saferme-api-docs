@@ -44,7 +44,7 @@ GET /api/v4/teams/1?fields=is_manager_of,is_owner_of
   "industry": "industry",
   "is_manager_of": true,
   "is_owner_of": true,
-  "location": "location",
+  "location": "location"
 }
 ```
 

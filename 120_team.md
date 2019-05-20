@@ -8,22 +8,25 @@ GET /api/v4/teams
 ```
 [
   {
-  "id":1,
-  "name":"Team 1",
-  "industry":"team 1 industy",
-  "location":"team 1 location"
+    "id": 1,
+    "feature_tasks_enabled": true,
+    "industry": "team 1 industy",
+    "location": "team 1 location",
+    "name": "Team 1"
   },
   {
-  "id":2,
-  "name":"Team 2",
-  "industry":"team 2 industry",
-  "location":"team 2 location"
+    "id": 2,
+    "feature_tasks_enabled": false,
+    "industry": "team 2 industy",
+    "location": "team 2 location",
+    "name": "Team 2"
   },
   {
-  "id":3,
-  "name":"Team 3",
-  "industry":"team 3 industry",
-  "location":"team 3 location"
+    "id": 3,
+    "feature_tasks_enabled": true,
+    "industry": "team 3 industy",
+    "location": "team 3 location",
+    "name": "Team 3"
   }
 ]
 ```
@@ -36,11 +39,12 @@ GET /api/v4/teams/1?fields=is_manager_of,is_owner_of
 ```
 {
   "id": 1,
+  "feature_tasks_enabled": true,
   "name": "Team 1",
   "industry": "industry",
-  "location": "location",
   "is_manager_of": true,
-  "is_owner_of": true
+  "is_owner_of": true,
+  "location": "location",
 }
 ```
 
@@ -52,12 +56,13 @@ PATCH /api/v4/teams/1
 
 ```
 {
-	"id":1,
-	"name":"Team 1 updated",
-	"industry":"industry updated",
-	"location":"location updated",
-	"is_manager_of":true,
-	"is_owner_of":true
+  "team": {
+    "name": "Team 1 updated",
+    "industry": "industry updated",
+    "location": "location updated",
+    "is_owner_change": true,
+    "user_id": 33
+  }
 }
 ```
 
@@ -69,9 +74,11 @@ POST /api/v4/teams
 
 ```
 {
-	"name":"Team 1",
-	"industry":"industry",
-	"location":"location"
+  "team": {
+    "name": "Team 1",
+    "industry": "industry",
+    "location": "location"
+  }
 }
 ```
 

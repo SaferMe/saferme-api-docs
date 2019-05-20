@@ -38,7 +38,7 @@ GET /api/v4/channel_selections
 
 ### Update Channel Selection
 > Note: `channel_selection.id == channel.id`
-> Note: By setting all tree options to false the channel selection will be deleted at it will have the same result.
+> Note: By setting all three options to false the channel selection will be deleted.
 
 ```
 PATCH /api/v4/channel_selections/14

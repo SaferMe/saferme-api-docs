@@ -1,6 +1,10 @@
 ## Team API
 With Team API V4 you can get a group of team, one team and update the team details.
 
+> **Notes:**
+> - `feature_tasks_enabled` is a feature flag used to determine which team have the task management feature enabled.
+> Please, feel free to contact support for more details about the feature and/or if you would like to ask for enabling this feature.
+
 ```
 GET /api/v4/teams
 ```

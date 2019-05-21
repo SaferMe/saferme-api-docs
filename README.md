@@ -15,3 +15,4 @@ SaferMe to create, fetch and update reports
 - [Analytics API](080_analytics.md)
 - [Report Signatures API](090_report_signatures.md)
 - [Note Comments API](100_note_comments.md)
+- [Channel Selections API](130_channel_selections.md)

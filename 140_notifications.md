@@ -39,7 +39,7 @@ Optional params:
     - `?orderby=read+asc,archived_at+desc`
 
 ```
-GET /api/v4/notifications?fields=-user_id&archived=false&orderby=orderby=read+asc,archived_at+desc
+GET /api/v4/notifications?fields=-user_id&archived=false&orderby=read+asc,archived_at+desc
 ```
 
 ```

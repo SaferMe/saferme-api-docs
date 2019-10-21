@@ -1,8 +1,9 @@
 ## Task API
 With Task api V4 you can:
 
+- [Create a Task](#create-a-task)
 - [Fetch a Task](#fetch-a-task)
-- [List Task](#list-tasks)
+- [List Tasks](#list-tasks)
 - [Update a task](#update-a-task)
 - [Delete a Task](#delete-a-task)
 - [Available fields](#available-task-fields)

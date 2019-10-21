@@ -3,6 +3,7 @@ With Notification api V4 you can:
 
 - [Fetch a Notification](#fetch-a-notification)
 - [List Notification](#list-notifications)
+- [Update a Notification](#update-a-notification)
 - [Delete a Notification](#delete-a-notification)
 - [Available fields](#available-notification-fields)
 

@@ -8,7 +8,7 @@ respective team_id to enable the team in the context of any request.
 
 ```
 Authorization: Token token=user_api_token
-X-AppId: com.thundermaps.main
+X-AppId: com.thundermaps.saferme
 X-TeamId: 1234
 X-InstallationId: something-unique-for-this-client-this-app-and-this-api-key
 ```

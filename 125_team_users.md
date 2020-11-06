@@ -3,11 +3,11 @@ With Team Users api V4 you can:
 
 - [Fetch a Team User](#fetch-a-team-user)
 - [List Team Users](#list-team-users)
-- [Available fields](#available-team-user-fields)
+- [Available fields](#available-team_user-fields)
 
 ### Fetch a team user
 
-Get a team_user. See the optional [available fields](#available-team-user-fields).
+Get a team_user. See the optional [available fields](#available-team_user-fields).
 ```
 GET /api/v4/teams/1/team_users/14?fields=first_name,last_name,email,-supervisor_id
 ```

@@ -19,6 +19,7 @@ SaferMe to create, fetch and update reports
 - [Tasks API](tasks.md)
 - [Team Users API](team_users.md)
 - [Teams API](teams.md)
+- [Traced Contacts API](traced_contacts.md)
 - [Users API](users.md)
 
 ## Base URL for Api endpoints

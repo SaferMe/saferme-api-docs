@@ -25,7 +25,7 @@ SaferMe to create, fetch and update reports
 ## Base URL for Api endpoints
 
 ```
-https://public-api.thundermaps.com
+https://api.safer.me
 ```
 
 ## Paginated endpoints

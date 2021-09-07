@@ -8,4 +8,3 @@ documented for you.
 
 
 [Start Here](https://SaferMe.github.io/saferme-api-docs)
-```

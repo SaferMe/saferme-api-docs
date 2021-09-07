@@ -2,25 +2,24 @@
 This document put some information together to exemplify how to use api/v4 of
 SaferMe to create, fetch and update reports
 
-- [Authentication](authentication.md)
 - [Alert Areas API](alert_areas.md)
-- [Forms API](forms.md)
-- [Reports API](reports.md)
-- [Report Searches API](report_searches.md)
-- [Categories API](categories.md)
-- [File Attachments API](file_attachments.md)
-- [Report States API](report_states.md)
-- [Shapes API](shapes.md)
-- [Users API](users.md)
 - [Analytics API](analytics.md)
-- [Report Signatures API](report_signatures.md)
-- [Note Comments API](note_comments.md)
-- [Reset Passwords API](reset_passwords.md)
-- [Teams API](teams.md)
-- [Team Users API](team_users.md)
+- [Categories API](categories.md)
 - [Channel Selections API](channel_selections.md)
+- [File Attachments API](file_attachments.md)
+- [Forms API](forms.md)
+- [Note Comments API](note_comments.md)
 - [Notifications API](notifications.md)
+- [Report Searches API](report_searches.md)
+- [Report Signatures API](report_signatures.md)
+- [Report States API](report_states.md)
+- [Reports API](reports.md)
+- [Reset Passwords API](reset_passwords.md)
+- [Shapes API](shapes.md)
 - [Tasks API](tasks.md)
+- [Team Users API](team_users.md)
+- [Teams API](teams.md)
+- [Users API](users.md)
 
 ## Base URL for Api endpoints
 

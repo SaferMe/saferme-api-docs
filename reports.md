@@ -351,7 +351,7 @@ Content-Type: application/json
 }
 ```
 
-This `id` or `url` will be used to retrieve the search result using [Report Searches API](032_report_searches.md).
+This `id` or `url` will be used to retrieve the search result using [Report Searches API](report_searches.md).
 
 ### Create or Update a Report
 _This method is being provided for use with ThunderBot integrations, but It might

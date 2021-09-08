@@ -258,7 +258,7 @@ Content-Type: application/json
     // category_id field need to be changed using its value from respective form_field value.
     "category_id": 22,
 
-    // field to have its content defined by integrations like ThunderBot
+    // field to have its content defined by external integrations
     "source_id": 'free_text',
 
     // Custom fields:
@@ -288,7 +288,7 @@ Content-Type: application/json
   "report": {
     "report_state_id": 123 // optional and only available on update
 
-    // field to have its content defined by integrations like ThunderBot
+    // field to have its content defined by external integrations
     // not required but must be unique per channel if provided.
     "source_id": 'free_text',
 
@@ -354,7 +354,7 @@ Content-Type: application/json
 This `id` or `url` will be used to retrieve the search result using [Report Searches API](report_searches.md).
 
 ### Create or Update a Report
-_This method is being provided for use with ThunderBot integrations, but It might
+_This method is being provided for use with external integrations, but It might
 evetually get deprecated_.
 This method is to be used to create a report if there is no such report and will
 also update it if by any reason it already exists.
@@ -406,7 +406,7 @@ Content-Type: application/json
     "category_id": 22,
     "category_names": ["Some primary category name", "Fantastic secondary category name", "Specific tertiary category name"],
 
-    // field to have its content defined by integrations like ThunderBot
+    // field to have its content defined by external integrations
     // not required but must be unique per channel if provided.
     "source_id": 'free_text',
 

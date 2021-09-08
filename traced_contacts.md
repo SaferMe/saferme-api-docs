@@ -17,7 +17,7 @@ Params:
 options: `bluetooth`, `gps`, `manual` and `card`.
 
 ```
-GET /api/v4/teams/1234/traced_contacts?date_from=2021-08-31T12:00:00.000Z&date_to=2021-09-07T11:59:59.999Z&max_contact_distance=3&min_contact_duration=2&team_user_id=51916&trace_type=card&user_id=89491
+GET /api/v4/teams/1234/traced_contacts?date_from=2021-08-31T12:00:00.000Z&date_to=2021-09-07T11:59:59.999Z&max_contact_distance=3&min_contact_duration=2&team_user_id=51916&trace_type=card
 ```
 
 ```

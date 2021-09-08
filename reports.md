@@ -55,7 +55,7 @@ GET /api/v4/reports/49?fields=account_logo,account_name,form_fields,is_manageabl
     "latitude":-36.8667,
     "longitude":174.76670000000001
   },
-  "map_url":"https://maps.googleapis.com/maps/api/staticmap?center=-36.8667%2C174.76670000000001\u0026maptype=roadmap\u0026markers=icon%3Ahttp%3A%2F%2Fwww.thundermaps.com%2Fassets%2Fmaps%2Fpins%2Fdefault%2Fpin-green%402x.png%7C-36.8667%2C174.76670000000001\u0026sensor=false\u0026size=640x200\u0026zoom=10",
+  "map_url":"deprecated",
   "report_state_id":2,
   "report_state_name":"Label",
   "title":"Effluent runoff",
@@ -154,20 +154,20 @@ GET /api/v4/reports/49?fields=account_logo,account_name,form_fields,is_manageabl
       "value":[  
         {  
           "id":15,
-          "original_url":"https://s3-ap-southeast-2.amazonaws.com/thundermaps-developers/raf/development/paperclipped/incident_report_images-attachments/15/original-c774896451cc165e4a3cb8f230803021391fad30.png",
+          "original_url":"https://userfiles.safer.me/reports/incident_report_images-attachments/15/original-c774896451cc165e4a3cb8f230803021391fad30.png",
           "filename":"test.png",
           "style_url":{  
-            "thumb":"https://s3-ap-southeast-2.amazonaws.com/thundermaps-developers/raf/development/paperclipped/incident_report_images-attachments/15/thumb-4eab0ac0176fc1a77b6ecb775e0ae58ceaf79dc8.png",
-            "medium":"https://s3-ap-southeast-2.amazonaws.com/thundermaps-developers/raf/development/paperclipped/incident_report_images-attachments/15/medium-2e7d56cb4febf5fa089cd16161da183c60d7f7f4.png"
+            "thumb":"https://userfiles.safer.me/reports/incident_report_images-attachments/15/thumb-4eab0ac0176fc1a77b6ecb775e0ae58ceaf79dc8.png",
+            "medium":"https://userfiles.safer.me/reports/incident_report_images-attachments/15/medium-2e7d56cb4febf5fa089cd16161da183c60d7f7f4.png"
           }
         },
         {  
           "id":16,
-          "original_url":"https://s3-ap-southeast-2.amazonaws.com/thundermaps-developers/raf/development/paperclipped/incident_report_images-attachments/16/original-8b0457389fda1f73a00947f2557f57f00a12a815.png",
+          "original_url":"https://userfiles.safer.me/reports/incident_report_images-attachments/16/original-8b0457389fda1f73a00947f2557f57f00a12a815.png",
           "filename":"webRaf.png",
           "style_url":{  
-            "thumb":"https://s3-ap-southeast-2.amazonaws.com/thundermaps-developers/raf/development/paperclipped/incident_report_images-attachments/16/thumb-2285458e0f0cbbb478aad2a9277cc66b057fc97b.png",
-            "medium":"https://s3-ap-southeast-2.amazonaws.com/thundermaps-developers/raf/development/paperclipped/incident_report_images-attachments/16/medium-783d436d0479b54d3ee258a7c0c68aa8a91d674f.png"
+            "thumb":"https://userfiles.safer.me/reports/incident_report_images-attachments/16/thumb-2285458e0f0cbbb478aad2a9277cc66b057fc97b.png",
+            "medium":"https://userfiles.safer.me/reports/incident_report_images-attachments/16/medium-783d436d0479b54d3ee258a7c0c68aa8a91d674f.png"
           }
         }
       ],
@@ -186,7 +186,7 @@ GET /api/v4/reports/49?fields=account_logo,account_name,form_fields,is_manageabl
       "value":[  
         {  
           "id":17,
-          "original_url":"https://s3-ap-southeast-2.amazonaws.com/thundermaps-developers/raf/development/paperclipped/incident_report_images-attachments/17/original-a8ee674d52823df1e371132279f502702e10d7e2.zip",
+          "original_url":"https://userfiles.safer.me/reports/incident_report_images-attachments/17/original-a8ee674d52823df1e371132279f502702e10d7e2.zip",
           "filename":"Archive.zip",
           "style_url":{  
 
@@ -208,7 +208,7 @@ GET /api/v4/reports/49?fields=account_logo,account_name,form_fields,is_manageabl
       "value":[  
         {  
           "id":18,
-          "original_url":"https://s3-ap-southeast-2.amazonaws.com/thundermaps-developers/raf/development/paperclipped/incident_report_images-attachments/18/original-c445452ca967fd83860dea23e0917180b24ab7ba.jpg",
+          "original_url":"https://userfiles.safer.me/reports/incident_report_images-attachments/18/original-c445452ca967fd83860dea23e0917180b24ab7ba.jpg",
           "filename":"galaxy.jpg",
           "style_url":{  
 
@@ -216,7 +216,7 @@ GET /api/v4/reports/49?fields=account_logo,account_name,form_fields,is_manageabl
         },
         {  
           "id":19,
-          "original_url":"https://s3-ap-southeast-2.amazonaws.com/thundermaps-developers/raf/development/paperclipped/incident_report_images-attachments/19/original-d04c6330b5cc98a49322c955aaa0cf6fa65006e6.png",
+          "original_url":"https://userfiles.safer.me/reports/incident_report_images-attachments/19/original-d04c6330b5cc98a49322c955aaa0cf6fa65006e6.png",
           "filename":"test.png",
           "style_url":{  
 
@@ -347,7 +347,7 @@ Content-Type: application/json
 
 {
   id: 12345678,
-  url: "https://api1.thundermaps.com/api/v4/report_searches/12345678"
+  url: "https://api1.safer.me/api/v4/report_searches/12345678"
 }
 ```
 

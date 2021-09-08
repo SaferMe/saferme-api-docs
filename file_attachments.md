@@ -18,7 +18,7 @@ GET /api/v4/file_attachments/upload_authorization?content_type=image/png
     "method":"POST",
     "key":"async_uploads/a251225f-308e-49f5-a064-7d0c54894666",
     "key_prefix":"async_uploads/a251225f-308e-49f5-a064-7d0c54894666/",
-    "url":"https://staging-thundermaps-uploads.s3.eu-central-1.amazonaws.com",
+    "url":"https://uploads.prod.safer.me",
     "fields":{  
       "key":"async_uploads/a251225f-308e-49f5-a064-7d0c54894666",
       "success_action_status":"201",
@@ -47,7 +47,7 @@ the upload authorization above.
 
 ```
 curl -i \
-'https://staging-thundermaps-uploads.s3.eu-central-1.amazonaws.com' \
+'https://uploads.prod.safer.me' \
 -F 'key=async_uploads/a251225f-308e-49f5-a064-7d0c54894666/${filename}' \
 -F 'success_action_status=201' \
 -F 'Content-Type=image/png' \
@@ -62,8 +62,8 @@ curl -i \
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <PostResponse>
-    <Location>https://staging-thundermaps-uploads.s3.eu-central-1.amazonaws.com/async_uploads%2Fa251225f-308e-49f5-a064-7d0c54894666%2Fpicture.png</Location>
-    <Bucket>staging-thundermaps-uploads</Bucket>
+    <Location>https://uploads.prod.safer.me/async_uploads%2Fa251225f-308e-49f5-a064-7d0c54894666%2Fpicture.png</Location>
+    <Bucket>uploads-prod-saferme</Bucket>
     <Key>async_uploads/a251225f-308e-49f5-a064-7d0c54894666/picture.png</Key>
     <ETag>"eae75ff8500185245d286dce1f8b745e"</ETag>
 </PostResponse>

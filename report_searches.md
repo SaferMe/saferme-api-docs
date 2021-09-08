@@ -24,7 +24,7 @@ GET /api/v4/report_searches/12345678
   {
     "id": 5454545,
     "cache_key": "fdf84f8aaf78abc34ce7b61e309870d7",
-    "pin": "https://api1.thundermaps.com/assets/maps/pins/fire/pin-red@2x.png",
+    "pin": "https://api1.prod.safer.me/assets/maps/pins/fire/pin-red@2x.png",
     "channel_id":725,
     "appearance":"normal",
     "latitude":-40.94895,

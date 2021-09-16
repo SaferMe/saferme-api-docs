@@ -17,6 +17,7 @@ SaferMe to create, fetch and update reports
 - [Reset Passwords API](reset_passwords.md)
 - [Shapes API](shapes.md)
 - [Tasks API](tasks.md)
+- [Team Guests API](team_guests.md)
 - [Team Users API](team_users.md)
 - [Teams API](teams.md)
 - [Traced Contacts API](traced_contacts.md)

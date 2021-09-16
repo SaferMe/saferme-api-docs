@@ -39,7 +39,7 @@ Optional params:
 - `user_ids`: if present filter by the provided value. Values are passed as auto-indexed arrays on query string. Example: `user_ids[]=343&user_ids[]=222`
 - `includes_team_user_ids`: if present filter by the provided value. Values are passed as auto-indexed arrays on query string as example above.
 - `excludes_team_user_ids`: if present filter by the provided value. Values are passed as auto-indexed arrays on query string as example above.
-- `search_query`: if present filter full names by the provided value.`
+- `search_query`: if present filter full names by the provided value.
 - `orderby`: if present allow specify the response order by providing one order clause
   made of `<field_name> <direction>`. Allowed fields:
   `name`, `email`, `last_invited_at`, `last_activity`, `supervisor`, `status`. Directions: `asc` or `desc`.

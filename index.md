@@ -15,6 +15,7 @@ SaferMe to create, fetch and update reports
 - [Report States API](report_states.md)
 - [Reports API](reports.md)
 - [Reset Passwords API](reset_passwords.md)
+- [Sessions API](sessions.md)
 - [Shapes API](shapes.md)
 - [Tasks API](tasks.md)
 - [Team Guests API](team_guests.md)
@@ -31,10 +32,11 @@ https://api.safer.me
 
 ## Authentication
 Any of the requests to the v4 api need to be Authenticated.
-To do so you will have to inform an `Authorization` header with a api_key (token)
-provided by SaferMe. To get your token (api key) go to Integrations page on
-channel's control panel and select ThunderBot option. You will see there your
-channel's name and id besides your API Key.
+To do so you will have to provide an `Authorization` header with a api_key (token)
+created by SaferMe API. To get your token (api key) go to Integrations page on
+channel's control panel and select ThunderBot option. There you will see your
+channel's name, id and beside it your API Key.
+> Note: If your organization does not have any channel you will need to use [Sessions API](sessions.md) to retrieve a token (api key).
 
 ```
 Authorization: Token token=user_api_token

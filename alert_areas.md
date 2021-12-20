@@ -71,7 +71,7 @@ PATCH /api/v4/alert_areas/14
 {
   "alert_area": {
     "area": "POLYGON((40 40, 20 45, 45 30, 40 40))",
-    "radius": nil
+    "radius": null
   }
 }
 ```

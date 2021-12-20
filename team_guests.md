@@ -3,6 +3,9 @@ With Team Guests api V4 you can:
 
 - [Fetch a Team Guest](#fetch-a-team-guest)
 - [List Team Guests](#list-team-guests)
+- [Bulk Create Team Guests](#bulk-create-team-guests)
+- [Update a Team Guest](#update-a-team-guest)
+- [Bulk Delete Team Guests (Async)](#bulk-delete-team-guests--async-)
 - [Available fields](#available-team_guest-fields)
 
 ### Fetch a team guest
@@ -41,7 +44,7 @@ Optional params:
     - `?orderby=assigned_at+desc`
 
 ```
-GET /api/v4/teams/1/team_guests?fields=inventory_item_item_id,inventory_item_battery_status,-company&orderby=name+asc
+GET /api/v4/teams/123/team_guests?fields=inventory_item_item_id,inventory_item_battery_status,-company&orderby=name+asc
 ```
 
 ```
@@ -71,6 +74,131 @@ GET /api/v4/teams/1/team_guests?fields=inventory_item_item_id,inventory_item_bat
   ,
   ...
 ]
+```
+
+### Bulk create team guests
+Multiple guests can be created in a single request (200 max). `first_name` is a
+required field. Each item in the request will have a respective item in the
+response including a references (`ref`) to its index in the request.
+**Please note that it is possible to have partial failure if not all items are validated.**
+
+```
+POST /api/v4/teams/123/team_guests/bulk_create'
+
+[
+  {
+    "company": "Acme inc",
+    "first_name": "James",
+    "last_name": "West",
+    "preferred_contact": "james@acme.com",
+    "visiting": "Adam Johnson"
+  },
+  {
+    "first_name": "Brandon Lee",
+  }
+  ...
+]
+```
+
+```
+[
+  {
+    "ref": 0,
+    "data": {
+      "id": 57,
+      "uuid": "163e2604-985c-4f03-bdff-4e31175f4646",
+      "company": "Acme Inc",
+      "first_name": "James",
+      "last_name": "West",
+      "preferred_contact": "james@acme.com",
+      "team_id": 123,
+      "visiting": "Adam Johnson"
+    },
+    "http_status": 201,
+    "errors": {}
+  },
+  {
+    "ref": 1,
+    "data": {
+      "id": 58,
+      "uuid": "c3c89e98-a291-4dd7-988b-26758d9bef69",
+      "company": "",
+      "first_name": "Brandon Lee",
+      "last_name": "",
+      "preferred_contact": "",
+      "team_id": 123,
+      "visiting": ""
+    },
+    "http_status": 201,
+    "errors": {}
+  }
+  ...
+]
+```
+
+### Update a Team Guest
+Updates the allowed fields of one single team guest.
+Allowed fields:
+  - `company`
+  - `first_name`
+  - `last_name`
+  - `preferred_contact`
+  - `visiting`
+
+```
+PATCH /api/v4/team_guests/57
+{
+  "team_guest": {
+    "company": "Acme LTD.",
+    "first_name": "James",
+    "last_name": "West",
+    "preferred_contact": "james.west@acme.com",
+    "visiting": "Robert Redford"
+  }
+}
+```
+
+```
+204 No Content
+```
+
+### Bulk Delete Team Guests (Async)
+Delete multiple team_guests in a background process.
+It may takes the same filter parameters available for listing, then all the
+matched records are deleted. Optional params:
+- `search_query`: if present filter full names by the provided value.`
+- `include_ids`: if present filter by the provided value. Values are passed as auto-indexed arrays on query string as example above.
+- `exclude_ids`: if present filter by the provided value. Values are passed as auto-indexed arrays on query string as example above.
+
+Description field is optional and it will be echoed on the Async Job responses.
+
+> Note: ATTENTION!!! Every records is be deleted when no filter criteria is specified.
+
+The response for this request is a Async Job Resource with current status of the
+Background process. The background process status can be polled if you need to
+retrieve conclusion status, result and eventual error messages.
+
+```
+POST /api/v4/teams/123/team_guests/bulk_destroy
+{
+  description: "Deleting some guests",
+  include_ids: [
+    56,
+    58
+  ]
+}
+```
+
+```
+{
+  "id": 85842,
+  "completed": false,
+  "description": "Deleting some guests",
+  "success": null,
+  "artifact_url": null,
+  "result": null,
+  "download_filename": null
+}
 ```
 
 ### Available team_guest fields

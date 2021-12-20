@@ -170,11 +170,11 @@ matched records are deleted. Optional params:
 - `include_ids`: if present filter by the provided value. Values are passed as auto-indexed arrays on query string as example above.
 - `exclude_ids`: if present filter by the provided value. Values are passed as auto-indexed arrays on query string as example above.
 
-Description field is optional and it will be echoed on the Async Job responses.
+Description field is optional and it will be echoed on the [Async Job](async_job.md) responses.
 
 > Note: ATTENTION!!! Every records is be deleted when no filter criteria is specified.
 
-The response for this request is a Async Job Resource with current status of the
+The response for this request is a [Async Job](async_job.md) Resource with current status of the
 Background process. The background process status can be polled if you need to
 retrieve conclusion status, result and eventual error messages.
 

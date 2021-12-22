@@ -6,26 +6,26 @@ With Team Guests api V4 you can:
 - [Bulk Create Team Guests](#bulk-create-team-guests)
 - [Update a Team Guest](#update-a-team-guest)
 - [Bulk Delete Team Guests (Async)](#bulk-delete-team-guests--async-)
-- [Available fields](#available-team_guest-fields)
+- [Available fields](#available-fields)
 
 ### Fetch a team guest
 
-Get a team_guest. See the optional [available fields](#available-team_guest-fields).
+Get a team_guest. See the optional [available fields](#available-fields).
 ```
 GET /api/v4/team_guests/56?fields=inventory_item_item_id,inventory_item_battery_status,-company
 ```
 
 ```
 {
-"id": 56,
-"uuid": "cf7d7471-15c5-411f-b650-7ed91e1a51f7",
-"first_name": "Sammy",
-"inventory_item_battery_status": 85,
-"inventory_item_item_id": "4610 0839 9133",
-"last_name": "Carter",
-"preferred_contact": "",
-"team_id": 1,
-"visiting": ""
+  "id": 56,
+  "uuid": "cf7d7471-15c5-411f-b650-7ed91e1a51f7",
+  "first_name": "Sammy",
+  "inventory_item_battery_status": 85,
+  "inventory_item_item_id": "4610 0839 9133",
+  "last_name": "Carter",
+  "preferred_contact": "",
+  "team_id": 1,
+  "visiting": ""
 }
 ```
 
@@ -201,7 +201,7 @@ POST /api/v4/teams/123/team_guests/bulk_destroy
 }
 ```
 
-### Available team_guest fields
+### Available fields
 You can use the fields parameter in any of the Team Guests API methods. The requested
 method will respond with the required fields accordingly. Some fields are
 included by default but you can opt-out from them on request.

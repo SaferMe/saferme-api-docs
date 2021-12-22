@@ -1,92 +1,148 @@
-## Team API
-With Team API V4 you can get a group of team, one team and update the team details.
+## Teams API
+With Teams api V4 you can:
+
+- [List Teams](#list-teams)
+- [Fetch a Team](#fetch-a-team)
+- [Create a Team](#create-a-team)
+- [Update a Team](#update-a-team)
+- [Available fields](#available-fields)
 
 > **Notes:**
 > - `feature_tasks_enabled` is a feature flag used to determine which team have the task management feature enabled.
 > Please, feel free to contact support for more details about the feature and/or if you would like to ask for enabling this feature.
 
+## List team guests
+
+Fetch a paginated list of team guests.
+
 ```
-GET /api/v4/teams
+GET /api/v4/teams/123/teams?is_owner_of
 ```
 
 ```
 [
   {
-    "id": 1,
+    "id": 123,
+    "contact_tracing_enabled": true,
+    "form_contact_tracing_enabled": true,
     "feature_tasks_enabled": true,
-    "industry": "team 1 industy",
-    "location": "team 1 location",
-    "name": "Team 1"
+    "guests_enabled": true,
+    "industry": "",
+    "is_owner_of": true,
+    "location": "",
+    "name": "Workers all Safe",
+    "risk_register_enabled": true,
+    "sso_required": false,
+    "sso_team_id": "workers-all-safe",
+    "user_timeout": null,
+    "wearables_enabled": true
   },
   {
-    "id": 2,
-    "feature_tasks_enabled": false,
-    "industry": "team 2 industy",
-    "location": "team 2 location",
-    "name": "Team 2"
-  },
-  {
-    "id": 3,
+    "id": 321,
+    "contact_tracing_enabled": true,
+    "form_contact_tracing_enabled": true,
     "feature_tasks_enabled": true,
-    "industry": "team 3 industy",
-    "location": "team 3 location",
-    "name": "Team 3"
-  }
+    "guests_enabled": false,
+    "industry": null,
+    "is_owner_of": false,
+    "location": null,
+    "name": "Productive and Sound",
+    "risk_register_enabled": false,
+    "sso_required": false,
+    "sso_team_id": "afsdfsdfgsdf",
+    "user_timeout": null,
+    "wearables_enabled": false
+  },
+  ...
 ]
 ```
 
-Get Team with all optional fields [is_manager_of, is_owner_of]
+### Fetch a team
+
+Get a team. See the optional [available fields](#available-fields).
 ```
-GET /api/v4/teams/1?fields=is_manager_of,is_owner_of
+GET /api/v4/team/123?fields=is_owner_of
 ```
 
 ```
 {
-  "id": 1,
+  "id": 123,
+  "contact_tracing_enabled": true,
+  "form_contact_tracing_enabled": true,
   "feature_tasks_enabled": true,
-  "name": "Team 1",
-  "industry": "industry",
-  "is_manager_of": true,
+  "guests_enabled": true,
+  "industry": "",
   "is_owner_of": true,
-  "location": "location"
+  "location": "",
+  "name": "Workers all Safe",
+  "risk_register_enabled": true,
+  "sso_required": false,
+  "sso_team_id": "workers-all-safe",
+  "user_timeout": null,
+  "wearables_enabled": true
 }
 ```
 
-Update Team details
+### Create a Team
 
 ```
-PATCH /api/v4/teams/1
-```
+POST /api/v4/team
 
-```
 {
   "team": {
-    "name": "Team 1 updated",
-    "industry": "industry updated",
-    "location": "location updated",
-    "is_owner_change": true,
-    "user_id": 33
+    "name": "Great worker in Action",
+    "industry": "Productivity",
+    "location": "Americas"
   }
 }
 ```
 
-Create Team
-
-```
-POST /api/v4/teams
-```
-
 ```
 {
+  contact_tracing_enabled: false
+  feature_tasks_enabled: true
+  form_contact_tracing_enabled: false
+  guests_enabled: false
+  id: 456
+  industry: "Productivity"
+  location: "Americas"
+  name: "Great worker in Action"
+  risk_register_enabled: true
+  sso_required: false
+  sso_team_id: "cwx_qqj8sb8"
+  user_timeout: null
+  wearables_enabled: false
+}
+```
+
+### Update a Team
+Updates the allowed fields of one single team.
+Allowed fields:
+  - `feature_tasks_enabled`
+  - `industry`
+  - `location`
+  - `mapbox_access_token`
+  - `mapbox_dataset_id`
+  - `mapbox_username`
+  - `name`
+
+```
+PATCH /api/v4/teams/123
+{
   "team": {
-    "name": "Team 1",
-    "industry": "industry",
-    "location": "location"
+    "feature_tasks_enabled": true,
+    "industry": "Safety and protection",
+    "location": "Global",
+    "name": "Every Worker Safe",
   }
 }
 ```
 
-Add One or Multiple Users to One or Multiple Team Channels
+```
+204 No Content
+```
+
+### Add One or Multiple Users to One or Multiple Team Channels
 
 ```
 POST /api/v4/teams/1/add_users_to_team_channels
@@ -157,3 +213,29 @@ Response
     ]
 }
 ```
+
+### Available fields
+You can use the fields parameter in any of the Team Guests API methods. The requested
+method will respond with the required fields accordingly. Some fields are
+included by default but you can opt-out from them on request.
+
+- **id**
+- **contact_tracing_enabled**
+- **form_contact_tracing_enabled**
+- **feature_tasks_enabled**
+- **guests_enabled**
+- **industry**
+- is_admin_of
+- is_manager_of
+- is_owner_of
+- **location**
+- mapbox_access_token
+- mapbox_dataset_id
+- mapbox_username
+- **name**
+- owner_id
+- **risk_register_enabled**
+- **sso_required?**
+- **sso_team_id**
+- **user_timeout**
+- **wearables_enabled**

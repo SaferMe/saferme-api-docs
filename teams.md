@@ -11,12 +11,12 @@ With Teams api V4 you can:
 > - `feature_tasks_enabled` is a feature flag used to determine which team have the task management feature enabled.
 > Please, feel free to contact support for more details about the feature and/or if you would like to ask for enabling this feature.
 
-## List team guests
+## List teams
 
-Fetch a paginated list of team guests.
+Fetch a paginated list of team.
 
 ```
-GET /api/v4/teams/123/teams?is_owner_of
+GET /api/v4/teams?fields=is_owner_of
 ```
 
 ```

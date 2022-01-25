@@ -33,7 +33,7 @@ GET /api/v4/team_guests/56?fields=inventory_item_item_id,inventory_item_battery_
 
 Fetch a paginated list of team guests.
 Optional params:
-- `search_query`: if present filter full names by the provided value.`
+- `search_query`: if present filter full names by the provided value.
 - `include_ids`: if present filter by the provided value. Values are passed as auto-indexed arrays on query string as example above.
 - `exclude_ids`: if present filter by the provided value. Values are passed as auto-indexed arrays on query string as example above.
 - `orderby`: if present allow specify the response order by providing one order clause

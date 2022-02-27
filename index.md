@@ -33,17 +33,13 @@ https://api.safer.me
 
 ## Authentication
 Any of the requests to the v4 api need to be Authenticated.
-To do so you will have to provide an `Authorization` header with a api_key (token)
-created by SaferMe API. To get your token (api key) go to Integrations page on
-channel's control panel and select ThunderBot option. There you will see your
-channel's name, id and beside it your API Key.
-> Note: If your organization does not have any channel you will need to use [Sessions API](sessions.md) to retrieve a token (api key).
-
+To do so you will have to provide an `Authorization` header with an `access_token`
+created by SaferMe API.
 ```
 Authorization: Token token=user_api_token
 X-AppId: com.thundermaps.saferme
-X-InstallationId: something-unique-for-this-client-this-app-and-this-api-key
 ```
+Use [Sessions API](sessions.md) to retrieve an `access_token`.
 
 X-TeamID header need to be added with respective team_id to enable the team in the
 context of any request. You can get a list of the teams available for you using
@@ -52,7 +48,6 @@ the list endpoint of [Teams API](teams.md).
 ```
 Authorization: Token token=user_api_token
 X-AppId: com.thundermaps.saferme
-X-InstallationId: something-unique-for-this-client-this-app-and-this-api-key
 X-TeamId: 1234
 ```
 

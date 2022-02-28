@@ -342,7 +342,7 @@ where:
 
 Combining the fields above a report search can be created as follows:
 ```
-GET /api/v4/reports/search?filter[channels]=[1,2]&updated_after=2018-12-31T23:45:45+13:00
+GET /api/v4/reports/search?filter[channels]=[1,2]&filter[updated_after]=2018-12-31T23:45:45+13:00
 Content-Type: application/json
 
 {

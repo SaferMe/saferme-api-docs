@@ -16,6 +16,7 @@ SaferMe to create, fetch and update reports
 - [Report States API](report_states.md)
 - [Reports API](reports.md)
 - [Reset Passwords API](reset_passwords.md)
+- [Risk Assessments API](risk_assessments.md)
 - [Sessions API](sessions.md)
 - [Shapes API](shapes.md)
 - [Tasks API](tasks.md)

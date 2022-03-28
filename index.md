@@ -6,6 +6,7 @@ SaferMe to create, fetch and update reports
 - [Analytics API](analytics.md)
 - [Async Job](async_job.md)
 - [Categories API](categories.md)
+- [Channels API](channels.md)
 - [Channel Selections API](channel_selections.md)
 - [File Attachments API](file_attachments.md)
 - [Forms API](forms.md)

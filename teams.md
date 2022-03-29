@@ -215,7 +215,7 @@ Response
 ```
 
 ### Available fields
-You can use the fields parameter in any of the Team Guests API methods. The requested
+You can use the fields parameter in any of the Teams API methods. The requested
 method will respond with the required fields accordingly. Some fields are
 included by default but you can opt-out from them on request.
 

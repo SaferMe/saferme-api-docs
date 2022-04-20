@@ -1,15 +1,24 @@
 ## Forms API
-You can get information about what are the currently available fields at one
-account form and their details from channels form api.
+With Forms api V4 you can:
 
+- [Fetch a Form](#fetch-a-form)
+- [List Forms](#list-forms)
+
+
+### Fetch a Form
+
+Get a report_state. See the optional [available fields](#available-fields).
 ```
-GET /api/v4/channels/:channel_id/form
+GET /api/v4/forms/:id
 ```
 
 ```
 {  
   "id":1,
-  "name":"Cleaner streams Form",
+  "uuid": "9c21c96e-4ce5-59e6-95d5-eb475fd03440",
+  "name":"Hazard on leash",
+  "updated_at": "2022-04-17T11:30:27.045+12:00",
+  "team_id": 1,
   "version":52,
   "fields":[  
     {  
@@ -132,3 +141,64 @@ GET /api/v4/channels/:channel_id/form
   ]
 }
 ```
+
+### List Forms
+
+Fetch a paginated list of report states.
+Optional params:
+- `ids`: if present filter entries by the given list of ids.
+- `team_id`: if present filter entries by the given team_id.
+- `only_operable_by_me`: if `true` is given then it returns entries the authenticated user is admin or operator of.
+- `include_addon_channels`:
+  - if `false` (default) is given it return only non-addon channels.
+  - if `true` is given then it returns both addon and non-addon channel entries.
+  - if `only` is given it returns only addon channel entries.
+- `reportable`: if `true` is given then it returns entries the authenticated user can create reports on.
+- `updated_after`: if present only return entries updated after given date. Valid values are dates in ISO8601 format.
+
+```
+GET /api/v4/forms?team_id=2&updated_after=2022-02-28T10:45:35.081+13:00
+```
+
+```
+[
+  {
+    "id": 1,
+    "uuid": "9c21c96e-4ce5-59e6-95d5-eb475fd03440",
+    "name": "Hazard on a leash",
+    "team_id": 3,
+    "version": 1,
+    "updated_at": "2022-04-17T11:30:27.045+12:00",
+    "fields": [
+      {
+        "id": 1,
+        "label": "Field label #1",
+        "key": "key_1",
+        "field_type": "ShortTextBox",
+        "form_order": 0,
+        "data": null,
+        "mandatory": false,
+        "visibility": "public",
+        "field_visibility": "public",
+        "value": null,
+        "editable": true,
+        "is_summary": false
+      }
+    ]
+  },  
+  ...
+]
+```
+
+### Available fields
+You can use the fields parameter in any of the Forms API methods. The requested
+method will respond with the required fields accordingly. Some fields are
+included by default but you can opt-out from them on request.
+
+* **id**
+* **uuid**
+* **name**
+* **version**
+* **team_id**
+* **updated_at**
+* **fields**

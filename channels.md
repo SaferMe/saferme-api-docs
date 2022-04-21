@@ -13,26 +13,52 @@ With Channels api V4 you can:
 Fetch a paginated list of channels for the current user sorted by name.
 
 Optional params:
+- `ids`: if present filter entries by the given list of ids.
+- `team_id`: if present filter entries by the given team_id.
+- `only_operable_by_me`: if `true` is given then it returns entries the authenticated user is admin or operator of.
+- `include_addon_channels`:
+  - if `false` (default) is given it return only non-addon channels.
+  - if `true` is given then it returns both addon and non-addon channel entries.
+  - if `only` is given it returns only addon channel entries.
+- `reportable`: if `true` is given then it returns entries the authenticated user can create reports on.
 - `updated_after`: if present only return entries updated after given date. Valid values are dates in ISO8601 format.
-- ...
 
 ```
-GET /api/v4/channels?fields=updated_after=2022-02-28T10:45:35.081+13:00&fields=-description,hazard_channel
+GET /api/v4/channels?updated_after=2022-02-28T10:45:35.081+13:00&fields=-description,hazard_channel
 ```
 
 ```
 [  
-  {  
-    "id": 14,
-    "name": "Channel Name 1",
-    "hazard_channel": false,
-    ...
-  },
-  {  
+  {
     "id": 2,
-    "name": "Channel Name 2",
-    "hazard_channel": true,
-    ...
+    "uuid": "f0bea8fb-6dc8-5cd3-ac32-74de4dd36dae",
+    "additional_fields":[],
+    "allow_public_comments": true,
+    "allow_public_viewers": true,
+    "allow_user_delete_own_reports": false,
+    "are_new_reports_anonymous": false,
+    "banners_enabled": false,
+    "category_id": 2,
+    "form_locked": false,
+    "hazard_channel": false,
+    "is_addon_channel": false,
+    "is_manageable_by": true,
+    "is_operable_by": true,
+    "is_reportable_by": true,
+    "logo":{
+      "mini": "missing/logos/mini.png",
+      "small": "missing/logos/small.png",
+      "medium": "missing/logos/medium.png",
+      "large": "missing/logos/large.png",
+      "huge": "missing/logos/huge.png",
+      },
+    "moderated": false,
+    "name": "Hazards on a leash",
+    "reports_count": 0,
+    "risk_controls_editability": "admins_only",
+    "slug": "Cleaner streams",
+    "standard_channel": false,
+    "team_id": 2
   },
   ...
 ]
@@ -42,13 +68,40 @@ GET /api/v4/channels?fields=updated_after=2022-02-28T10:45:35.081+13:00&fields=-
 
 Get a channel. See the optional [available fields](#available-channel-fields).
 ```
-GET /api/v4/channels/14
+GET /api/v4/channels/14&fields=-description,hazard_channel
 ```
 
 ```
 {
-  "id": 14,
-  ...
+  "id": 2,
+  "uuid": "f0bea8fb-6dc8-5cd3-ac32-74de4dd36dae",
+  "additional_fields":[],
+  "allow_public_comments": true,
+  "allow_public_viewers": true,
+  "allow_user_delete_own_reports": false,
+  "are_new_reports_anonymous": false,
+  "banners_enabled": false,
+  "category_id": 2,
+  "form_locked": false,
+  "hazard_channel": false,
+  "is_addon_channel": false,
+  "is_manageable_by": true,
+  "is_operable_by": true,
+  "is_reportable_by": true,
+  "logo":{
+    "mini": "missing/logos/mini.png",
+    "small": "missing/logos/small.png",
+    "medium": "missing/logos/medium.png",
+    "large": "missing/logos/large.png",
+    "huge": "missing/logos/huge.png",
+    },
+  "moderated": false,
+  "name": "Hazards on a leash",
+  "reports_count": 0,
+  "risk_controls_editability": "admins_only",
+  "slug": "Cleaner streams",
+  "standard_channel": false,
+  "team_id": 2
 }
 ```
 
@@ -116,6 +169,7 @@ method will respond with the required fields accordingly. All fields are
 included by default but you can opt-out from them on request.
 
 - **id**
+- **uuid**
 - **allow_public_comments**
 - **are_new_reports_anonymous**
 - attach_pdf_to_emails

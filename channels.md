@@ -1,7 +1,7 @@
 ## Channels API
 With Channels api V4 you can:
 
-- [List Channel](#list-channels)
+- [List Channels](#list-channels)
 - [Fetch a Channel](#fetch-a-channel)
 - [Create a Channel](#create-a-channel)
 - [Update a Channel](#update-a-channel)

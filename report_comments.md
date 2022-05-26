@@ -2,6 +2,7 @@
 With Report Comments api V4 you can:
 
 - [List Report Comments](#list-report-comments)
+- [Create a Report Comment](#create-a-report-comment)
 - [Fetch a Report Comment](#fetch-a-report-comment)
 - [Available fields](#available-report-comment-fields)
 
@@ -21,7 +22,7 @@ Optional params:
     - `?orderby=updated_at+asc`
 
 ```
-GET /api/v4/report comments?updated_after=2022-05-24T19:30:30.278+12:00&orderby=updated_after+asc&fields=-report_id,report_uuid
+GET /api/v4/report_comments?updated_after=2022-05-24T19:30:30.278+12:00&orderby=updated_after+asc&fields=-report_id,report_uuid
 ```
 
 ```
@@ -63,6 +64,39 @@ GET /api/v4/report_comments/14?fields=-created_at,report_uuid
   "report_uuid": "15eb79c0-def4-4b69-bfa3-35fcc5c301b9"
 }
 ```
+
+### Create a report comment
+Creates one report comment.
+Allowed fields:
+  - uuid
+  - **content**
+  - is_anonymous
+  - **report_id**
+
+```
+POST /api/v4/channels
+{
+  "report_comment": {
+    "uuid": "9c21c96e-4ce5-59e6-95d5-eb475fd03441",
+    "content": "This report is very important. Thank you.",
+    "report_id": 1234,
+  }
+}
+```
+
+```
+201 Created
+{
+  id: 15,
+  "uuid": "9c21c96e-4ce5-59e6-95d5-eb475fd03441",
+  "content": "This report is very important. Thank you.",
+  "report_id": 1234,
+  "created_at": "2022-05-24T19:30:30.278+12:00",
+  "is_anonymous": false,
+  "user_id": 15
+}
+```
+
 
 ### Available channel fields
 You can use the fields parameter in any of the Report Comment API methods. The requested

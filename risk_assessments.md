@@ -121,6 +121,7 @@ included by default but you can opt-out from them on request.
 * **eliminated**
 * **likelihood**
 * **severity**
+* report_uuid
 * **risk_level**
 * **comment**
 * **created_at**

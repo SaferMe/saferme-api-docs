@@ -47,9 +47,9 @@ GET /api/v4/report_comments?updated_after=2022-05-24T19:30:30.278+12:00&orderby=
 ]
 ```
 
-### Fetch a channel
+### Fetch a report_comment
 
-Get a channel. See the optional [available fields](#available-report-comments-fields).
+Get a report_comment. See the optional [available fields](#available-report-comments-fields).
 ```
 GET /api/v4/report_comments/14?fields=-created_at,report_uuid
 ```
@@ -74,7 +74,7 @@ Allowed fields:
   - **report_id**
 
 ```
-POST /api/v4/channels
+POST /api/v4/report_comments
 {
   "report_comment": {
     "uuid": "9c21c96e-4ce5-59e6-95d5-eb475fd03441",
@@ -98,7 +98,7 @@ POST /api/v4/channels
 ```
 
 
-### Available channel fields
+### Available Report Comment fields
 You can use the fields parameter in any of the Report Comment API methods. The requested
 method will respond with the required fields accordingly. All fields are
 included by default but you can opt-out from them on request.

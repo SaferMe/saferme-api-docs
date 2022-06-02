@@ -73,6 +73,10 @@ POST /api/v4/users
 ### Fetch a user
 
 Get a user. See the optional [available fields](#available-users-fields).
+
+> NOTE: To get information about the user's own profile it is recommended
+to use their id provided in the session response from user's [signIn](../sessions.html#create-session), [signUp](../users.html#create-a-user) or [fetching current session](../sessions.html#fetch-current-session) details. There is a special id `me` you can use if you don't have such information but it is not likely to be supported in the future.
+
 ```
 GET /api/v4/users/14
 ```

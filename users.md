@@ -115,6 +115,7 @@ Allowed fields:
 - last_name: `string`
 - password_confirmation: `string`
 - password: `string`
+- current_password: `string` required when `password` is given.
 - avatar: `file` (Requires data to be submited using `content-type: multipart/form-data`. It is not possible to send it using JSON payload)
 
 ```

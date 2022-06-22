@@ -307,6 +307,7 @@ The search accept tree groups of parameters:
   - `order` to specify the order of the record in the resultset
 
 List of parameters allowed:
+  - `filter[team_id]`=123
   - `filter[tile_id]`=ZmZmZmbWZUBmZmZmZqZEwJqZmZmZmak/
   - `filter[tile][latitude]`=23.234
   - `filter[tile][longitude]`=177.432
@@ -317,6 +318,7 @@ List of parameters allowed:
   - `filter[appearance]`=loud
   - `filter[id]`[id_array]=1,2,3
   - `filter[id]`[report_search_id]=87654321
+  - `exclude[team_id]`=123
   - `exclude[tile_id]`=ZmZmZmbWZUBmZmZmZqZEwJqZmZmZmak/
   - `exclude[tile][latitude]`=23.234
   - `exclude[tile][longitude]`=177.432

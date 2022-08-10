@@ -11,6 +11,8 @@ Optional params:
 - `team_id`: if present filter entries by team_id.
 - `report_id`: if present filter entries by report_id.
 - `updated_after`: if present only return entries updated after given date. Valid values are dates in ISO8601 format.
+- `preset_filter`: if set to `syncable_reports` then it will include only results related to reports unresolved,
+resolved over the last 7 days, reports current user made and reports assigned to current user.
 
 ```
 GET /api/v4/report_state_changes?team_id=2&updated_after=2022-02-28T10:45:35.081+13:00&fields=report_uuid

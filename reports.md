@@ -307,17 +307,38 @@ The search accept tree groups of parameters:
   - `order` to specify the order of the record in the resultset
 
 List of parameters allowed:
+  - `filter[appearance]`=loud
+
+    one of: normal, attention, loud, invisible
+  - `filter[assignee_id]`=123
+  - `filter[channels]=`[23,38,42]
+  - `filter[channel_type]=`generic
+  - `filter[created_after]=`2018-12-31T23:45:45+13:00
+  - `filter[created_before]=`2018-12-31T23:45:45+13:00
+
+    one of: generic, audit, fire_check, forklift_check, hazard, incident, induction, near_miss, plant_machinery_check, toolbox_talk, vehicle_check
+
+  - `filter[id]`[id_array]=1,2,3
+  - `filter[id]`[report_search_id]=87654321
+  - `filter[new_report]`=true
+
+    one of: true, false
+
+  - `filter[report_states]`=[22,56]
+  - `filter[resolved]`=true
+
+    one of: true, false
+
   - `filter[team_id]`=123
+  - `filter[title_query]`=title starts with
   - `filter[tile_id]`=ZmZmZmbWZUBmZmZmZqZEwJqZmZmZmak/
   - `filter[tile][latitude]`=23.234
   - `filter[tile][longitude]`=177.432
   - `filter[tile][scale]`=0.5
-  - `filter[channels]=`[23,38,42]
   - `filter[updated_after]`=2018-12-31T23:45:45+13:00
   - `filter[updated_before]`=2019-01-15T23:45:58+13:00
-  - `filter[appearance]`=loud
-  - `filter[id]`[id_array]=1,2,3
-  - `filter[id]`[report_search_id]=87654321
+  - `filter[user_id]`=342
+  - `filter[user_query]`=user name
   - `exclude[team_id]`=123
   - `exclude[tile_id]`=ZmZmZmbWZUBmZmZmZqZEwJqZmZmZmak/
   - `exclude[tile][latitude]`=23.234
@@ -331,6 +352,10 @@ List of parameters allowed:
   - `exclude[id][report_search_id]`=87654321
   - `order[updated_at]`=desc
   - `order[id]`=asc
+
+  - `preset_filter`=syncable_reports
+
+    will include reports unresolved, resolved over the last 7 days, reports current user made and reports assigned to current user.
 
 where:
 - `tile_id` is the id returned from tiles search api.

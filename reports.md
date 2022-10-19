@@ -350,8 +350,10 @@ List of parameters allowed:
   - `exclude[appearance]`=normal
   - `exclude[id][id_array]`=1,2,3
   - `exclude[id][report_search_id]`=87654321
-  - `order[updated_at]`=desc
+  - `order[assigned_at]`=asc
+  - `order[created_at]`=asc
   - `order[id]`=asc
+  - `order[updated_at]`=asc
 
   - `preset_filter`=syncable_reports
 
@@ -365,7 +367,7 @@ where:
 - `appearance` is one of "invisible", "normal", "attention" or "loud"
 - `id_array` is a comma separated list of report_ids
 - `report_search_id` is the id resulting from a previous report_search
-- `order[updated_at]` and `order[id]` allowed values are "asc" or "desc"
+- `order[any_field]` allowed values are "asc" or "desc"
 
 Combining the fields above a report search can be created as follows:
 ```

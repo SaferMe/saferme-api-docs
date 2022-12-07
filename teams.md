@@ -93,9 +93,14 @@ POST /api/v4/team
     "name": "Great worker in Action",
     "industry": "Productivity",
     "location": "Americas"
+    "feature_tasks_enabled": true
   }
 }
 ```
+
+> **Notes:**
+> - The feature_tasks_enabled in the request payload is optional, and only available to branded app admin, default to true 
+
 
 ```
 {

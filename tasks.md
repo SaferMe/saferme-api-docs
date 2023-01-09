@@ -15,6 +15,8 @@ when using a dodgy connection. The serve will return `201 Created` when the task
 is created successfully and in case a previous request has already created a
 task for the very same `uuid` then `200 ok` is returned and no data is changed.
 
+The field `completed_at` can also be set on creation to make a completed task.
+
 ```
 POST /api/v4/tasks
 {

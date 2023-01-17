@@ -242,5 +242,6 @@ included by default but you can opt-out from them on request.
 - **risk_register_enabled**
 - **sso_required?**
 - **sso_team_id**
+- **training_enabled**
 - **user_timeout**
 - **wearables_enabled**

@@ -301,7 +301,7 @@ Content-Type: application/json
 Report search is a asynchronous process and requires a couple of steps.
 Here you will see the first step, how to build and start a report search.
 
-The search accept tree groups of parameters:
+The search accept three groups of parameters:
   - `filter` to specify what is included in the search
   - `exclude` to specify what is not included in the search
   - `order` to specify the order of the record in the resultset

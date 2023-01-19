@@ -96,7 +96,9 @@ GET /api/v4/users/14
     "large": "https://userfiles.prod.saferme.io/url_for_large.jpg",
     "huge": "https://userfiles.prod.saferme.io/url_for_huge.jpg"
   },
-  "accepted_terms_version": 4
+  "contact_number": "+12(34) 5678-9900,
+  "accepted_terms_version": 4,
+  "attached_avatar_id": 54321
 }
 
 ```
@@ -116,7 +118,8 @@ Allowed fields:
 - password_confirmation: `string`
 - password: `string`
 - current_password: `string` required when `password` is given.
-- avatar: `file` (Requires data to be submited using `content-type: multipart/form-data`. It is not possible to send it using JSON payload)
+- attached_avatar_id: `integer` Follow the steps on [File Attachments API](file_attachments.md) to get a
+`attachment_id` to use here.
 
 ```
 PATCH /api/v4/users/14
@@ -139,9 +142,11 @@ method will respond with the required fields accordingly. All fields are
 included by default but you can opt-out from them on request.
 
 - **id**
+- **accepted_terms_version**
+- **avatar**
+- **attached_avatar_id**
+- **contact_number**
+- **email**
 - **email_notifications_enabled**
 - **first_name**
 - **last_name**
-- **email**
-- **avatar**
-- **accepted_terms_version**

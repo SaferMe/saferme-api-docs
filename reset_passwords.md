@@ -1,11 +1,13 @@
 # Reset Passwords API
-This API can be used for resetting a users password. There are two steps:
-1. Generate a reset code
-2. Submit a new password
+With Reset Passwords api V4 you can reset user's password using these endpoints:
 
-## Request Token
-This will send an email and (if able) a text message to the user with a Reset Code and link to change their password.
-Tokens expire after 24 hours, and a new call to this endpoint will be required to generate a new one.
+- [Request a Password Reset Code](#request-a-password-reset-token)
+- [Change User's password with a Reset Token](#change-users-password-with-a-reset-token)
+
+
+## Request a Password Reset Token
+This will send an email to the user with a Password Reset Code and link to change their password.
+These codes expire in 24 hours after which a new call to this endpoint will be required to generate a new code.
 
 ```
 POST api/v4/reset_passwords/request_token
@@ -23,23 +25,15 @@ Body:
 }
 ```
 Responses:  
-**404** Email does not exist  
-**422** Invalid email provided  
 **200** Success. Response body:  
 ```
 {
   "email": "test@example.com"
 }
 ```
-Or, If user has a valid SMS number associated with their account:
-```
-{ 
-  "email": "test@example.com", 
-  "sms_number": "+12******789"
-}
-```
+> Note: This endpoint will respond successfully even when no user is found for the email given in the request.
 
-## Update Password
+## Change User's password with a Reset Token
 ```
 PATCH api/v4/reset_passwords/update_password
 PUT api/v4/reset_passwords/update_password
@@ -92,7 +86,6 @@ TimeToWait: (TimeOfLastTry + (0.1) * 2^NumberOfAttempts) - CurrentTime
 **200** Success. response:
 ```
 {
-  "user_id": 6,
-  "auth_token": "6e68...c023c"
+  "status": "ok"
 }
 ```

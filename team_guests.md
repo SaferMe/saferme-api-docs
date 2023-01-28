@@ -5,7 +5,7 @@ With Team Guests api V4 you can:
 - [List Team Guests](#list-team-guests)
 - [Bulk Create Team Guests](#bulk-create-team-guests)
 - [Update a Team Guest](#update-a-team-guest)
-- [Bulk Delete Team Guests (Async)](#bulk-delete-team-guests--async-)
+- [Bulk Delete Team Guests (Async)](#bulk-delete-team-guests-async)
 - [Available fields](#available-fields)
 
 ### Fetch a team guest
@@ -76,7 +76,7 @@ GET /api/v4/teams/123/team_guests?fields=inventory_item_item_id,inventory_item_b
 ]
 ```
 
-### Bulk create team guests
+### Bulk create Team Guests
 Multiple guests can be created in a single request (200 max). `first_name` is a
 required field. Each item in the request will have a respective item in the
 response including a references (`ref`) to its index in the request.
@@ -174,7 +174,7 @@ Description field is optional and it will be echoed on the [Async Job](async_job
 
 > Note: ATTENTION!!! Every records is be deleted when no filter criteria is specified.
 
-The response for this request is a [Async Job](async_job.md) Resource with current status of the
+The response for this request is an [Async Job](async_job.md) Resource with current status of the
 Background process. The background process status can be polled if you need to
 retrieve conclusion status, result and eventual error messages.
 

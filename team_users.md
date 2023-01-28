@@ -3,7 +3,7 @@ With Team Users api V4 you can:
 
 - [Fetch a Team User](#fetch-a-team-user)
 - [List Team Users](#list-team-users)
-- [Bulk Create Team Users](#bulk-create-team-users)
+- [Bulk Create Team Users](#bulk-create-team-users-async)
 - [Available fields](#available-team_user-fields)
 
 ### Fetch a team user

@@ -11,6 +11,8 @@ SaferMe to create, fetch and update reports
 - [Channels API](channels.md)
 - [File Attachments API](file_attachments.md)
 - [Forms API](forms.md)
+- [Notifications API](notifications.md)
+- [Report Comments API](report_comments.md)
 - [Report Searches API](report_searches.md)
 - [Report Signatures API](report_signatures.md)
 - [Report State Changes API](report_state_changes.md)

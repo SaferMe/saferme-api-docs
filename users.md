@@ -18,7 +18,7 @@ Allowed fields:
 - last_name: `string` (required if gdpr_accept == true)
 - **email**: `string`
 - contact_number: `string`
-- **password**: `string`
+- **password**: `string` Check [About `password_requirements`](#about-password_requirements) for more details.
 - password_confirmation: `string`
 - **accepted_terms_version**: `integer`
 - **gdpr_version**: `integer`

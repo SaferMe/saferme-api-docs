@@ -3,6 +3,7 @@ With Team Users api V4 you can:
 
 - [Fetch a Team User](#fetch-a-team-user)
 - [List Team Users](#list-team-users)
+- [Bulk Create Team Users](#bulk-create-team-users)
 - [Available fields](#available-team_user-fields)
 
 ### Fetch a team user
@@ -70,6 +71,64 @@ GET /api/v4/teams/1/team_users?fields=first_name,last_name,email,-supervisor_id&
   },
   ...
 ]
+```
+
+
+### Bulk Create Team Users (Async)
+Create multiple team_users in a background process.
+
+It takes an optional `description` field and echo its value on [Async Job](async_job.md) responses.
+It also requires a list of `team_users` to be added to the Organization.
+These are the allowed fields in for each entry on `team_users` list:
+- `email` string required
+- `ref` string optional (default: same value as the email) Arbitrary string to be echoed on async results to match error messages.
+- `first_name` string optional
+- `last_name` string optional
+- `skip_sending_email` boolean optional (default: false)
+- `team_role` string optional (default: "team_member", valid options: "team_member", "team_manager", "team_admin")
+
+The response for this request is an [Async Job](async_job.md) Resource with current status of the
+Background process. The background process status can be polled if you need to
+retrieve conclusion status, result and eventual error messages.
+
+**Please note that it is possible to have partial failure if not all items are validated.**
+
+```
+POST /api/v4/teams/123/team_users/async_bulk_create
+
+{
+  "team_users": [
+    {
+      "email": "ana.admin@team.com",
+      "ref": "record1",
+      "first_name": "Ana",
+      "last_name": "Begins",
+      "skip_sending_email": true
+      "team_role": "team_admin",
+    },
+    {
+      "email": "mark.manager@team.com",
+      "team_role": "team_manager"
+    },
+    {
+      "email": "merrit.member@team.com",
+      "team_role": "team_member"
+    }
+  ],
+  "description": "Adding members to organization"
+}
+```
+
+```
+{
+  "id": 133881,
+  "completed": false,
+  "description": "Adding members to organization",
+  "success": null,
+  "artifact_url": null,
+  "result": null,
+  "download_filename": null
+}
 ```
 
 ### Available team_user fields

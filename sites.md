@@ -34,25 +34,13 @@ GET /api/v4/sites?team_id=26&updated_after=2022-05-24T19:30:30Z&orderby=updated_
   {
     "uuid": "1b14cac0-bd7f-11ed-9b4e-acde48001122",
     "name": "Doctor Jack-Jack",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        174.77604159462516,
-        -41.286319623500816
-      ]
-    },
+    "location": "Point (174.77604159462516 -41.286319623500816)",
     "updated_at": "2023-03-08 20:01:53 +1300"
   },
   {
     "uuid": "f36290bc-bd82-11ed-9b4e-acde48001122",
     "name": "Captain Ant Claw",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        77.61010151368907,
-        75.81002131462157
-      ]
-    },
+    "location": "Point (77.61010151368907 75.81002131462157)",
     "updated_at": "2023-03-07 10:11:12 +1300"
   }
 ]
@@ -63,14 +51,14 @@ GET /api/v4/sites?team_id=26&updated_after=2022-05-24T19:30:30Z&orderby=updated_
 Creates one site.
 
 ##### Input fields for create:
-  - **uuid**
-  - **team_id**
-  - **name**
-  - **site_owner_id**
-  - job_number
-  - address
-  - location
-  - boundaries
+  - **uuid**: `UUID`
+  - address: `String`
+  - boundaries: `WKT`
+  - job_number: `String`
+  - location: `WKT Point`
+  - **name**: `String`
+  - **site_owner_id**: `record<TeamUser>` by id or uuid
+  - **team_id**: `record<Team>`
 
 ```json
 POST /api/v4/sites
@@ -78,13 +66,13 @@ POST /api/v4/sites
 {
   "site": {
     "uuid": "1b14cac0-bd7f-11ed-9b4e-acde48001122",
-    "team_id": 26,
+    "address": "Level 3/354 Lambton Quay, Wellington Central, Wellington 6011",
+    "boundaries": "POLYGON ((174.7760662374219 -41.28628888757578, 174.77599163848276 -41.2863095461495, 174.77600806701338 -41.286352248914284, 174.77608819800787 -41.2863304566517, 174.7760662374219 -41.28628888757578))",
+    "job_number": "5af30ff1ce",
+    "location": "Point (174.77604159462516 -41.286319623500816)",
     "name": "Doctor Jack-Jack",
     "site_owner_id": 35,
-    "job_number": "5af30ff1ce",
-    "address": "Level 3/354 Lambton Quay, Wellington Central, Wellington 6011",
-    "location": "Point(174.77604159462516 -41.286319623500816)",
-    "boundaries": "POLYGON ((174.7760662374219 -41.28628888757578, 174.77599163848276 -41.2863095461495, 174.77600806701338 -41.286352248914284, 174.77608819800787 -41.2863304566517, 174.7760662374219 -41.28628888757578))"
+    "team_id": 26
   }
 }
 ```
@@ -95,45 +83,13 @@ POST /api/v4/sites
 {
   "id": 14,
   "uuid": "1b14cac0-bd7f-11ed-9b4e-acde48001122",
+  "address": "Level 3/354 Lambton Quay, Wellington Central, Wellington 6011",
+  "boundaries": "POLYGON ((174.7760662374219 -41.28628888757578, 174.77599163848276 -41.2863095461495, 174.77600806701338 -41.286352248914284, 174.77608819800787 -41.2863304566517, 174.7760662374219 -41.28628888757578))",
+  "job_number": "5af30ff1ce",
+  "location": "Point (174.77604159462516 -41.286319623500816)",
   "name": "Doctor Jack-Jack",
   "site_owner_id": 35,
   "team_id": 26,
-  "job_number": "5af30ff1ce",
-  "address": "Level 3/354 Lambton Quay, Wellington Central, Wellington 6011",
-  "location": {
-    "type": "Point",
-    "coordinates": [
-      174.77604159462516,
-      -41.286319623500816
-    ]
-  },
-  "boundaries": {
-    "type": "Polygon",
-    "coordinates": [
-      [
-        [
-          174.7760662374219,
-          -41.28628888757578
-        ],
-        [
-          174.77599163848276,
-          -41.2863095461495
-        ],
-        [
-          174.77600806701338,
-          -41.286352248914284
-        ],
-        [
-          174.77608819800787,
-          -41.2863304566517
-        ],
-        [
-          174.7760662374219,
-          -41.28628888757578
-        ]
-      ]
-    ]
-  },
   "created_at": "2023-03-08 20:01:53 +1300",
   "updated_at": "2023-03-08 20:01:53 +1300"
 }
@@ -154,45 +110,13 @@ GET /api/v4/sites/14?fields=boundaries
 {
   "id": 14,
   "uuid": "1b14cac0-bd7f-11ed-9b4e-acde48001122",
+  "job_number": "5af30ff1ce",
+  "address": "Level 3/354 Lambton Quay, Wellington Central, Wellington 6011",
   "name": "Doctor Jack-Jack",
   "site_owner_id": 35,
   "team_id": 26,
-  "job_number": "5af30ff1ce",
-  "address": "Level 3/354 Lambton Quay, Wellington Central, Wellington 6011",
-  "location": {
-    "type": "Point",
-    "coordinates": [
-      174.77604159462516,
-      -41.286319623500816
-    ]
-  },
-  "boundaries": {
-    "type": "Polygon",
-    "coordinates": [
-      [
-        [
-          174.7760662374219,
-          -41.28628888757578
-        ],
-        [
-          174.77599163848276,
-          -41.2863095461495
-        ],
-        [
-          174.77600806701338,
-          -41.286352248914284
-        ],
-        [
-          174.77608819800787,
-          -41.2863304566517
-        ],
-        [
-          174.7760662374219,
-          -41.28628888757578
-        ]
-      ]
-    ]
-  },
+  "location": "Point (174.77604159462516 -41.286319623500816)",
+  "boundaries": "POLYGON ((174.7760662374219 -41.28628888757578, 174.77599163848276 -41.2863095461495, 174.77600806701338 -41.286352248914284, 174.77608819800787 -41.2863304566517, 174.7760662374219 -41.28628888757578))",
   "created_at": "2023-03-08 20:01:53 +1300",
   "updated_at": "2023-03-08 20:01:53 +1300"
 }
@@ -202,24 +126,25 @@ GET /api/v4/sites/14?fields=boundaries
 Updates the allowed fields on one single site. It only updates the fields sent.
 
 ##### Input fields for update:
-- name
-- site_owner_id
-- job_number
-- address
-- location
-- boundaries
+  - address: `String`
+  - boundaries: `WKT`
+  - job_number: `String`
+  - location: `WKT Point`
+  - name: `String`
+  - site_owner_id: : `Number` or `UUID` of a Team User
+
 
 ```json
-PATCH /api/v4/teams/123
+PATCH /api/v4/sites/123
 
 {
   "site": {
+    "address": "Level 3/354 Lambton Quay, Wellington Central, Wellington 6011",
+    "boundaries": "POLYGON ((174.7760662374219 -41.28628888757578, 174.77599163848276 -41.2863095461495, 174.77600806701338 -41.286352248914284, 174.77608819800787 -41.2863304566517, 174.7760662374219 -41.28628888757578))",
+    "job_number": "5af30ff1ce",
+    "location": "Point (174.77604159462516 -41.286319623500816)",
     "name": "Doctor Jack-Jack",
     "site_owner_id": 35,
-    "job_number": "5af30ff1ce",
-    "address": "Level 3/354 Lambton Quay, Wellington Central, Wellington 6011",
-    "location": "Point(174.77604159462516 -41.286319623500816)",
-    "boundaries": "POLYGON ((174.7760662374219 -41.28628888757578, 174.77599163848276 -41.2863095461495, 174.77600806701338 -41.286352248914284, 174.77608819800787 -41.2863304566517, 174.7760662374219 -41.28628888757578))"
   }
 }
 ```
@@ -242,6 +167,7 @@ included by default but you can opt-out of them using the `-` prefix.
 - **location**
 - **name**
 - **site_owner_id**
+- site_owner_uuid
 - **team_id**
 - **created_at**
 - **updated_at**

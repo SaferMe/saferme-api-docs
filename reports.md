@@ -1,301 +1,777 @@
 ## Reports API
-With Report api V4 you can:
+With Reports api V4 you can:
 
-- [Fetch a report](#fetch-a-report)
 - [Create a Report](#create-a-report)
+- [Fetch a Report](#fetch-a-report)
 - [Update a Report](#update-a-report)
 - [Search for Reports](#search-for-reports)
-- [Create or Update a Report](#create-or-update-a-report)
 - [Filling FileUpload and Image fields](#filling-fileupload-and-image-fields)
-- [Available fields](#available-report-fields)
+- [Response fields](#response-fields)
 
-
-### Fetch a report
-
-Get a report with its default [fields](#available-report-fields)
-```
-GET /api/v4/reports/49
-```
-
-```
-{  
-  "id":49,
-  "account_id":1,
-  "address":"New York, NY, USA",
-  "category_id":2,
-  "is_anonymous":false,
-  "iso_created_at":"2016-10-10T16:13:27.142+13:00",
-  "location":{  
-    "latitude":-36.8667,
-    "longitude":174.76670000000001
-  },
-  "report_state_id":2,
-  "title":"Effluent runoff",
-  "user_id": 2
-}
-```
-
-Get report adding **all** optional [fields](#available-report-fields)
-```
-GET /api/v4/reports/49?fields=account_logo,account_name,form_fields,is_manageable_by,map_url,note_comments,report_comments,report_state_name,user_image,user_short_name
-```
-
-```
-{
-  "id":49,
-  "account_id":1,
-  "account_logo":"missing/logos/original.png",
-  "account_name":"Cleaner streams",
-  "address":"New York, NY, USA",
-  "category_id":2,
-  "is_anonymous":false,
-  "is_manageable_by":true,
-  "iso_created_at":"2016-10-10T16:13:27.142+13:00",
-  "location":{  
-    "latitude":-36.8667,
-    "longitude":174.76670000000001
-  },
-  "map_url":"deprecated",
-  "report_state_id":2,
-  "report_state_name":"Label",
-  "title":"Effluent runoff",
-  "user_id": 2
-  "form_fields":[  
-    {  
-      "id":1,
-      "label":"Category",
-      "key":"f_1_1_1",
-      "field_type":"Category",
-      "form_order":0,
-      "data":"",
-      "mandatory":null,
-      "visibility":"public",
-      "field_visibility":"public",
-      "value":2,
-      "editable":true
-    },
-    {  
-      "id":2,
-      "label":"Time \u0026 Date Select",
-      "key":"f_1_2_2",
-      "field_type":"DateAndTime",
-      "form_order":1,
-      "data":"",
-      "mandatory":null,
-      "visibility":"public",
-      "field_visibility":"public",
-      "value":"2016-10-10T16:12:47.000+13:00",
-      "editable":true
-    },
-    {  
-      "id":3,
-      "label":"Check Box",
-      "key":"f_1_3_3",
-      "field_type":"CheckBox",
-      "form_order":2,
-      "data":"{\"multi_select\":true,\"options\":[{\"label\":\"Label\",\"value\":\"f_1_3_3_3_1\",\"enabled\":true,\"multi_option_id\":null,\"display_order\":0,\"is_default\":false},{\"label\":\"ok\",\"value\":\"f_1_3_3_4_2\",\"enabled\":true,\"multi_option_id\":null,\"display_order\":1,\"is_default\":false}]}",
-      "mandatory":null,
-      "visibility":"public",
-      "field_visibility":"public",
-      "value":[  
-        "f_1_3_3_4_2"
-      ],
-      "editable":true
-    },
-    {  
-      "id":4,
-      "label":"public edit field",
-      "key":"f_1_6_4",
-      "field_type":"ShortTextBox",
-      "form_order":4,
-      "data":"",
-      "mandatory":false,
-      "visibility":"public",
-      "field_visibility":"public",
-      "value":"puba",
-      "editable":true
-    },
-    {  
-      "id":7,
-      "label":"admin only",
-      "key":"f_1_13_7",
-      "field_type":"ShortTextBox",
-      "form_order":5,
-      "data":"",
-      "mandatory":null,
-      "visibility":"public",
-      "field_visibility":"private",
-      "value":"admina",
-      "editable":true
-    },
-    {  
-      "id":5,
-      "label":"\u003cp\u003eInstruction or Information text\u003c/p\u003e",
-      "key":"f_1_7_5",
-      "field_type":"FreeText",
-      "form_order":6,
-      "data":"",
-      "mandatory":null,
-      "visibility":"public",
-      "field_visibility":"public",
-      "value":null,
-      "editable":true
-    },
-    {  
-      "id":6,
-      "label":"Amazing pictures",
-      "key":"f_1_8_6",
-      "field_type":"Image",
-      "form_order":1,
-      "data":"",
-      "mandatory":null,
-      "visibility":"public",
-      "field_visibility":"public",
-      "value":[  
-        {  
-          "id":15,
-          "original_url":"https://userfiles.safer.me/reports/incident_report_images-attachments/15/original-c774896451cc165e4a3cb8f230803021391fad30.png",
-          "filename":"test.png",
-          "style_url":{  
-            "thumb":"https://userfiles.safer.me/reports/incident_report_images-attachments/15/thumb-4eab0ac0176fc1a77b6ecb775e0ae58ceaf79dc8.png",
-            "medium":"https://userfiles.safer.me/reports/incident_report_images-attachments/15/medium-2e7d56cb4febf5fa089cd16161da183c60d7f7f4.png"
-          }
-        },
-        {  
-          "id":16,
-          "original_url":"https://userfiles.safer.me/reports/incident_report_images-attachments/16/original-8b0457389fda1f73a00947f2557f57f00a12a815.png",
-          "filename":"webRaf.png",
-          "style_url":{  
-            "thumb":"https://userfiles.safer.me/reports/incident_report_images-attachments/16/thumb-2285458e0f0cbbb478aad2a9277cc66b057fc97b.png",
-            "medium":"https://userfiles.safer.me/reports/incident_report_images-attachments/16/medium-783d436d0479b54d3ee258a7c0c68aa8a91d674f.png"
-          }
-        }
-      ],
-      "editable":true
-    },
-    {  
-      "id":9,
-      "label":"Awesome files",
-      "key":"f_1_18_9",
-      "field_type":"FileUpload",
-      "form_order":2,
-      "data":"",
-      "mandatory":null,
-      "visibility":"public",
-      "field_visibility":"public",
-      "value":[  
-        {  
-          "id":17,
-          "original_url":"https://userfiles.safer.me/reports/incident_report_images-attachments/17/original-a8ee674d52823df1e371132279f502702e10d7e2.zip",
-          "filename":"Archive.zip",
-          "style_url":{  
-
-          }
-        }
-      ],
-      "editable":true
-    },
-    {  
-      "id":10,
-      "label":"Important files",
-      "key":"f_1_19_10",
-      "field_type":"FileUpload",
-      "form_order":3,
-      "data":"",
-      "mandatory":null,
-      "visibility":"public",
-      "field_visibility":"public",
-      "value":[  
-        {  
-          "id":18,
-          "original_url":"https://userfiles.safer.me/reports/incident_report_images-attachments/18/original-c445452ca967fd83860dea23e0917180b24ab7ba.jpg",
-          "filename":"galaxy.jpg",
-          "style_url":{  
-
-          }
-        },
-        {  
-          "id":19,
-          "original_url":"https://userfiles.safer.me/reports/incident_report_images-attachments/19/original-d04c6330b5cc98a49322c955aaa0cf6fa65006e6.png",
-          "filename":"test.png",
-          "style_url":{  
-
-          }
-        }
-      ],
-      "editable":true
-    }
-  ],
-  "note_comment_ids":[1,2]
-  "report_comment_ids":[2,3]
-}
-```
-
-Get report selecting only desired [fields](#available-report-fields) can be achieved using the `-` prefix on the default field names to exclude them from the request in combination with addition of optional fields.
-```
-GET /api/v4/reports/49?fields=account_logo,-address,user_image,-title
-```
-
-> **Notes:**
-> - Category field can be read via `category_id` properties on report or through
-> value on its specific field information on form_fields list of the report.
 
 ### Create a Report
-```
+Creates one report.
+
+##### Input fields for create:
+  - uuid: `UUID`
+  - **account_id**: `record<Account>` by id or uuid
+  - **geom**: `WKT Point`
+  - is_anonymous: `boolean`
+  - report_state_id: `record<ReportState>` by id or uuid
+  - shape_id: `integer`
+  - address: `string`
+  - form_fields: `array`
+    - **0..**: `hash`
+      - **key**: `string` matching key for report field
+      - **value**: `object` value for report field.
+  - risk_assessment: `hash`
+    - eliminated: `boolean`
+    - **likelihood**: `hash`
+      - **key**: `string`
+    - **severity**: `hash`
+      - **key**: `string`
+    - comment: `string`
+
+```json
 POST /api/v4/reports
-Content-Type: application/json
+
 {
   "report": {
-    "account_id": 123, // required
-
-    // location or address are alternatively required: you must provide at least one of them
-    "location": {
-      "latitude": 12,
-      "longitude": 34.56,
-    },
+    "uuid": "ab06e7e6-1205-4027-b938-70d1cdfe7d41",
+    "account_id": "2222",
+    "report_state_id": 15,
+    "geom": "Point(174.7759821 -41.2861352)",
     "address": "123 Somewhere rd. In the World",
-
-    // category_id field need to be changed using its value from respective form_field value.
-    "category_id": 22,
-
-    // field to have its content defined by external integrations
-    "source_id": 'free_text',
-
-    // Custom fields:
-    // They have their key using the following format and might accept:
-    // strings, numbers, arrays of strings and array of numbers.
-    "f_1_1_1": 'custom',
-    "f_1_1_2": 4,
-    "f_1_1_3": ['1','2','3'],
-    "f_1_1_4": [1,2,3],
+    "form_fields": [
+      {
+        "key": "f_2_3_1",
+        "value": 10
+      },
+      {
+        "key": "f_2_4_2",
+        "value": [
+          "Person 1",
+          "Person 2"
+        ]
+      },
+      {
+        "key": "f_2_5_3",
+        "value": [
+          17,
+          19,
+          5
+        ]
+      },
+      {
+        "key": "f_2_9_7",
+        "value": 7
+      },
+      {
+        "key": "f_2_10_8",
+        "value": [
+          "bullet One",
+          "bullet 2"
+        ]
+      },
+      {
+        "key": "f_2_11_9",
+        "value": "2023-03-21T03:08:00.000Z"
+      },
+      {
+        "key": "f_2_13_11",
+        "value": "Long Text\nWith multiple\nlines"
+      },
+      {
+        "key": "f_2_14_12",
+        "value": [
+          "Item for start",
+          "Item continuing",
+          "Item Bullet finishing"
+        ]
+      },
+      {
+        "key": "f_2_15_13",
+        "value": "Single line text box"
+      },
+      {
+        "key": "f_2_16_14",
+        "value": [
+          "f_2_16_14_18_2",
+          "f_2_16_14_20_3"
+        ]
+      },
+      {
+        "key": "f_2_23_15",
+        "value": "f_2_23_15_24_4"
+      },
+      {
+        "key": "f_2_28_16",
+        "value": "f_2_28_16_31_6"
+      },
+      {
+        "key": "f_2_37_17",
+        "value": [
+          1,
+          2
+        ]
+      },
+      {
+        "key": "f_2_38_18",
+        "value": [
+          3,
+          4
+        ]
+      }
+    ]
   }
 }
 ```
-> **Notes:**
-> - The comments included in the `JSON` above are for illustrative purpose
-> only and must not be used on real requests.
-> - Category field can be read via `category_id` properties on report or through
-> value on its specific field information on form_fields list of the report.
+
+```json
+201 Created
+
+{
+  "id": 49,
+  "uuid": "ab06e7e6-1205-4027-b938-70d1cdfe7d41",
+  "account_id": 2222,
+  "account_uuid": "886b1d4c-dec3-43fe-bcce-fd4eea6f28f8",
+  "address": "350 Lambton Quay, Wellington Central, Wellington 6011, New Zealand",
+  "appearance": "generic_teal",
+  "category_id": 1010,
+  "description": null,
+  "is_anonymous": false,
+  "location": {
+    "latitude": -41.2861352,
+    "longitude": 174.7759821
+  },
+  "report_state_id": 15,
+  "shape_id": null,
+  "title": "From raceway, Industrial waste, Cleaner streams",
+  "user_id": 5,
+  "iso_created_at": "2023-03-29T16:08:38+13:00",
+  "updated_at": "2023-03-29T16:08:38.705+13:00"
+}
+```
+
+### Fetch a Report
+Get a report entry.
+> See the optional [response fields](#response-fields).
+
+```
+GET /api/v4/reports/49?fields=form_fields,-shape_id
+```
+
+```json
+200 OK
+
+{
+  "id": 49,
+  "uuid": "ab06e7e6-1205-4027-b938-70d1cdfe7d41",
+  "account_id": 2222,
+  "account_uuid": "886b1d4c-dec3-43fe-bcce-fd4eea6f28f8",
+  "address": "123 Somewhere rd. In the World",
+  "appearance": "generic_teal",
+  "category_id": 1010,
+  "description": null,
+  "is_anonymous": false,
+  "location": {
+    "latitude": -41.2861352,
+    "longitude": 174.7759821
+  },
+  "report_state_id": 15,
+  "title": "From raceway, Industrial waste, Cleaner streams",
+  "user_id": 5,
+  "form_fields": [
+    {
+      "id": 11,
+      "label": "Internal Attendees",
+      "key": "f_2_5_3",
+      "field_type": "InternalAttendees",
+      "form_order": 2,
+      "data": {
+        "enable_contact_tracing": true,
+        "options": [
+          {
+            "label": "John Doe",
+            "value": 5
+          },
+          {
+            "label": "1th 1son",
+            "value": 17
+          },
+          {
+            "label": "3th 3son",
+            "value": 19
+          }
+        ]
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": [
+        17,
+        19,
+        5
+      ],
+      "editable": true
+    },
+    {
+      "id": 17,
+      "label": "Time & Date Select",
+      "key": "f_2_11_9",
+      "field_type": "DateAndTime",
+      "form_order": 8,
+      "data": {
+        "default_to_current": true
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": "2023-03-21T16:08:00+13:00",
+      "editable": true
+    },
+    {
+      "id": 16,
+      "label": "Bulleted List",
+      "key": "f_2_10_8",
+      "field_type": "BulletedList",
+      "form_order": 7,
+      "data": {
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": [
+        "bullet One",
+        "bullet 2"
+      ],
+      "editable": true
+    },
+    {
+      "id": 14,
+      "label": "-",
+      "key": "f_2_8_6",
+      "field_type": "SectionBreak",
+      "form_order": 5,
+      "data": {
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": null,
+      "editable": true
+    },
+    {
+      "id": 22,
+      "label": "Check Box",
+      "key": "f_2_16_14",
+      "field_type": "CheckBox",
+      "form_order": 13,
+      "data": {
+        "multi_select": true,
+        "options": [
+          {
+            "label": "Option 1",
+            "value": "f_2_16_14_16_1",
+            "enabled": true,
+            "multi_option_id": 22,
+            "display_order": 0,
+            "is_default": false
+          },
+          {
+            "label": "Option 2",
+            "value": "f_2_16_14_18_2",
+            "enabled": true,
+            "multi_option_id": 22,
+            "display_order": 1,
+            "is_default": false
+          },
+          {
+            "label": "Option 3",
+            "value": "f_2_16_14_20_3",
+            "enabled": true,
+            "multi_option_id": 22,
+            "display_order": 2,
+            "is_default": false
+          }
+        ]
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": [
+        "f_2_16_14_18_2",
+        "f_2_16_14_20_3"
+      ],
+      "editable": true
+    },
+    {
+      "id": 13,
+      "label": "Report State",
+      "key": "f_2_7_5",
+      "field_type": "ReportState",
+      "form_order": 4,
+      "data": {
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": null,
+      "editable": true
+    },
+    {
+      "id": 19,
+      "label": "Long Text Box",
+      "key": "f_2_13_11",
+      "field_type": "LongTextBox",
+      "form_order": 10,
+      "data": {
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": "Long Text\nWith multiple\nlines",
+      "editable": true
+    },
+    {
+      "id": 26,
+      "label": "Photos",
+      "key": "f_2_38_18",
+      "field_type": "Image",
+      "form_order": 17,
+      "data": {
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": [
+        {
+          "id": 3,
+          "original_url": "https://cdn.server.com/path/original-3ccc3a9ac33c7092bbac2882b0ba27054066943b.jpeg?Expires=1680063187&Signature=p31wd",
+          "filename": "IMG_20220530_200003.jpeg",
+          "style_url": {
+            "thumb": "https://cdn.server.com/path/thumb-f8cc1e6afbe32b1de1124158c1fcbd050cef6687.jpeg?Expires=1680063187&Signature=vi2ip",
+            "medium": "https://cdn.server.com/path/medium-8b402eb40925039ced3dfbc286fe53a2f52efe66.jpeg?Expires=1680063187&Signature=WnBs1mk"
+          },
+          "photo_time": null,
+          "photo_location": null,
+          "tags": {
+          },
+          "ready_to_attach": true,
+          "attached": true
+        },
+        {
+          "id": 4,
+          "original_url": "https://cdn.server.com/path/incident_report_images-attachments/4/original-0d8a9e7a53077ae3b08a05950408a0f2f29bd452.jpg",
+          "filename": "car-resized.jpg",
+          "style_url": {
+            "thumb": "https://cdn.server.com/path/incident_report_images-attachments/4/thumb-be5b81a04441235ab1171753aa10a14e5ddb22a1.jpg",
+            "medium": "https://cdn.server.com/path/incident_report_images-attachments/4/medium-f6fc631c00dfe789d8ee211a3249b7e24a995c39.jpg"
+          },
+          "photo_time": null,
+          "photo_location": null,
+          "tags": {
+          },
+          "ready_to_attach": true,
+          "attached": true
+        }
+      ],
+      "editable": true
+    },
+    {
+      "id": 28,
+      "label": "Display Report Viewers",
+      "key": "f_2_40_20",
+      "field_type": "ReportViewers",
+      "form_order": 19,
+      "data": {
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": null,
+      "editable": true
+    },
+    {
+      "id": 21,
+      "label": "Short Text Box",
+      "key": "f_2_15_13",
+      "field_type": "ShortTextBox",
+      "form_order": 12,
+      "data": {
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": "SIngle line text box",
+      "editable": true
+    },
+    {
+      "id": 10,
+      "label": "External Attendees",
+      "key": "f_2_4_2",
+      "field_type": "ExternalAttendees",
+      "form_order": 1,
+      "data": {
+        "enable_contact_tracing": true
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": [
+        "Person 1",
+        "Person 2"
+      ],
+      "editable": true
+    },
+    {
+      "id": 24,
+      "label": "Radio Button",
+      "key": "f_2_28_16",
+      "field_type": "RadioButton",
+      "form_order": 15,
+      "data": {
+        "multi_select": false,
+        "options": [
+          {
+            "label": "Alternative 1",
+            "value": "f_2_28_16_28_1",
+            "enabled": true,
+            "multi_option_id": 24,
+            "display_order": 0,
+            "is_default": false
+          },
+          {
+            "label": "Alternative 2",
+            "value": "f_2_28_16_29_5",
+            "enabled": true,
+            "multi_option_id": 24,
+            "display_order": 1,
+            "is_default": false
+          },
+          {
+            "label": "Alternative 3",
+            "value": "f_2_28_16_31_6",
+            "enabled": true,
+            "multi_option_id": 24,
+            "display_order": 2,
+            "is_default": false
+          }
+        ]
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": "f_2_28_16_31_6",
+      "editable": true
+    },
+    {
+      "id": 29,
+      "label": "Signature",
+      "key": "f_2_41_21",
+      "field_type": "Signature",
+      "form_order": 20,
+      "data": {
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": [
+
+      ],
+      "editable": true
+    },
+    {
+      "id": 27,
+      "label": "Relative Position",
+      "key": "f_2_39_19",
+      "field_type": "RelativePosition",
+      "form_order": 18,
+      "data": {
+        "display_distance": true,
+        "display_bearing": true
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": null,
+      "editable": true
+    },
+    {
+      "id": 20,
+      "label": "Numbered List",
+      "key": "f_2_14_12",
+      "field_type": "NumberedList",
+      "form_order": 11,
+      "data": {
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": [
+        "Item for start",
+        "Item continuing",
+        "Item Bullet finishing"
+      ],
+      "editable": true
+    },
+    {
+      "id": 12,
+      "label": "Reporter",
+      "key": "f_2_6_4",
+      "field_type": "Reporter",
+      "form_order": 3,
+      "data": {
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": "John Doe",
+      "editable": true
+    },
+    {
+      "id": 25,
+      "label": "File Attachment",
+      "key": "f_2_37_17",
+      "field_type": "FileUpload",
+      "form_order": 16,
+      "data": {
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": [
+        {
+          "id": 1,
+          "original_url": "https://cdn.server.com/path/incident_report_images-attachments/1/original-bb7ce3a75fa1cf3d4eed3c82ad3b108b7396b143.jpg",
+          "filename": "solution-for-safer-work.jpg",
+          "style_url": {
+          },
+          "photo_time": null,
+          "photo_location": null,
+          "tags": {
+          },
+          "ready_to_attach": true,
+          "attached": true
+        },
+        {
+          "id": 2,
+          "original_url": "https://cdn.server.com/path/incident_report_images-attachments/2/original-2f10ff14e39e95cea25ce48864b9a34f7c84c33f.jpg",
+          "filename": "dark_20blue_20v2.jpg",
+          "style_url": {
+          },
+          "photo_time": null,
+          "photo_location": null,
+          "tags": {
+          },
+          "ready_to_attach": true,
+          "attached": true
+        }
+      ],
+      "editable": true
+    },
+    {
+      "id": 9,
+      "label": "Category",
+      "key": "f_2_3_1",
+      "field_type": "Category",
+      "form_order": 0,
+      "data": {
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": 10,
+      "editable": true
+    },
+    {
+      "id": 23,
+      "label": "Drop Down",
+      "key": "f_2_23_15",
+      "field_type": "DropDown",
+      "form_order": 14,
+      "data": {
+        "multi_select": false,
+        "options": [
+          {
+            "label": "Select 1",
+            "value": "f_2_23_15_23_1",
+            "enabled": true,
+            "multi_option_id": 23,
+            "display_order": 0,
+            "is_default": false
+          },
+          {
+            "label": "Select 2",
+            "value": "f_2_23_15_24_4",
+            "enabled": true,
+            "multi_option_id": 23,
+            "display_order": 1,
+            "is_default": false
+          }
+        ]
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": "f_2_23_15_24_4",
+      "editable": true
+    },
+    {
+      "id": 18,
+      "label": "<p>Instruction or Information text</p>",
+      "key": "f_2_12_10",
+      "field_type": "FreeText",
+      "form_order": 9,
+      "data": {
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": null,
+      "editable": true
+    },
+    {
+      "id": 15,
+      "label": "Slider",
+      "key": "f_2_9_7",
+      "field_type": "IntegerRange",
+      "form_order": 6,
+      "data": {
+        "minimum": 1,
+        "maximum": 10,
+        "default": 5,
+        "colour": "#585858",
+        "description": ""
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": 7,
+      "editable": true
+    }
+  ],
+  "iso_created_at": "2023-03-29T16:08:38+13:00",
+  "updated_at": "2023-03-29T16:08:38.705+13:00"
+}
+```
+
 
 ### Update a Report
-Excluding `account_id` and with addition of `report_state_id` the same fields
-should be available on a update request.
-```
-PATCH /api/v4/reports/:report_id
-Content-Type: application/json
+Updates the allowed fields on one single report. It only updates the fields sent.
+
+- geom: `string`
+- address: `string`
+- shape_id: `integer`
+- form_fields: `array`
+  - **0..**: `hash`
+    - **key**: `string`
+    - **value**: `object<Object>`
+
+
+```json
+PATCH /api/v4/reports/49
 
 {
   "report": {
-    "report_state_id": 123 // optional and only available on update
-
-    // field to have its content defined by external integrations
-    // not required but must be unique per channel if provided.
-    "source_id": 'free_text',
-
-    // ...
+    "address": "123 Somewhere else rd. In the Same World",
+    "location": {
+      "latitude": -41.28592962,
+      "longitude": 174.77611353
+    },
+    "form_fields": [
+      {
+        "key": "f_2_3_1",
+        "value": 11
+      },
+      {
+        "key": "f_2_4_2",
+        "value": [
+          "Person 1",
+          "Person The Second"
+        ]
+      },
+      {
+        "key": "f_2_5_3",
+        "value": [
+          17,
+          19,
+          5
+        ]
+      },
+      {
+        "key": "f_2_7_5",
+        "value": null
+      },
+      {
+        "key": "f_2_9_7",
+        "value": 7
+      },
+      {
+        "key": "f_2_10_8",
+        "value": [
+          "bullet One",
+          "bullet 2"
+        ]
+      },
+      {
+        "key": "f_2_11_9",
+        "value": "2023-03-21T03:08:00.000Z"
+      },
+      {
+        "key": "f_2_13_11",
+        "value": "Long Text\nWith multiple\nlines"
+      },
+      {
+        "key": "f_2_14_12",
+        "value": [
+          "Item for start",
+          "Item continuing",
+          "Item Bullet finishing"
+        ]
+      },
+      {
+        "key": "f_2_15_13",
+        "value": "Single line text box"
+      },
+      {
+        "key": "f_2_16_14",
+        "value": [
+          "f_2_16_14_18_2",
+          "f_2_16_14_20_3"
+        ]
+      },
+      {
+        "key": "f_2_23_15",
+        "value": "f_2_23_15_24_4"
+      },
+      {
+        "key": "f_2_28_16",
+        "value": "f_2_28_16_31_6"
+      },
+      {
+        "key": "f_2_37_17",
+        "value": [
+          1,
+          2
+        ]
+      },
+      {
+        "key": "f_2_38_18",
+        "value": [
+          3,
+          4
+        ]
+      }
+    ]
   }
 }
 ```
+
+```json
+204 No Content
+```
+
 
 ### Search for Reports
 Report search is a asynchronous process and requires a couple of steps.
@@ -310,16 +786,18 @@ List of parameters allowed:
   - `filter[appearance]`=loud
 
     one of: normal, attention, loud, invisible
+
   - `filter[assignee_id]`=123
   - `filter[channels]=`[23,38,42]
   - `filter[channel_type]=`generic
+
+  one of: generic, audit, fire_check, forklift_check, hazard, incident, induction, near_miss, plant_machinery_check, toolbox_talk, vehicle_check
+
   - `filter[created_after]=`2018-12-31T23:45:45+13:00
   - `filter[created_before]=`2018-12-31T23:45:45+13:00
 
-    one of: generic, audit, fire_check, forklift_check, hazard, incident, induction, near_miss, plant_machinery_check, toolbox_talk, vehicle_check
-
-  - `filter[id]`[id_array]=1,2,3
-  - `filter[id]`[report_search_id]=87654321
+  - `filter[id][id_array]`=1,2,3
+  - `filter[id][report_search_id]`=87654321
   - `filter[new_report]`=true
 
     one of: true, false
@@ -372,7 +850,6 @@ where:
 Combining the fields above a report search can be created as follows:
 ```
 GET /api/v4/reports/search?filter[channels]=[1,2]&filter[updated_after]=2018-12-31T23:45:45+13:00
-Content-Type: application/json
 
 {
   id: 12345678,
@@ -382,90 +859,27 @@ Content-Type: application/json
 
 This `id` or `url` will be used to retrieve the search result using [Report Searches API](report_searches.md).
 
-### Create or Update a Report
-_This method is being provided for use with external integrations, but It might
-evetually get deprecated_.
-This method is to be used to create a report if there is no such report and will
-also update it if by any reason it already exists.
-There are a few things that are worth noting about this method:
-
-1. A `source_id` must be provided to identify the report being created.
-1. A `account_id` must be provided to scope the search for `source_id`. _This
-means that the key for the report will be the combination of `source_id` and
-`account_id`._ **Be aware that duplicated keys might be produced via create or
-update api endpoints.**
-1. Fields `location` or `address` are only required (one of them) if the report
-does not exist. And, obviously, if provided and a report exists it will have its
-values updated.
-1. For internal consistency, the `report_state_id` is ignored on report
-creation. Every report will always be created on its channel defined initial
-state. To set `report_status_id` another request have to be made to update the
-report.
-1. If `category_id` is not provided or provided as null the report category will
-be set to the channel root category.
-1. If `category_id` and `category_names` are both provided than `category_names`
-will be completely ignored.
-1. Category names not found will be created on demand following the hierarchy
-provided by the order of the names on the `category_names` list.
-1. You can provide from 0 to 3 names on `category_names`:
-  1. `category_names: []` will set report category to its account root category.
-  1. `category_names: ['primary']` will set report category to "primary".
-  1. `category_names: ['primary', 'secondary']` will set report category to
-  "secondary".
-  1. `category_names: ['primary', 'secondary', 'tertiary']` will set report
-  category to "tertiary".
-```
-POST /api/v4/reports/upsert
-Content-Type: application/json
-
-{
-  "report": {
-    "source_id": "external_identification_for_report", // required and must be unique per account
-    "account_id": 123, // required
-
-    // location or address are alternatively required for report creation: you must provide at least one of them
-    "location": {
-      "latitude": 12,
-      "longitude": 34.56,
-    },
-    "address": "123 Somewhere rd. In the World",
-
-    // category_id field need to be changed using its value from respective form_field value.
-    // `category_id` will override the category `category_names` attribute
-    "category_id": 22,
-    "category_names": ["Some primary category name", "Fantastic secondary category name", "Specific tertiary category name"],
-
-    // field to have its content defined by external integrations
-    // not required but must be unique per channel if provided.
-    "source_id": 'free_text',
-
-    // Custom fields:
-    // They have their key using the following format and might accept:
-    // strings, numbers, arrays of strings and array of numbers.
-    "f_1_1_1": 'custom',
-    "f_1_1_2": 4,
-    "f_1_1_3": ['1','2','3'],
-    "f_1_1_4": [1,2,3],
-
-  }
-}
-```
-> **Notes:**
-> - Category field can be read via `category_id` properties on report or through
-> value on its specific field information on form_fields list of the report.
-> `category_names` is a static key and this is the only available access to this property.
 
 ### Filling FileUpload and Image fields
 The `content_type` of the attachment matters when attaching images to reports.
 `Image` fields will only allow image attachments be made. `FileUpload` fields
 accepts not only images but some other file formats.
+
+```json
+  "form_fields": {
+    ...
+    {
+      "key": "f_1_8_6",
+      "value": [1,2,3]
+    },
+    {
+      "key": "f_1_18_9"
+      "value": [7,8,9]
+    }
+    ...
+  }
 ```
-{
-  "f_1_8_6": [1,2,3],
-  "f_1_18_9": [7,8,9],
-  // ...
-}
-```
+
 > **Notes:**
 > - The same attachment_id cannot be specified in more than one field.
 > - File types supported on `Image` fields:
@@ -481,37 +895,36 @@ accepts not only images but some other file formats.
 >   * MS-Office files (Word, Excel)
 >   * iWork files (Numbers, Keynote, Pages)
 
-### Available report fields
-You can use the fields parameter in any of the Report API methods. The requested
-method will respond with the required fields accordingly. Some fields are
-included by default but you can opt-out from them on request. Obviously, this
-will make no difference on `204-No Content` responses.
 
-* **id**
-* **account_id**
-* account_logo
-* account_name
-* **address**
-* assignee_id
-* assignment_due_at
-* **category_id**
-* form_fields
-* **is_anonymous**
-* is_manageable_by
-* **iso_created_at**
-* **location**
-* map_url
-* note_comments
-* report_comments
-* **report_state_id**
-* report_state_name
-* **title**
-* **user_id**
-* user_image
-* user_short_name
-* users_opened
-* **shape_id**
+### Response fields
+You can use the `fields` query parameter in any of the Reports API endpoints to
+configure what fields will be included in the response. All fields in bold are
+included by default but you can opt-out of them using the `-` prefix.
 
-> **Notes:**
-> - The highlighted fields by default included on the response.
-> - User fields are not returned if report is anonymous
+- **id**
+- **uuid**
+- **account_id**
+- account_name
+- **account_uuid**
+- **address**
+- **appearance**
+- assigned_at
+- assignee
+- assignee_id
+- assignment_due_at
+- **category_id**
+- comment_count
+- form_fields
+- **is_anonymous**
+- is_manageable_by
+- **location**
+- **report_state_id**
+- report_state_name
+- report_state_uuid
+- **shape_id**
+- **title**
+- **user_id**
+- user_image
+- user_short_name
+- **iso_created_at**
+- **updated_at**

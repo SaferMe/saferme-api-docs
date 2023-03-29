@@ -1,5 +1,5 @@
 ## Reports API
-With Report api V4 you can:
+With Reports api V4 you can:
 
 - [Fetch a report](#fetch-a-report)
 - [Create a Report](#create-a-report)
@@ -257,9 +257,6 @@ Content-Type: application/json
     // category_id field need to be changed using its value from respective form_field value.
     "category_id": 22,
 
-    // field to have its content defined by external integrations
-    "source_id": 'free_text',
-
     // Custom fields:
     // They have their key using the following format and might accept:
     // strings, numbers, arrays of strings and array of numbers.
@@ -286,10 +283,6 @@ Content-Type: application/json
 {
   "report": {
     "report_state_id": 123 // optional and only available on update
-
-    // field to have its content defined by external integrations
-    // not required but must be unique per channel if provided.
-    "source_id": 'free_text',
 
     // ...
   }

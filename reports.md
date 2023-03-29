@@ -10,38 +10,149 @@ With Reports api V4 you can:
 
 
 ### Create a Report
-```
+Creates one report.
+
+##### Input fields for create:
+  - uuid: `UUID`
+  - **account_id**: `record<Account>` by id or uuid
+  - **geom**: `WKT Point`
+  - is_anonymous: `boolean`
+  - report_state_id: `record<ReportState>` by id or uuid
+  - shape_id: `integer`
+  - address: `string`
+  - form_fields: `array`
+    - **0..**: `hash`
+      - **key**: `string` matching key for report field
+      - **value**: `object` value for report field.
+  - risk_assessment: `hash`
+    - eliminated: `boolean`
+    - **likelihood**: `hash`
+      - **key**: `string`
+    - **severity**: `hash`
+      - **key**: `string`
+    - comment: `string`
+
+```json
 POST /api/v4/reports
 Content-Type: application/json
+
 {
   "report": {
-    "account_id": 123, // required
-
-    // location or address are alternatively required: you must provide at least one of them
-    "location": {
-      "latitude": 12,
-      "longitude": 34.56,
-    },
+    "uuid": "ab06e7e6-1205-4027-b938-70d1cdfe7d41",
+    "account_id": "2222",
+    "report_state_id": 15,
+    "geom": "Point(174.7759821 -41.2861352)",
     "address": "123 Somewhere rd. In the World",
-
-    // category_id field need to be changed using its value from respective form_field value.
-    "category_id": 22,
-
-    // Custom fields:
-    // They have their key using the following format and might accept:
-    // strings, numbers, arrays of strings and array of numbers.
-    "f_1_1_1": 'custom',
-    "f_1_1_2": 4,
-    "f_1_1_3": ['1','2','3'],
-    "f_1_1_4": [1,2,3],
+    "form_fields": [
+      {
+        "key": "f_2_3_1",
+        "value": 10
+      },
+      {
+        "key": "f_2_4_2",
+        "value": [
+          "Person 1",
+          "Person 2"
+        ]
+      },
+      {
+        "key": "f_2_5_3",
+        "value": [
+          17,
+          19,
+          5
+        ]
+      },
+      {
+        "key": "f_2_9_7",
+        "value": 7
+      },
+      {
+        "key": "f_2_10_8",
+        "value": [
+          "bullet One",
+          "bullet 2"
+        ]
+      },
+      {
+        "key": "f_2_11_9",
+        "value": "2023-03-21T03:08:00.000Z"
+      },
+      {
+        "key": "f_2_13_11",
+        "value": "Long Text\nWith multiple\nlines"
+      },
+      {
+        "key": "f_2_14_12",
+        "value": [
+          "Iitem for start",
+          "Item continuing",
+          "Item Bullet finishing"
+        ]
+      },
+      {
+        "key": "f_2_15_13",
+        "value": "Single line text box"
+      },
+      {
+        "key": "f_2_16_14",
+        "value": [
+          "f_2_16_14_18_2",
+          "f_2_16_14_20_3"
+        ]
+      },
+      {
+        "key": "f_2_23_15",
+        "value": "f_2_23_15_24_4"
+      },
+      {
+        "key": "f_2_28_16",
+        "value": "f_2_28_16_31_6"
+      },
+      {
+        "key": "f_2_37_17",
+        "value": [
+          1,
+          2
+        ]
+      },
+      {
+        "key": "f_2_38_18",
+        "value": [
+          3,
+          4
+        ]
+      }
+    ]
   }
 }
 ```
-> **Notes:**
-> - The comments included in the `JSON` above are for illustrative purpose
-> only and must not be used on real requests.
-> - Category field can be read via `category_id` properties on report or through
-> value on its specific field information on form_fields list of the report.
+
+```json
+201 Created
+
+{
+  "id": 49,
+  "uuid": "ab06e7e6-1205-4027-b938-70d1cdfe7d41",
+  "account_id": 2222,
+  "account_uuid": "886b1d4c-dec3-43fe-bcce-fd4eea6f28f8",
+  "address": "350 Lambton Quay, Wellington Central, Wellington 6011, New Zealand",
+  "appearance": "generic_teal",
+  "category_id": 1010,
+  "description": null,
+  "is_anonymous": false,
+  "location": {
+    "latitude": -41.2861352,
+    "longitude": 174.7759821
+  },
+  "report_state_id": 15,
+  "shape_id": null,
+  "title": "From raceway, Industrial waste, Cleaner streams",
+  "user_id": 5,
+  "iso_created_at": "2023-03-29T16:08:38+13:00",
+  "updated_at": "2023-03-29T16:08:38.705+13:00"
+}
+```
 
 ### Fetch a Report
 Get a report entry.

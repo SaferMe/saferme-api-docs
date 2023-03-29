@@ -786,16 +786,18 @@ List of parameters allowed:
   - `filter[appearance]`=loud
 
     one of: normal, attention, loud, invisible
+
   - `filter[assignee_id]`=123
   - `filter[channels]=`[23,38,42]
   - `filter[channel_type]=`generic
+
+  one of: generic, audit, fire_check, forklift_check, hazard, incident, induction, near_miss, plant_machinery_check, toolbox_talk, vehicle_check
+
   - `filter[created_after]=`2018-12-31T23:45:45+13:00
   - `filter[created_before]=`2018-12-31T23:45:45+13:00
 
-    one of: generic, audit, fire_check, forklift_check, hazard, incident, induction, near_miss, plant_machinery_check, toolbox_talk, vehicle_check
-
-  - `filter[id]`[id_array]=1,2,3
-  - `filter[id]`[report_search_id]=87654321
+  - `filter[id][id_array]`=1,2,3
+  - `filter[id][report_search_id]`=87654321
   - `filter[new_report]`=true
 
     one of: true, false

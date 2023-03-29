@@ -5,7 +5,6 @@ With Report api V4 you can:
 - [Create a Report](#create-a-report)
 - [Update a Report](#update-a-report)
 - [Search for Reports](#search-for-reports)
-- [Create or Update a Report](#create-or-update-a-report)
 - [Filling FileUpload and Image fields](#filling-fileupload-and-image-fields)
 - [Available fields](#available-report-fields)
 
@@ -382,78 +381,6 @@ Content-Type: application/json
 
 This `id` or `url` will be used to retrieve the search result using [Report Searches API](report_searches.md).
 
-### Create or Update a Report
-_This method is being provided for use with external integrations, but It might
-evetually get deprecated_.
-This method is to be used to create a report if there is no such report and will
-also update it if by any reason it already exists.
-There are a few things that are worth noting about this method:
-
-1. A `source_id` must be provided to identify the report being created.
-1. A `account_id` must be provided to scope the search for `source_id`. _This
-means that the key for the report will be the combination of `source_id` and
-`account_id`._ **Be aware that duplicated keys might be produced via create or
-update api endpoints.**
-1. Fields `location` or `address` are only required (one of them) if the report
-does not exist. And, obviously, if provided and a report exists it will have its
-values updated.
-1. For internal consistency, the `report_state_id` is ignored on report
-creation. Every report will always be created on its channel defined initial
-state. To set `report_status_id` another request have to be made to update the
-report.
-1. If `category_id` is not provided or provided as null the report category will
-be set to the channel root category.
-1. If `category_id` and `category_names` are both provided than `category_names`
-will be completely ignored.
-1. Category names not found will be created on demand following the hierarchy
-provided by the order of the names on the `category_names` list.
-1. You can provide from 0 to 3 names on `category_names`:
-  1. `category_names: []` will set report category to its account root category.
-  1. `category_names: ['primary']` will set report category to "primary".
-  1. `category_names: ['primary', 'secondary']` will set report category to
-  "secondary".
-  1. `category_names: ['primary', 'secondary', 'tertiary']` will set report
-  category to "tertiary".
-```
-POST /api/v4/reports/upsert
-Content-Type: application/json
-
-{
-  "report": {
-    "source_id": "external_identification_for_report", // required and must be unique per account
-    "account_id": 123, // required
-
-    // location or address are alternatively required for report creation: you must provide at least one of them
-    "location": {
-      "latitude": 12,
-      "longitude": 34.56,
-    },
-    "address": "123 Somewhere rd. In the World",
-
-    // category_id field need to be changed using its value from respective form_field value.
-    // `category_id` will override the category `category_names` attribute
-    "category_id": 22,
-    "category_names": ["Some primary category name", "Fantastic secondary category name", "Specific tertiary category name"],
-
-    // field to have its content defined by external integrations
-    // not required but must be unique per channel if provided.
-    "source_id": 'free_text',
-
-    // Custom fields:
-    // They have their key using the following format and might accept:
-    // strings, numbers, arrays of strings and array of numbers.
-    "f_1_1_1": 'custom',
-    "f_1_1_2": 4,
-    "f_1_1_3": ['1','2','3'],
-    "f_1_1_4": [1,2,3],
-
-  }
-}
-```
-> **Notes:**
-> - Category field can be read via `category_id` properties on report or through
-> value on its specific field information on form_fields list of the report.
-> `category_names` is a static key and this is the only available access to this property.
 
 ### Filling FileUpload and Image fields
 The `content_type` of the attachment matters when attaching images to reports.

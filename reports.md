@@ -651,8 +651,8 @@ GET /api/v4/reports/49?fields=form_fields,-shape_id
       "editable": true
     }
   ],
-  "iso_created_at": "2023-03-29T16:08:38+13:00"
-  "updated_at": "2023-03-29T16:08:38.705+13:00",
+  "iso_created_at": "2023-03-29T16:08:38+13:00",
+  "updated_at": "2023-03-29T16:08:38.705+13:00"
 }
 ```
 
@@ -864,13 +864,22 @@ This `id` or `url` will be used to retrieve the search result using [Report Sear
 The `content_type` of the attachment matters when attaching images to reports.
 `Image` fields will only allow image attachments be made. `FileUpload` fields
 accepts not only images but some other file formats.
+
+```json
+  "form_fields": {
+    ...
+    {
+      "key": "f_1_8_6",
+      "value": [1,2,3]
+    },
+    {
+      "key": "f_1_18_9"
+      "value": [7,8,9]
+    }
+    ...
+  }
 ```
-{
-  "f_1_8_6": [1,2,3],
-  "f_1_18_9": [7,8,9],
-  // ...
-}
-```
+
 > **Notes:**
 > - The same attachment_id cannot be specified in more than one field.
 > - File types supported on `Image` fields:
@@ -885,6 +894,7 @@ accepts not only images but some other file formats.
 >   * PDFs
 >   * MS-Office files (Word, Excel)
 >   * iWork files (Numbers, Keynote, Pages)
+
 
 ### Response fields
 You can use the `fields` query parameter in any of the Reports API endpoints to

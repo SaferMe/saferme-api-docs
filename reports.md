@@ -6,7 +6,7 @@ With Reports api V4 you can:
 - [Update a Report](#update-a-report)
 - [Search for Reports](#search-for-reports)
 - [Filling FileUpload and Image fields](#filling-fileupload-and-image-fields)
-- [Available fields](#available-report-fields)
+- [Response fields](#response-fields)
 
 
 ### Fetch a report
@@ -401,37 +401,35 @@ accepts not only images but some other file formats.
 >   * MS-Office files (Word, Excel)
 >   * iWork files (Numbers, Keynote, Pages)
 
-### Available report fields
-You can use the fields parameter in any of the Report API methods. The requested
-method will respond with the required fields accordingly. Some fields are
-included by default but you can opt-out from them on request. Obviously, this
-will make no difference on `204-No Content` responses.
+### Response fields
+You can use the `fields` query parameter in any of the Reports API endpoints to
+configure what fields will be included in the response. All fields in bold are
+included by default but you can opt-out of them using the `-` prefix.
 
-* **id**
-* **account_id**
-* account_logo
-* account_name
-* **address**
-* assignee_id
-* assignment_due_at
-* **category_id**
-* form_fields
-* **is_anonymous**
-* is_manageable_by
-* **iso_created_at**
-* **location**
-* map_url
-* note_comments
-* report_comments
-* **report_state_id**
-* report_state_name
-* **title**
-* **user_id**
-* user_image
-* user_short_name
-* users_opened
-* **shape_id**
-
-> **Notes:**
-> - The highlighted fields by default included on the response.
-> - User fields are not returned if report is anonymous
+- **id**
+- **uuid**
+- **account_id**
+- account_name
+- **account_uuid**
+- **address**
+- **appearance**
+- assigned_at
+- assignee
+- assignee_id
+- assignment_due_at
+- **category_id**
+- comment_count
+- form_fields
+- **is_anonymous**
+- is_manageable_by
+- **location**
+- **report_state_id**
+- report_state_name
+- report_state_uuid
+- **shape_id**
+- **title**
+- **user_id**
+- user_image
+- user_short_name
+- **iso_created_at**
+- **updated_at**

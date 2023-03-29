@@ -37,7 +37,7 @@ Optional params:
 If set to false only display not completed (enqueued or running). Display all if not set.
 
 ```
-GET /api/v4/teams/123/async_jobs?completed=false
+GET /api/v4/async_jobs?completed=false
 ```
 
 ```

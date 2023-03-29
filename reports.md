@@ -34,7 +34,6 @@ Creates one report.
 
 ```json
 POST /api/v4/reports
-Content-Type: application/json
 
 {
   "report": {
@@ -85,7 +84,7 @@ Content-Type: application/json
       {
         "key": "f_2_14_12",
         "value": [
-          "Iitem for start",
+          "Item for start",
           "Item continuing",
           "Item Bullet finishing"
         ]
@@ -510,7 +509,7 @@ GET /api/v4/reports/49?fields=form_fields,-shape_id
       "visibility": "public",
       "field_visibility": "public",
       "value": [
-        "Iitem for start",
+        "Item for start",
         "Item continuing",
         "Item Bullet finishing"
       ],
@@ -659,20 +658,120 @@ GET /api/v4/reports/49?fields=form_fields,-shape_id
 
 
 ### Update a Report
-Excluding `account_id` and with addition of `report_state_id` the same fields
-should be available on a update request.
-```
-PATCH /api/v4/reports/:report_id
-Content-Type: application/json
+Updates the allowed fields on one single report. It only updates the fields sent.
+
+- geom: `string`
+- address: `string`
+- shape_id: `integer`
+- form_fields: `array`
+  - **0..**: `hash`
+    - **key**: `string`
+    - **value**: `object<Object>`
+
+
+```json
+PATCH /api/v4/reports/49
 
 {
   "report": {
-    "report_state_id": 123 // optional and only available on update
-
-    // ...
+    "address": "123 Somewhere else rd. In the Same World",
+    "location": {
+      "latitude": -41.28592962,
+      "longitude": 174.77611353
+    },
+    "form_fields": [
+      {
+        "key": "f_2_3_1",
+        "value": 11
+      },
+      {
+        "key": "f_2_4_2",
+        "value": [
+          "Person 1",
+          "Person The Second"
+        ]
+      },
+      {
+        "key": "f_2_5_3",
+        "value": [
+          17,
+          19,
+          5
+        ]
+      },
+      {
+        "key": "f_2_7_5",
+        "value": null
+      },
+      {
+        "key": "f_2_9_7",
+        "value": 7
+      },
+      {
+        "key": "f_2_10_8",
+        "value": [
+          "bullet One",
+          "bullet 2"
+        ]
+      },
+      {
+        "key": "f_2_11_9",
+        "value": "2023-03-21T03:08:00.000Z"
+      },
+      {
+        "key": "f_2_13_11",
+        "value": "Long Text\nWith multiple\nlines"
+      },
+      {
+        "key": "f_2_14_12",
+        "value": [
+          "Item for start",
+          "Item continuing",
+          "Item Bullet finishing"
+        ]
+      },
+      {
+        "key": "f_2_15_13",
+        "value": "Single line text box"
+      },
+      {
+        "key": "f_2_16_14",
+        "value": [
+          "f_2_16_14_18_2",
+          "f_2_16_14_20_3"
+        ]
+      },
+      {
+        "key": "f_2_23_15",
+        "value": "f_2_23_15_24_4"
+      },
+      {
+        "key": "f_2_28_16",
+        "value": "f_2_28_16_31_6"
+      },
+      {
+        "key": "f_2_37_17",
+        "value": [
+          1,
+          2
+        ]
+      },
+      {
+        "key": "f_2_38_18",
+        "value": [
+          3,
+          4
+        ]
+      }
+    ]
   }
 }
 ```
+
+```json
+204 No Content
+```
+
 
 ### Search for Reports
 Report search is a asynchronous process and requires a couple of steps.
@@ -749,7 +848,6 @@ where:
 Combining the fields above a report search can be created as follows:
 ```
 GET /api/v4/reports/search?filter[channels]=[1,2]&filter[updated_after]=2018-12-31T23:45:45+13:00
-Content-Type: application/json
 
 {
   id: 12345678,

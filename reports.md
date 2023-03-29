@@ -1,243 +1,13 @@
 ## Reports API
 With Reports api V4 you can:
 
-- [Fetch a report](#fetch-a-report)
 - [Create a Report](#create-a-report)
+- [Fetch a Report](#fetch-a-report)
 - [Update a Report](#update-a-report)
 - [Search for Reports](#search-for-reports)
 - [Filling FileUpload and Image fields](#filling-fileupload-and-image-fields)
 - [Response fields](#response-fields)
 
-
-### Fetch a report
-
-Get a report with its default [fields](#available-report-fields)
-```
-GET /api/v4/reports/49
-```
-
-```
-{  
-  "id":49,
-  "account_id":1,
-  "address":"New York, NY, USA",
-  "category_id":2,
-  "is_anonymous":false,
-  "iso_created_at":"2016-10-10T16:13:27.142+13:00",
-  "location":{  
-    "latitude":-36.8667,
-    "longitude":174.76670000000001
-  },
-  "report_state_id":2,
-  "title":"Effluent runoff",
-  "user_id": 2
-}
-```
-
-Get report adding **all** optional [fields](#available-report-fields)
-```
-GET /api/v4/reports/49?fields=account_logo,account_name,form_fields,is_manageable_by,map_url,note_comments,report_comments,report_state_name,user_image,user_short_name
-```
-
-```
-{
-  "id":49,
-  "account_id":1,
-  "account_logo":"missing/logos/original.png",
-  "account_name":"Cleaner streams",
-  "address":"New York, NY, USA",
-  "category_id":2,
-  "is_anonymous":false,
-  "is_manageable_by":true,
-  "iso_created_at":"2016-10-10T16:13:27.142+13:00",
-  "location":{  
-    "latitude":-36.8667,
-    "longitude":174.76670000000001
-  },
-  "map_url":"deprecated",
-  "report_state_id":2,
-  "report_state_name":"Label",
-  "title":"Effluent runoff",
-  "user_id": 2
-  "form_fields":[  
-    {  
-      "id":1,
-      "label":"Category",
-      "key":"f_1_1_1",
-      "field_type":"Category",
-      "form_order":0,
-      "data":"",
-      "mandatory":null,
-      "visibility":"public",
-      "field_visibility":"public",
-      "value":2,
-      "editable":true
-    },
-    {  
-      "id":2,
-      "label":"Time \u0026 Date Select",
-      "key":"f_1_2_2",
-      "field_type":"DateAndTime",
-      "form_order":1,
-      "data":"",
-      "mandatory":null,
-      "visibility":"public",
-      "field_visibility":"public",
-      "value":"2016-10-10T16:12:47.000+13:00",
-      "editable":true
-    },
-    {  
-      "id":3,
-      "label":"Check Box",
-      "key":"f_1_3_3",
-      "field_type":"CheckBox",
-      "form_order":2,
-      "data":"{\"multi_select\":true,\"options\":[{\"label\":\"Label\",\"value\":\"f_1_3_3_3_1\",\"enabled\":true,\"multi_option_id\":null,\"display_order\":0,\"is_default\":false},{\"label\":\"ok\",\"value\":\"f_1_3_3_4_2\",\"enabled\":true,\"multi_option_id\":null,\"display_order\":1,\"is_default\":false}]}",
-      "mandatory":null,
-      "visibility":"public",
-      "field_visibility":"public",
-      "value":[  
-        "f_1_3_3_4_2"
-      ],
-      "editable":true
-    },
-    {  
-      "id":4,
-      "label":"public edit field",
-      "key":"f_1_6_4",
-      "field_type":"ShortTextBox",
-      "form_order":4,
-      "data":"",
-      "mandatory":false,
-      "visibility":"public",
-      "field_visibility":"public",
-      "value":"puba",
-      "editable":true
-    },
-    {  
-      "id":7,
-      "label":"admin only",
-      "key":"f_1_13_7",
-      "field_type":"ShortTextBox",
-      "form_order":5,
-      "data":"",
-      "mandatory":null,
-      "visibility":"public",
-      "field_visibility":"private",
-      "value":"admina",
-      "editable":true
-    },
-    {  
-      "id":5,
-      "label":"\u003cp\u003eInstruction or Information text\u003c/p\u003e",
-      "key":"f_1_7_5",
-      "field_type":"FreeText",
-      "form_order":6,
-      "data":"",
-      "mandatory":null,
-      "visibility":"public",
-      "field_visibility":"public",
-      "value":null,
-      "editable":true
-    },
-    {  
-      "id":6,
-      "label":"Amazing pictures",
-      "key":"f_1_8_6",
-      "field_type":"Image",
-      "form_order":1,
-      "data":"",
-      "mandatory":null,
-      "visibility":"public",
-      "field_visibility":"public",
-      "value":[  
-        {  
-          "id":15,
-          "original_url":"https://userfiles.safer.me/reports/incident_report_images-attachments/15/original-c774896451cc165e4a3cb8f230803021391fad30.png",
-          "filename":"test.png",
-          "style_url":{  
-            "thumb":"https://userfiles.safer.me/reports/incident_report_images-attachments/15/thumb-4eab0ac0176fc1a77b6ecb775e0ae58ceaf79dc8.png",
-            "medium":"https://userfiles.safer.me/reports/incident_report_images-attachments/15/medium-2e7d56cb4febf5fa089cd16161da183c60d7f7f4.png"
-          }
-        },
-        {  
-          "id":16,
-          "original_url":"https://userfiles.safer.me/reports/incident_report_images-attachments/16/original-8b0457389fda1f73a00947f2557f57f00a12a815.png",
-          "filename":"webRaf.png",
-          "style_url":{  
-            "thumb":"https://userfiles.safer.me/reports/incident_report_images-attachments/16/thumb-2285458e0f0cbbb478aad2a9277cc66b057fc97b.png",
-            "medium":"https://userfiles.safer.me/reports/incident_report_images-attachments/16/medium-783d436d0479b54d3ee258a7c0c68aa8a91d674f.png"
-          }
-        }
-      ],
-      "editable":true
-    },
-    {  
-      "id":9,
-      "label":"Awesome files",
-      "key":"f_1_18_9",
-      "field_type":"FileUpload",
-      "form_order":2,
-      "data":"",
-      "mandatory":null,
-      "visibility":"public",
-      "field_visibility":"public",
-      "value":[  
-        {  
-          "id":17,
-          "original_url":"https://userfiles.safer.me/reports/incident_report_images-attachments/17/original-a8ee674d52823df1e371132279f502702e10d7e2.zip",
-          "filename":"Archive.zip",
-          "style_url":{  
-
-          }
-        }
-      ],
-      "editable":true
-    },
-    {  
-      "id":10,
-      "label":"Important files",
-      "key":"f_1_19_10",
-      "field_type":"FileUpload",
-      "form_order":3,
-      "data":"",
-      "mandatory":null,
-      "visibility":"public",
-      "field_visibility":"public",
-      "value":[  
-        {  
-          "id":18,
-          "original_url":"https://userfiles.safer.me/reports/incident_report_images-attachments/18/original-c445452ca967fd83860dea23e0917180b24ab7ba.jpg",
-          "filename":"galaxy.jpg",
-          "style_url":{  
-
-          }
-        },
-        {  
-          "id":19,
-          "original_url":"https://userfiles.safer.me/reports/incident_report_images-attachments/19/original-d04c6330b5cc98a49322c955aaa0cf6fa65006e6.png",
-          "filename":"test.png",
-          "style_url":{  
-
-          }
-        }
-      ],
-      "editable":true
-    }
-  ],
-  "note_comment_ids":[1,2]
-  "report_comment_ids":[2,3]
-}
-```
-
-Get report selecting only desired [fields](#available-report-fields) can be achieved using the `-` prefix on the default field names to exclude them from the request in combination with addition of optional fields.
-```
-GET /api/v4/reports/49?fields=account_logo,-address,user_image,-title
-```
-
-> **Notes:**
-> - Category field can be read via `category_id` properties on report or through
-> value on its specific field information on form_fields list of the report.
 
 ### Create a Report
 ```
@@ -272,6 +42,510 @@ Content-Type: application/json
 > only and must not be used on real requests.
 > - Category field can be read via `category_id` properties on report or through
 > value on its specific field information on form_fields list of the report.
+
+### Fetch a Report
+Get a report entry.
+> See the optional [response fields](#response-fields).
+
+```
+GET /api/v4/reports/49?fields=form_fields,-shape_id
+```
+
+```json
+200 OK
+
+{
+  "id": 49,
+  "uuid": "ab06e7e6-1205-4027-b938-70d1cdfe7d41",
+  "account_id": 2222,
+  "account_uuid": "886b1d4c-dec3-43fe-bcce-fd4eea6f28f8",
+  "address": "123 Somewhere rd. In the World",
+  "appearance": "generic_teal",
+  "category_id": 1010,
+  "description": null,
+  "is_anonymous": false,
+  "location": {
+    "latitude": -41.2861352,
+    "longitude": 174.7759821
+  },
+  "report_state_id": 15,
+  "title": "From raceway, Industrial waste, Cleaner streams",
+  "user_id": 5,
+  "form_fields": [
+    {
+      "id": 11,
+      "label": "Internal Attendees",
+      "key": "f_2_5_3",
+      "field_type": "InternalAttendees",
+      "form_order": 2,
+      "data": {
+        "enable_contact_tracing": true,
+        "options": [
+          {
+            "label": "John Doe",
+            "value": 5
+          },
+          {
+            "label": "1th 1son",
+            "value": 17
+          },
+          {
+            "label": "3th 3son",
+            "value": 19
+          }
+        ]
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": [
+        17,
+        19,
+        5
+      ],
+      "editable": true
+    },
+    {
+      "id": 17,
+      "label": "Time & Date Select",
+      "key": "f_2_11_9",
+      "field_type": "DateAndTime",
+      "form_order": 8,
+      "data": {
+        "default_to_current": true
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": "2023-03-21T16:08:00+13:00",
+      "editable": true
+    },
+    {
+      "id": 16,
+      "label": "Bulleted List",
+      "key": "f_2_10_8",
+      "field_type": "BulletedList",
+      "form_order": 7,
+      "data": {
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": [
+        "bullet One",
+        "bullet 2"
+      ],
+      "editable": true
+    },
+    {
+      "id": 14,
+      "label": "-",
+      "key": "f_2_8_6",
+      "field_type": "SectionBreak",
+      "form_order": 5,
+      "data": {
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": null,
+      "editable": true
+    },
+    {
+      "id": 22,
+      "label": "Check Box",
+      "key": "f_2_16_14",
+      "field_type": "CheckBox",
+      "form_order": 13,
+      "data": {
+        "multi_select": true,
+        "options": [
+          {
+            "label": "Option 1",
+            "value": "f_2_16_14_16_1",
+            "enabled": true,
+            "multi_option_id": 22,
+            "display_order": 0,
+            "is_default": false
+          },
+          {
+            "label": "Option 2",
+            "value": "f_2_16_14_18_2",
+            "enabled": true,
+            "multi_option_id": 22,
+            "display_order": 1,
+            "is_default": false
+          },
+          {
+            "label": "Option 3",
+            "value": "f_2_16_14_20_3",
+            "enabled": true,
+            "multi_option_id": 22,
+            "display_order": 2,
+            "is_default": false
+          }
+        ]
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": [
+        "f_2_16_14_18_2",
+        "f_2_16_14_20_3"
+      ],
+      "editable": true
+    },
+    {
+      "id": 13,
+      "label": "Report State",
+      "key": "f_2_7_5",
+      "field_type": "ReportState",
+      "form_order": 4,
+      "data": {
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": null,
+      "editable": true
+    },
+    {
+      "id": 19,
+      "label": "Long Text Box",
+      "key": "f_2_13_11",
+      "field_type": "LongTextBox",
+      "form_order": 10,
+      "data": {
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": "Long Text\nWith multiple\nlines",
+      "editable": true
+    },
+    {
+      "id": 26,
+      "label": "Photos",
+      "key": "f_2_38_18",
+      "field_type": "Image",
+      "form_order": 17,
+      "data": {
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": [
+        {
+          "id": 3,
+          "original_url": "https://cdn.server.com/path/original-3ccc3a9ac33c7092bbac2882b0ba27054066943b.jpeg?Expires=1680063187&Signature=p31wd",
+          "filename": "IMG_20220530_200003.jpeg",
+          "style_url": {
+            "thumb": "https://cdn.server.com/path/thumb-f8cc1e6afbe32b1de1124158c1fcbd050cef6687.jpeg?Expires=1680063187&Signature=vi2ip",
+            "medium": "https://cdn.server.com/path/medium-8b402eb40925039ced3dfbc286fe53a2f52efe66.jpeg?Expires=1680063187&Signature=WnBs1mk"
+          },
+          "photo_time": null,
+          "photo_location": null,
+          "tags": {
+          },
+          "ready_to_attach": true,
+          "attached": true
+        },
+        {
+          "id": 4,
+          "original_url": "https://cdn.server.com/path/incident_report_images-attachments/4/original-0d8a9e7a53077ae3b08a05950408a0f2f29bd452.jpg",
+          "filename": "car-resized.jpg",
+          "style_url": {
+            "thumb": "https://cdn.server.com/path/incident_report_images-attachments/4/thumb-be5b81a04441235ab1171753aa10a14e5ddb22a1.jpg",
+            "medium": "https://cdn.server.com/path/incident_report_images-attachments/4/medium-f6fc631c00dfe789d8ee211a3249b7e24a995c39.jpg"
+          },
+          "photo_time": null,
+          "photo_location": null,
+          "tags": {
+          },
+          "ready_to_attach": true,
+          "attached": true
+        }
+      ],
+      "editable": true
+    },
+    {
+      "id": 28,
+      "label": "Display Report Viewers",
+      "key": "f_2_40_20",
+      "field_type": "ReportViewers",
+      "form_order": 19,
+      "data": {
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": null,
+      "editable": true
+    },
+    {
+      "id": 21,
+      "label": "Short Text Box",
+      "key": "f_2_15_13",
+      "field_type": "ShortTextBox",
+      "form_order": 12,
+      "data": {
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": "SIngle line text box",
+      "editable": true
+    },
+    {
+      "id": 10,
+      "label": "External Attendees",
+      "key": "f_2_4_2",
+      "field_type": "ExternalAttendees",
+      "form_order": 1,
+      "data": {
+        "enable_contact_tracing": true
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": [
+        "Person 1",
+        "Person 2"
+      ],
+      "editable": true
+    },
+    {
+      "id": 24,
+      "label": "Radio Button",
+      "key": "f_2_28_16",
+      "field_type": "RadioButton",
+      "form_order": 15,
+      "data": {
+        "multi_select": false,
+        "options": [
+          {
+            "label": "Alternative 1",
+            "value": "f_2_28_16_28_1",
+            "enabled": true,
+            "multi_option_id": 24,
+            "display_order": 0,
+            "is_default": false
+          },
+          {
+            "label": "Alternative 2",
+            "value": "f_2_28_16_29_5",
+            "enabled": true,
+            "multi_option_id": 24,
+            "display_order": 1,
+            "is_default": false
+          },
+          {
+            "label": "Alternative 3",
+            "value": "f_2_28_16_31_6",
+            "enabled": true,
+            "multi_option_id": 24,
+            "display_order": 2,
+            "is_default": false
+          }
+        ]
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": "f_2_28_16_31_6",
+      "editable": true
+    },
+    {
+      "id": 29,
+      "label": "Signature",
+      "key": "f_2_41_21",
+      "field_type": "Signature",
+      "form_order": 20,
+      "data": {
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": [
+
+      ],
+      "editable": true
+    },
+    {
+      "id": 27,
+      "label": "Relative Position",
+      "key": "f_2_39_19",
+      "field_type": "RelativePosition",
+      "form_order": 18,
+      "data": {
+        "display_distance": true,
+        "display_bearing": true
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": null,
+      "editable": true
+    },
+    {
+      "id": 20,
+      "label": "Numbered List",
+      "key": "f_2_14_12",
+      "field_type": "NumberedList",
+      "form_order": 11,
+      "data": {
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": [
+        "Iitem for start",
+        "Item continuing",
+        "Item Bullet finishing"
+      ],
+      "editable": true
+    },
+    {
+      "id": 12,
+      "label": "Reporter",
+      "key": "f_2_6_4",
+      "field_type": "Reporter",
+      "form_order": 3,
+      "data": {
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": "John Doe",
+      "editable": true
+    },
+    {
+      "id": 25,
+      "label": "File Attachment",
+      "key": "f_2_37_17",
+      "field_type": "FileUpload",
+      "form_order": 16,
+      "data": {
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": [
+        {
+          "id": 1,
+          "original_url": "https://cdn.server.com/path/incident_report_images-attachments/1/original-bb7ce3a75fa1cf3d4eed3c82ad3b108b7396b143.jpg",
+          "filename": "solution-for-safer-work.jpg",
+          "style_url": {
+          },
+          "photo_time": null,
+          "photo_location": null,
+          "tags": {
+          },
+          "ready_to_attach": true,
+          "attached": true
+        },
+        {
+          "id": 2,
+          "original_url": "https://cdn.server.com/path/incident_report_images-attachments/2/original-2f10ff14e39e95cea25ce48864b9a34f7c84c33f.jpg",
+          "filename": "dark_20blue_20v2.jpg",
+          "style_url": {
+          },
+          "photo_time": null,
+          "photo_location": null,
+          "tags": {
+          },
+          "ready_to_attach": true,
+          "attached": true
+        }
+      ],
+      "editable": true
+    },
+    {
+      "id": 9,
+      "label": "Category",
+      "key": "f_2_3_1",
+      "field_type": "Category",
+      "form_order": 0,
+      "data": {
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": 10,
+      "editable": true
+    },
+    {
+      "id": 23,
+      "label": "Drop Down",
+      "key": "f_2_23_15",
+      "field_type": "DropDown",
+      "form_order": 14,
+      "data": {
+        "multi_select": false,
+        "options": [
+          {
+            "label": "Select 1",
+            "value": "f_2_23_15_23_1",
+            "enabled": true,
+            "multi_option_id": 23,
+            "display_order": 0,
+            "is_default": false
+          },
+          {
+            "label": "Select 2",
+            "value": "f_2_23_15_24_4",
+            "enabled": true,
+            "multi_option_id": 23,
+            "display_order": 1,
+            "is_default": false
+          }
+        ]
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": "f_2_23_15_24_4",
+      "editable": true
+    },
+    {
+      "id": 18,
+      "label": "<p>Instruction or Information text</p>",
+      "key": "f_2_12_10",
+      "field_type": "FreeText",
+      "form_order": 9,
+      "data": {
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": null,
+      "editable": true
+    },
+    {
+      "id": 15,
+      "label": "Slider",
+      "key": "f_2_9_7",
+      "field_type": "IntegerRange",
+      "form_order": 6,
+      "data": {
+        "minimum": 1,
+        "maximum": 10,
+        "default": 5,
+        "colour": "#585858",
+        "description": ""
+      },
+      "mandatory": false,
+      "visibility": "public",
+      "field_visibility": "public",
+      "value": 7,
+      "editable": true
+    }
+  ],
+  "iso_created_at": "2023-03-29T16:08:38+13:00"
+  "updated_at": "2023-03-29T16:08:38.705+13:00",
+}
+```
+
 
 ### Update a Report
 Excluding `account_id` and with addition of `report_state_id` the same fields

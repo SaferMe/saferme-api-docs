@@ -157,7 +157,7 @@ POST /api/v4/reports
 Get a report entry.
 > See the optional [response fields](#response-fields).
 
-```
+```json
 GET /api/v4/reports/49?fields=form_fields,-shape_id
 ```
 
@@ -675,10 +675,7 @@ PATCH /api/v4/reports/49
 {
   "report": {
     "address": "123 Somewhere else rd. In the Same World",
-    "location": {
-      "latitude": -41.28592962,
-      "longitude": 174.77611353
-    },
+    "geom": "Point(174.77611353 -41.28592962)",
     "form_fields": [
       {
         "key": "f_2_3_1",
@@ -791,7 +788,7 @@ List of parameters allowed:
   - `filter[channels]=`[23,38,42]
   - `filter[channel_type]=`generic
 
-  one of: generic, audit, fire_check, forklift_check, hazard, incident, induction, near_miss, plant_machinery_check, toolbox_talk, vehicle_check
+    one of: generic, audit, fire_check, forklift_check, hazard, incident, induction, near_miss, plant_machinery_check, toolbox_talk, vehicle_check
 
   - `filter[created_after]=`2018-12-31T23:45:45+13:00
   - `filter[created_before]=`2018-12-31T23:45:45+13:00
@@ -817,17 +814,19 @@ List of parameters allowed:
   - `filter[updated_before]`=2019-01-15T23:45:58+13:00
   - `filter[user_id]`=342
   - `filter[user_query]`=user name
+
+  - `exclude[appearance]`=normal
+  - `exclude[channels]=`[23,38,42]
+  - `exclude[id][id_array]`=1,2,3
+  - `exclude[id][report_search_id]`=87654321
   - `exclude[team_id]`=123
   - `exclude[tile_id]`=ZmZmZmbWZUBmZmZmZqZEwJqZmZmZmak/
   - `exclude[tile][latitude]`=23.234
   - `exclude[tile][longitude]`=177.432
   - `exclude[tile][scale]`=0.5
-  - `exclude[channels]=`[23,38,42]
   - `exclude[updated_after]`=2018-12-31T23:45:45+13:00
   - `exclude[updated_before]`=2019-01-15T23:45:58+13:00
-  - `exclude[appearance]`=normal
-  - `exclude[id][id_array]`=1,2,3
-  - `exclude[id][report_search_id]`=87654321
+
   - `order[assigned_at]`=asc
   - `order[created_at]`=asc
   - `order[id]`=asc
@@ -848,12 +847,17 @@ where:
 - `order[any_field]` allowed values are "asc" or "desc"
 
 Combining the fields above a report search can be created as follows:
-```
+
+```json
 GET /api/v4/reports/search?filter[channels]=[1,2]&filter[updated_after]=2018-12-31T23:45:45+13:00
+```
+
+```json
+200 OK
 
 {
-  id: 12345678,
-  url: "https://api1.safer.me/api/v4/report_searches/12345678"
+  "id": 12345678,
+  "url": "https://api1.safer.me/api/v4/report_searches/12345678"
 }
 ```
 
@@ -873,7 +877,7 @@ accepts not only images but some other file formats.
       "value": [1,2,3]
     },
     {
-      "key": "f_1_18_9"
+      "key": "f_1_18_9",
       "value": [7,8,9]
     }
     ...

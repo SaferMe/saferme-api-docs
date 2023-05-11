@@ -24,7 +24,7 @@ examples:
   - `?orderby=updated_at+desc`
 
 ```json
-GET /api/v4/sites?team_id=26&updated_after=2022-05-24T19:30:30Z&orderby=updated_after+asc&fields=-id,-team_id,-boundaries,-job_number,-address,-site_owner_id,-created_at
+GET /api/v4/sites?team_id=26&updated_after=2022-05-24T19:30:30Z&orderby=updated_after+asc&fields=-id,-team_id,-boundaries,-info,-job_number,-address,-site_owner_id,-created_at
 ```
 
 ```json
@@ -54,6 +54,7 @@ Creates one site.
   - **uuid**: `UUID`
   - address: `String`
   - boundaries: `WKT`
+  - info: `String`
   - job_number: `String`
   - location: `WKT Point`
   - **name**: `String`
@@ -68,6 +69,7 @@ POST /api/v4/sites
     "uuid": "1b14cac0-bd7f-11ed-9b4e-acde48001122",
     "address": "Level 3/354 Lambton Quay, Wellington Central, Wellington 6011",
     "boundaries": "POLYGON ((174.7760662374219 -41.28628888757578, 174.77599163848276 -41.2863095461495, 174.77600806701338 -41.286352248914284, 174.77608819800787 -41.2863304566517, 174.7760662374219 -41.28628888757578))",
+    "info": "Harum nihil non. Dolorem accusamus aut.\nRepudiandae suscipit perferendis. Nam iste aspernatur.",
     "job_number": "5af30ff1ce",
     "location": "Point (174.77604159462516 -41.286319623500816)",
     "name": "Doctor Jack-Jack",
@@ -85,6 +87,7 @@ POST /api/v4/sites
   "uuid": "1b14cac0-bd7f-11ed-9b4e-acde48001122",
   "address": "Level 3/354 Lambton Quay, Wellington Central, Wellington 6011",
   "boundaries": "POLYGON ((174.7760662374219 -41.28628888757578, 174.77599163848276 -41.2863095461495, 174.77600806701338 -41.286352248914284, 174.77608819800787 -41.2863304566517, 174.7760662374219 -41.28628888757578))",
+  "info": "Harum nihil non. Dolorem accusamus aut.\nRepudiandae suscipit perferendis. Nam iste aspernatur.",
   "job_number": "5af30ff1ce",
   "location": "Point (174.77604159462516 -41.286319623500816)",
   "name": "Doctor Jack-Jack",
@@ -110,13 +113,14 @@ GET /api/v4/sites/14?fields=boundaries
 {
   "id": 14,
   "uuid": "1b14cac0-bd7f-11ed-9b4e-acde48001122",
-  "job_number": "5af30ff1ce",
   "address": "Level 3/354 Lambton Quay, Wellington Central, Wellington 6011",
+  "boundaries": "POLYGON ((174.7760662374219 -41.28628888757578, 174.77599163848276 -41.2863095461495, 174.77600806701338 -41.286352248914284, 174.77608819800787 -41.2863304566517, 174.7760662374219 -41.28628888757578))",
+  "info": "Harum nihil non. Dolorem accusamus aut.\nRepudiandae suscipit perferendis. Nam iste aspernatur.",
+  "job_number": "5af30ff1ce",
+  "location": "Point (174.77604159462516 -41.286319623500816)",
   "name": "Doctor Jack-Jack",
   "site_owner_id": 35,
   "team_id": 26,
-  "location": "Point (174.77604159462516 -41.286319623500816)",
-  "boundaries": "POLYGON ((174.7760662374219 -41.28628888757578, 174.77599163848276 -41.2863095461495, 174.77600806701338 -41.286352248914284, 174.77608819800787 -41.2863304566517, 174.7760662374219 -41.28628888757578))",
   "created_at": "2023-03-08 20:01:53 +1300",
   "updated_at": "2023-03-08 20:01:53 +1300"
 }
@@ -128,6 +132,7 @@ Updates the allowed fields on one single site. It only updates the fields sent.
 ##### Input fields for update:
   - address: `String`
   - boundaries: `WKT`
+  - info: `String`
   - job_number: `String`
   - location: `WKT Point`
   - name: `String`
@@ -141,6 +146,7 @@ PATCH /api/v4/sites/123
   "site": {
     "address": "Level 3/354 Lambton Quay, Wellington Central, Wellington 6011",
     "boundaries": "POLYGON ((174.7760662374219 -41.28628888757578, 174.77599163848276 -41.2863095461495, 174.77600806701338 -41.286352248914284, 174.77608819800787 -41.2863304566517, 174.7760662374219 -41.28628888757578))",
+    "info": "Ullam eum odit. Sed nostrum quos. Enim quae ut.\nDolorem quae accusantium. In aut facere. Rerum dolor aut.",
     "job_number": "5af30ff1ce",
     "location": "Point (174.77604159462516 -41.286319623500816)",
     "name": "Doctor Jack-Jack",
@@ -163,6 +169,7 @@ included by default but you can opt-out of them using the `-` prefix.
 - **uuid**
 - **address**
 - boundaries
+- **info**
 - **job_number**
 - **location**
 - **name**

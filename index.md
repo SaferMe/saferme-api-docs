@@ -23,6 +23,7 @@ SaferMe to create, fetch and update reports
 - [Sessions API](sessions.md)
 - [Shapes API](shapes.md)
 - [Sites API](sites.md)
+- [Sites Infos API](site-infos.md)
 - [Tasks API](tasks.md)
 - [Team Guests API](team_guests.md)
 - [Team Users API](team_users.md)

@@ -182,7 +182,6 @@ GET /api/v4/site_infos/14?fields=site_uuid
 Updates the allowed fields on one single site info. It only updates the fields sent.
 
 ##### Input fields for update:
-  - **site_info_id**: `record<SiteInfo>` by id or uuid
   - position: `integer`
   - site_info_type: `string`. One of `person`, `location` or `text`.
   - title: `string`

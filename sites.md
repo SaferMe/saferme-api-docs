@@ -174,6 +174,9 @@ included by default but you can opt-out of them using the `-` prefix.
 - **location**
 - **name**
 - **site_owner_id**
+- site_owner_contact_number
+- site_owner_email
+- site_owner_name
 - site_owner_uuid
 - **team_id**
 - **created_at**

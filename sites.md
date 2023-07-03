@@ -13,6 +13,7 @@ Fetch a paginated list of sites.
 > See the optional [response fields](#response-fields).
 
 Optional params:
+- `site_owner_id`: if present filter entries by site_owner `id` or `uuid`. (Note that site_owner is a `<TeamUser>`)
 - `team_id`: if present filter entries by team_id.
 - `updated_after`: if present only return entries updated after given date. Valid values are dates in ISO8601 format.
 - `orderby`: if present allow specify the response order by providing one order clause

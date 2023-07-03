@@ -177,5 +177,6 @@ included by default but you can opt-out of them using the `-` prefix.
 - **site_owner_id**
 - site_owner_uuid
 - **team_id**
+- team_name
 - **created_at**
 - **updated_at**

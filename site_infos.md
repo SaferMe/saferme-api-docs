@@ -79,17 +79,16 @@ GET /api/v4/site_infos?team_id=26&updated_after=2022-05-24T19:30:30Z&orderby=upd
 Creates one site info.
 
 ##### Input fields for create:
-  - **uuid**: `UUID`
+  - uuid: `UUID`
   - **site_id**: `record<Site>` by id or uuid
   - **position**: `integer`
   - **site_info_type**: `string`. One of `person`, `location` or `text`.
   - **title**: `string`
-  - **formatted_text**: `string`
+  - formatted_text: `string`
   - topics: `array`
     - **0..**: `hash`
-      - **type**: `string`. One of `hash`, `phone`, `pin`, `person`, `mail`or `range`.
+      - **type**: `string`. One of `company`, `geom`, `hash`, `mail`, `person`, `phone`, `pin` or `range`.
       - **text**: `string`
-
 
 ```json
 POST /api/v4/site_infos
@@ -188,7 +187,7 @@ Updates the allowed fields on one single site info. It only updates the fields s
   - formatted_text: `string`
   - topics: `array`
     - **0..**: `hash`
-      - **type**: `string`. One of `hash`, `phone`, `pin`, `person`, `mail`or `range`.
+      - **type**: `string`. One of `company`, `geom`, `hash`, `mail`, `person`, `phone`, `pin` or `range`.
       - **text**: `string`
 
 

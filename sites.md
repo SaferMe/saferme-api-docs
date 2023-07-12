@@ -52,7 +52,7 @@ GET /api/v4/sites?team_id=26&updated_after=2022-05-24T19:30:30Z&orderby=updated_
 Creates one site.
 
 ##### Input fields for create:
-  - **uuid**: `UUID`
+  - uuid: `UUID`
   - address: `String`
   - boundaries: `WKT`
   - info: `String`

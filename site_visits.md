@@ -14,13 +14,22 @@ Fetch a paginated list of site visits.
 
 Optional params:
 - is_on_site: filter by value of is_on_site when present. (allowed values: `true`, `false`)
+- person_name: partial search on visitors full name
+- person_team_name: partial search on visitors company (Org name for internal members)
+- is_inducted: boolean (To be implemented)
+- possibly_away: boolean (To be implemented)
 - site_id: if present filter entries by site `id` or `uuid`.
 - team_id: if present filter entries by site `id`.
 - team_user_id: if present filter entries by site `id` or `uuid`.
 - updated_after: if present only return entries updated after given date. Valid values are dates in ISO8601 format.
 - `orderby`: if present allow specify the response order by providing one order clause
   made of `<field_name> <direction>`. Where direction is `asc` or `desc` and `field_name` is one of the list below:
-    - `updated_at`.
+    - `membership`
+    - `person_email`
+    - `person_name`
+    - `person_team_name`
+    - `signed_in_at`
+    - `updated_at`
 
 examples:
   - `?orderby=updated_at+desc`

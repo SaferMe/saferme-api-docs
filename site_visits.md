@@ -37,7 +37,10 @@ GET /api/v4/site_visits?site_id=ad48f258-cc80-11ed-bed6-367dda11fc13&updated_aft
   {
     "id": 1015,
     "uuid": "4fc0e27a-f526-11ed-bb4f-acde48001122",
+    "inducted_at": null,
+    "is_inducted": null,
     "is_on_site": false,
+    "possibly_away": null,
     "signed_in_at": "2023-05-18 04:47:22 +1200",
     "signed_out_at": "2023-05-18 05:47:22 +1200",
     "site_id": 1009,
@@ -48,7 +51,10 @@ GET /api/v4/site_visits?site_id=ad48f258-cc80-11ed-bed6-367dda11fc13&updated_aft
   {
     "id": 3245,
     "uuid": "4fc0e27a-f526-11ed-bb4f-ffffeeeeaaaa",
+    "inducted_at": null,
+    "is_inducted": null,
     "is_on_site": true,
+    "possibly_away": null,
     "signed_in_at": "2023-05-20 05:40:11 +1200",
     "signed_out_at": null,
     "site_id": 1009,
@@ -89,12 +95,15 @@ POST /api/v4/site_visits
 {
   "id": 1015,
   "uuid": "4fc0e27a-f526-11ed-bb4f-acde48001122",
-  "site_id": 1009,
-  "team_user_id": 1014,
+  "created_at": "2023-05-17 14:47:22 +1200",
+  "inducted_at": null,
+  "is_inducted": null,
+  "is_on_site": true,
+  "possibly_away": null,
   "signed_in_at": "2023-05-18 04:47:22 +1200",
   "signed_out_at": null,
-  "is_on_site": true,
-  "created_at": "2023-05-17 14:47:22 +1200",
+  "site_id": 1009,
+  "team_user_id": 1014,
   "updated_at": "2023-05-17 14:47:22 +1200"
 }
 ```
@@ -114,13 +123,16 @@ GET /api/v4/site_visits/1015?fields=site_uuid
 {
   "id": 1015,
   "uuid": "4fc0e27a-f526-11ed-bb4f-acde48001122",
+  "created_at": "2023-05-17 14:47:22 +1200",
+  "inducted_at": null,
+  "is_inducted": null,
+  "is_on_site": true,
+  "possibly_away": null,
+  "signed_in_at": "2023-05-18 04:47:22 +1200",
+  "signed_out_at": null,
   "site_id": 1009,
   "site_uuid": "ad48f258-cc80-11ed-bed6-367dda11fc13",
   "team_user_id": 1014,
-  "signed_in_at": "2023-05-18 04:47:22 +1200",
-  "signed_out_at": null,
-  "is_on_site": true,
-  "created_at": "2023-05-17 14:47:22 +1200",
   "updated_at": "2023-05-17 14:47:22 +1200"
 }
 ```
@@ -154,7 +166,14 @@ included by default but you can opt-out of them using the `-` prefix.
 - **id**
 - **uuid**
 - **created_at**
+- **inducted_at**
+- **is_inducted**
 - **is_on_site**
+- person_email
+- person_membership
+- person_name
+- person_team_name
+- **possibly_away**
 - **signed_in_at**
 - **signed_out_at**
 - **site_id**

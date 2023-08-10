@@ -174,6 +174,8 @@ included by default but you can opt-out of them using the `-` prefix.
 - **job_number**
 - **location**
 - **name**
+- people_on_site_count
+- people_review_alert
 - **site_owner_id**
 - site_owner_uuid
 - **team_id**

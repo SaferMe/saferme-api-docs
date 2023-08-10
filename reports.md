@@ -793,7 +793,6 @@ List of parameters allowed:
   - `filter[created_before]=`2018-12-31T23:45:45+13:00
 
   - `filter[id][id_array]`=1,2,3
-  - `filter[id][report_search_id]`=87654321
   - `filter[new_report]`=true
 
     one of: true, false
@@ -830,7 +829,6 @@ where:
 - `updated_before` and `updated_after` are dates in ISO8601 format.
 - `appearance` is one of "invisible", "normal", "attention" or "loud"
 - `id_array` is a comma separated list of report_ids
-- `report_search_id` is the id resulting from a previous report_search
 - `order[any_field]` allowed values are "asc" or "desc"
 
 Combining the fields above a report search can be created as follows:

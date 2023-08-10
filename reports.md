@@ -774,9 +774,8 @@ PATCH /api/v4/reports/49
 Report search is a asynchronous process and requires a couple of steps.
 Here you will see the first step, how to build and start a report search.
 
-The search accept three groups of parameters:
+The search accept two groups of parameters:
   - `filter` to specify what is included in the search
-  - `exclude` to specify what is not included in the search
   - `order` to specify the order of the record in the resultset
 
 List of parameters allowed:
@@ -814,18 +813,6 @@ List of parameters allowed:
   - `filter[updated_before]`=2019-01-15T23:45:58+13:00
   - `filter[user_id]`=342
   - `filter[user_query]`=user name
-
-  - `exclude[appearance]`=normal
-  - `exclude[channels]=`[23,38,42]
-  - `exclude[id][id_array]`=1,2,3
-  - `exclude[id][report_search_id]`=87654321
-  - `exclude[team_id]`=123
-  - `exclude[tile_id]`=ZmZmZmbWZUBmZmZmZqZEwJqZmZmZmak/
-  - `exclude[tile][latitude]`=23.234
-  - `exclude[tile][longitude]`=177.432
-  - `exclude[tile][scale]`=0.5
-  - `exclude[updated_after]`=2018-12-31T23:45:45+13:00
-  - `exclude[updated_before]`=2019-01-15T23:45:58+13:00
 
   - `order[assigned_at]`=asc
   - `order[created_at]`=asc

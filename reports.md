@@ -813,9 +813,9 @@ List of parameters allowed:
   - `filter[user_id]`=342
   - `filter[user_query]`=user name
 
-  - `order[assigned_at]`=asc
+  - `order[assignee_name]`=asc
+  - `order[channel_name]`=asc
   - `order[created_at]`=asc
-  - `order[id]`=asc
   - `order[updated_at]`=asc
 
   - `preset_filter`=syncable_reports
@@ -829,7 +829,16 @@ where:
 - `updated_before` and `updated_after` are dates in ISO8601 format.
 - `appearance` is one of "invisible", "normal", "attention" or "loud"
 - `id_array` is a comma separated list of report_ids
-- `order[any_field]` allowed values are "asc" or "desc"
+- `order[any_sortable_field]` allowed values are "asc" or "desc", sortable fields are:     
+  - `assigned_at`
+  - `assignee_name`
+  - `channel_name`
+  - `created_at`
+  - `report_state_name`
+  - `report_title`
+  - `reported_by`
+  - `risk_score`
+  - `updated_at`
 
 Combining the fields above a report search can be created as follows:
 

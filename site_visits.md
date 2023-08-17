@@ -5,6 +5,7 @@ With Site Visits api V4 you can:
 - [Create a Site Visit](#create-a-site-visit)
 - [Fetch a Site Visit](#fetch-a-site-visit)
 - [Update a Site Visit](#update-a-site-visit)
+- [Bulk update a list of Site Visits](#bulk-update-a-list-of-site-visits)
 - [Response fields](#response-fields)
 
 
@@ -171,6 +172,57 @@ PATCH /api/v4/site_visits/1015
 ```json
 204 No Content
 ```
+
+
+### Bulk update a list of Site Visits
+Update multiple Site Visits in a background process.
+
+The response for this request is an [Async Job](async_job.md) resource with
+current status of the Background process. The background process status can be
+polled if you need to retrieve conclusion status, result and eventual error
+messages.
+
+##### Filter fields for bulk update:
+- **site_id**: `record<Site>` by id or uuid
+- exclude_ids: `int_or_uuid[]`
+- include_ids: `int_or_uuid[]`
+- is_inducted: `boolean` => To Be implemented
+- is_on_site: `boolean`
+- person_name: `string`
+- person_team_name: `string`
+- possibly_away: `boolean` => To Be implemented
+- team_user_id: `int_or_uuid`
+- updated_after: `date_time`
+
+##### Input fields for bulk update:
+- description: `string` => value to be echoed on [Async Job](async_job.md) responses
+- **site_visit**: `hash`
+  - is_signed_in: `boolean` => **only allowed to set the value to `false`.** Use [create Site Visit](#create-site-visit) if you need to sign in a person.
+
+
+```json
+POST /api/v4/site_visits/bulk_update?is_on_site=true&site_id=ad48f258-cc80-11ed-bed6-367dda11fc13
+
+{
+  "description": "Signing everyone out",
+  "site_visit":   {
+    "is_signed_in": false,
+  }
+}
+```
+
+```json
+{
+  "id": 6543234,
+  "completed": false,
+  "description": "Signing everyone out",
+  "success": null,
+  "artifact_url": null,
+  "result": null,
+  "download_filename": null
+}
+```
+
 
 ### Response fields
 You can use the `fields` query parameter in any of the Site Visit API endpoints to

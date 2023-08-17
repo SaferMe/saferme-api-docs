@@ -13,16 +13,19 @@ Fetch a paginated list of site visits.
 > See the optional [response fields](#response-fields).
 
 Optional params:
-- is_on_site: filter by value of is_on_site when present. (allowed values: `true`, `false`)
-- person_name: partial search on visitors full name
-- person_team_name: partial search on visitors company (Org name for internal members)
-- is_inducted: boolean (To be implemented)
-- possibly_away: boolean (To be implemented)
-- site_id: if present filter entries by site `id` or `uuid`.
-- team_id: if present filter entries by site `id`.
-- team_user_id: if present filter entries by site `id` or `uuid`.
-- updated_after: if present only return entries updated after given date. Valid values are dates in ISO8601 format.
-- `orderby`: if present allow specify the response order by providing one order clause
+
+- exclude_ids: `int_or_uuid[]` => if param is given only allow items not matching any of the given list of integers or uuids.
+- include_ids: `int_or_uuid[]` => if param is given only allow items matching any item of the given list of integers or uuids.
+- is_inducted: `boolean` => (To be implemented)
+- is_on_site: `boolean` => filter by value of is_on_site when present. (allowed values: `true`, `false`)
+- person_name: `string` => partial search on visitors full name
+- person_team_name: `string` => partial search on visitors company (Org name for internal members)
+- possibly_away: `boolean` => (To be implemented)
+- site_id: `int_or_uuid` => if present filter entries by site `id` or `uuid`.
+- team_id: `int` => if present filter entries by site `id`.
+- team_user_id: `int_or_uuid` => if present filter entries by site `id` or `uuid`.
+- updated_after: `date_time` => if present only return entries updated after given date. Valid values are dates in ISO8601 format.
+- `orderby`: `string` => if present allow specify the response order by providing one order clause
   made of `<field_name> <direction>`. Where direction is `asc` or `desc` and `field_name` is one of the list below:
     - `membership`
     - `person_email`

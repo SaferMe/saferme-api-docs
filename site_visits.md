@@ -47,6 +47,7 @@ GET /api/v4/site_visits?site_id=ad48f258-cc80-11ed-bed6-367dda11fc13&updated_aft
     "id": 1015,
     "uuid": "4fc0e27a-f526-11ed-bb4f-acde48001122",
     "inducted_at": null,
+    "is_signed_in": true,
     "is_inducted": null,
     "is_on_site": false,
     "possibly_away": null,
@@ -61,6 +62,7 @@ GET /api/v4/site_visits?site_id=ad48f258-cc80-11ed-bed6-367dda11fc13&updated_aft
     "id": 3245,
     "uuid": "4fc0e27a-f526-11ed-bb4f-ffffeeeeaaaa",
     "inducted_at": null,
+    "is_signed_in": true,
     "is_inducted": null,
     "is_on_site": true,
     "possibly_away": null,
@@ -176,6 +178,7 @@ included by default but you can opt-out of them using the `-` prefix.
 - **uuid**
 - **created_at**
 - **inducted_at**
+- **is_signed_in**
 - **is_inducted**
 - **is_on_site**
 - person_email

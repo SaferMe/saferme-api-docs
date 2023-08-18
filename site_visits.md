@@ -5,6 +5,7 @@ With Site Visits api V4 you can:
 - [Create a Site Visit](#create-a-site-visit)
 - [Fetch a Site Visit](#fetch-a-site-visit)
 - [Update a Site Visit](#update-a-site-visit)
+- [Bulk update a list of Site Visits](#bulk-update-a-list-of-site-visits)
 - [Response fields](#response-fields)
 
 
@@ -13,16 +14,19 @@ Fetch a paginated list of site visits.
 > See the optional [response fields](#response-fields).
 
 Optional params:
-- is_on_site: filter by value of is_on_site when present. (allowed values: `true`, `false`)
-- person_name: partial search on visitors full name
-- person_team_name: partial search on visitors company (Org name for internal members)
-- is_inducted: boolean (To be implemented)
-- possibly_away: boolean (To be implemented)
-- site_id: if present filter entries by site `id` or `uuid`.
-- team_id: if present filter entries by site `id`.
-- team_user_id: if present filter entries by site `id` or `uuid`.
-- updated_after: if present only return entries updated after given date. Valid values are dates in ISO8601 format.
-- `orderby`: if present allow specify the response order by providing one order clause
+
+- exclude_ids: `int_or_uuid[]` => if param is given only allow items not matching any of the given list of integers or uuids.
+- include_ids: `int_or_uuid[]` => if param is given only allow items matching any item of the given list of integers or uuids.
+- is_inducted: `boolean` => (To be implemented)
+- is_on_site: `boolean` => filter by value of is_on_site when present. (allowed values: `true`, `false`)
+- person_name: `string` => partial search on visitors full name
+- person_team_name: `string` => partial search on visitors company (Org name for internal members)
+- possibly_away: `boolean` => (To be implemented)
+- site_id: `int_or_uuid` => if present filter entries by site `id` or `uuid`.
+- team_id: `int` => if present filter entries by site `id`.
+- team_user_id: `int_or_uuid` => if present filter entries by site `id` or `uuid`.
+- updated_after: `date_time` => if present only return entries updated after given date. Valid values are dates in ISO8601 format.
+- `orderby`: `string` => if present allow specify the response order by providing one order clause
   made of `<field_name> <direction>`. Where direction is `asc` or `desc` and `field_name` is one of the list below:
     - `membership`
     - `person_email`
@@ -47,6 +51,7 @@ GET /api/v4/site_visits?site_id=ad48f258-cc80-11ed-bed6-367dda11fc13&updated_aft
     "id": 1015,
     "uuid": "4fc0e27a-f526-11ed-bb4f-acde48001122",
     "inducted_at": null,
+    "is_signed_in": true,
     "is_inducted": null,
     "is_on_site": false,
     "possibly_away": null,
@@ -61,6 +66,7 @@ GET /api/v4/site_visits?site_id=ad48f258-cc80-11ed-bed6-367dda11fc13&updated_aft
     "id": 3245,
     "uuid": "4fc0e27a-f526-11ed-bb4f-ffffeeeeaaaa",
     "inducted_at": null,
+    "is_signed_in": true,
     "is_inducted": null,
     "is_on_site": true,
     "possibly_away": null,
@@ -167,6 +173,57 @@ PATCH /api/v4/site_visits/1015
 204 No Content
 ```
 
+
+### Bulk update a list of Site Visits
+Update multiple Site Visits in a background process.
+
+The response for this request is an [Async Job](async_job.md) resource with
+current status of the Background process. The background process status can be
+polled if you need to retrieve conclusion status, result and eventual error
+messages.
+
+##### Filter fields for bulk update:
+- **site_id**: `record<Site>` by id or uuid
+- exclude_ids: `int_or_uuid[]`
+- include_ids: `int_or_uuid[]`
+- is_inducted: `boolean` => To Be implemented
+- is_on_site: `boolean`
+- person_name: `string`
+- person_team_name: `string`
+- possibly_away: `boolean` => To Be implemented
+- team_user_id: `int_or_uuid`
+- updated_after: `date_time`
+
+##### Input fields for bulk update:
+- description: `string` => value to be echoed on [Async Job](async_job.md) responses
+- **site_visit**: `hash`
+  - is_signed_in: `boolean` => **only allowed to set the value to `false`.** Use [create Site Visit](#create-site-visit) if you need to sign in a person.
+
+
+```json
+POST /api/v4/site_visits/bulk_update?is_on_site=true&site_id=ad48f258-cc80-11ed-bed6-367dda11fc13
+
+{
+  "description": "Signing everyone out",
+  "site_visit":   {
+    "is_signed_in": false,
+  }
+}
+```
+
+```json
+{
+  "id": 6543234,
+  "completed": false,
+  "description": "Signing everyone out",
+  "success": null,
+  "artifact_url": null,
+  "result": null,
+  "download_filename": null
+}
+```
+
+
 ### Response fields
 You can use the `fields` query parameter in any of the Site Visit API endpoints to
 configure what fields will be included in the response. All fields in bold are
@@ -176,6 +233,7 @@ included by default but you can opt-out of them using the `-` prefix.
 - **uuid**
 - **created_at**
 - **inducted_at**
+- **is_signed_in**
 - **is_inducted**
 - **is_on_site**
 - person_email

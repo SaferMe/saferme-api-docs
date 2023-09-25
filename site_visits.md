@@ -17,16 +17,18 @@ Optional params:
 
 - exclude_ids: `int_or_uuid[]` => if param is given only allow items not matching any of the given list of integers or uuids.
 - include_ids: `int_or_uuid[]` => if param is given only allow items matching any item of the given list of integers or uuids.
-- is_inducted: `boolean` => (To be implemented)
-- is_on_site: `boolean` => filter by value of is_on_site when present. (allowed values: `true`, `false`)
+- is_inducted: `boolean` => filter by value of `is_inducted` when present. (allowed values: `true`, `false`)
+- is_on_site: `boolean` => filter by value of `is_on_site` when present. (allowed values: `true`, `false`)
 - person_name: `string` => partial search on visitors full name
 - person_team_name: `string` => partial search on visitors company (Org name for internal members)
-- possibly_away: `boolean` => (To be implemented)
+- possibly_away: `boolean` => filter by value of `possibly_away` when present. (allowed values: `true`, `false`)
+- preset_filter: `string` => if set to `admin_view` then it will include only results related to current team management,
+which will **exclude** entries an admin would only be able to see because he is signed in on a given site.
 - site_id: `int_or_uuid` => if present filter entries by site `id` or `uuid`.
-- team_id: `int` => if present filter entries by site `id`.
+- team_id: `int` => if present filter entries by `team_id`.
 - team_user_id: `int_or_uuid` => if present filter entries by site `id` or `uuid`.
 - updated_after: `date_time` => if present only return entries updated after given date. Valid values are dates in ISO8601 format.
-- `orderby`: `string` => if present allow specify the response order by providing one order clause
+- orderby: `membership`, `person_email`, `person_name`, `person_team_name`, `signed_in_at`, `updated_at`
   made of `<field_name> <direction>`. Where direction is `asc` or `desc` and `field_name` is one of the list below:
     - `membership`
     - `person_email`
@@ -233,9 +235,9 @@ included by default but you can opt-out of them using the `-` prefix.
 - **uuid**
 - **created_at**
 - **inducted_at**
-- **is_signed_in**
 - **is_inducted**
 - **is_on_site**
+- **is_signed_in**
 - person_email
 - person_membership
 - person_name
@@ -247,4 +249,5 @@ included by default but you can opt-out of them using the `-` prefix.
 - site_uuid
 - **team_user_id**
 - team_user_uuid
+- **uninducted_at**
 - **updated_at**

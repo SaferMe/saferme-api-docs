@@ -13,36 +13,49 @@ Fetch a paginated list of sites.
 > See the optional [response fields](#response-fields).
 
 Optional params:
-- `site_owner_id`: if present filter entries by site_owner `id` or `uuid`. (Note that site_owner is a `<TeamUser>`)
-- `team_id`: if present filter entries by team_id.
-- `updated_after`: if present only return entries updated after given date. Valid values are dates in ISO8601 format.
-- `orderby`: if present allow specify the response order by providing one order clause
-  made of `<field_name> <direction>`. Where direction is `asc` or `desc` and `field_name` is one of the list below:
-    - `updated_at`.
+- job_number: `string` => partial string search.
+- name: `string` => partial string search.
+- site_owner_id: `int_or_uuid` => filter entries by site_owner `id` or `uuid`. (Note that site_owner is a `<TeamUser>`)
+- site_owner_name: `string` => partial string search.
+- status: `string` => filter by the given value. (allowed values: `active`, `inactive`, `related`)
+- team_id: `integer` => filter entries by given Team `id`
+- team_name: `string` => partial string search.
+- updated_after: `date_time` => only include in the result entries updated after given date. Valid values are dates in ISO8601 format.
+- orderby: `string` => if present sorts the result the by given clause. Sorting clause must follow the pattern `<field_name> <direction>`. Where direction is one of `asc` or `desc` and `field_name` is one of the list below:
+  - `updated_at`
+  - `team_name`
+  - `name`
+  - `site_owner_name`
+  - `people_on_site`
+
 
 examples:
   - `?orderby=updated_at+asc`
   - `?orderby=updated_at+desc`
 
-```json
+#### Request
+```
 GET /api/v4/sites?team_id=26&updated_after=2022-05-24T19:30:30Z&orderby=updated_after+asc&fields=-id,-team_id,-boundaries,-info,-job_number,-address,-site_owner_id,-created_at
 ```
-
-```json
+#### Response
+```
 200 OK
-
+Accept-Ranges sites
+Content-Range 0-1/2
+```
+```json
 [
   {
     "uuid": "1b14cac0-bd7f-11ed-9b4e-acde48001122",
+    "location": "POINT (174.77604159462516 -41.286319623500816)",
     "name": "Doctor Jack-Jack",
-    "location": "Point (174.77604159462516 -41.286319623500816)",
-    "updated_at": "2023-03-08 20:01:53 +1300"
+    "updated_at": "2023-10-18 10:46:25 +1300"
   },
   {
-    "uuid": "f36290bc-bd82-11ed-9b4e-acde48001122",
-    "name": "Captain Ant Claw",
-    "location": "Point (77.61010151368907 75.81002131462157)",
-    "updated_at": "2023-03-07 10:11:12 +1300"
+    "uuid": "1b14cac0-bd7f-11ed-9b4e-acde48001122",
+    "location": "POINT (174.77604159462516 -41.286319623500816)",
+    "name": "Doctor Jack-Jack",
+    "updated_at": "2023-10-18 10:46:25 +1300"
   }
 ]
 ```
@@ -62,9 +75,12 @@ Creates one site.
   - **site_owner_id**: `record<TeamUser>` by id or uuid
   - **team_id**: `record<Team>`
 
-```json
+#### Request
+```
 POST /api/v4/sites
-
+Content-Type application/json
+```
+```json
 {
   "site": {
     "uuid": "1b14cac0-bd7f-11ed-9b4e-acde48001122",
@@ -79,23 +95,23 @@ POST /api/v4/sites
   }
 }
 ```
-
-```json
+#### Response
+```
 201 Created
-
+```
+```json
 {
-  "id": 14,
+  "id": 1022,
   "uuid": "1b14cac0-bd7f-11ed-9b4e-acde48001122",
   "address": "Level 3/354 Lambton Quay, Wellington Central, Wellington 6011",
-  "boundaries": "POLYGON ((174.7760662374219 -41.28628888757578, 174.77599163848276 -41.2863095461495, 174.77600806701338 -41.286352248914284, 174.77608819800787 -41.2863304566517, 174.7760662374219 -41.28628888757578))",
   "info": "Harum nihil non. Dolorem accusamus aut.\nRepudiandae suscipit perferendis. Nam iste aspernatur.",
   "job_number": "5af30ff1ce",
-  "location": "Point (174.77604159462516 -41.286319623500816)",
+  "location": "POINT (174.77604159462516 -41.286319623500816)",
   "name": "Doctor Jack-Jack",
   "site_owner_id": 35,
   "team_id": 26,
-  "created_at": "2023-03-08 20:01:53 +1300",
-  "updated_at": "2023-03-08 20:01:53 +1300"
+  "created_at": "2023-10-18 10:46:25 +1300",
+  "updated_at": "2023-10-18 10:46:25 +1300"
 }
 ```
 
@@ -104,28 +120,31 @@ POST /api/v4/sites
 Get a site.
 > See the optional [response fields](#response-fields).
 
+#### Request
 ```
-GET /api/v4/sites/14?fields=boundaries
+GET /api/v4/sites/1b14cac0-bd7f-11ed-9b4e-acde48001122?fields=boundaries
+````
+#### Response
 ```
-
-```json
 200 OK
-
+```
+```json
 {
-  "id": 14,
+  "id": 1022,
   "uuid": "1b14cac0-bd7f-11ed-9b4e-acde48001122",
   "address": "Level 3/354 Lambton Quay, Wellington Central, Wellington 6011",
   "boundaries": "POLYGON ((174.7760662374219 -41.28628888757578, 174.77599163848276 -41.2863095461495, 174.77600806701338 -41.286352248914284, 174.77608819800787 -41.2863304566517, 174.7760662374219 -41.28628888757578))",
   "info": "Harum nihil non. Dolorem accusamus aut.\nRepudiandae suscipit perferendis. Nam iste aspernatur.",
   "job_number": "5af30ff1ce",
-  "location": "Point (174.77604159462516 -41.286319623500816)",
+  "location": "POINT (174.77604159462516 -41.286319623500816)",
   "name": "Doctor Jack-Jack",
   "site_owner_id": 35,
   "team_id": 26,
-  "created_at": "2023-03-08 20:01:53 +1300",
-  "updated_at": "2023-03-08 20:01:53 +1300"
+  "created_at": "2023-10-18 10:46:25 +1300",
+  "updated_at": "2023-10-18 10:46:25 +1300"
 }
 ```
+
 
 ### Update a Site
 Updates the allowed fields on one single site. It only updates the fields sent.
@@ -139,10 +158,12 @@ Updates the allowed fields on one single site. It only updates the fields sent.
   - name: `String`
   - site_owner_id: : `Number` or `UUID` of a Team User
 
-
-```json
+#### Request
+```
 PATCH /api/v4/sites/123
-
+Content-Type application/json
+```
+```json
 {
   "site": {
     "address": "Level 3/354 Lambton Quay, Wellington Central, Wellington 6011",
@@ -155,7 +176,7 @@ PATCH /api/v4/sites/123
   }
 }
 ```
-
+#### Response
 ```json
 204 No Content
 ```
@@ -168,6 +189,8 @@ included by default but you can opt-out of them using the `-` prefix.
 
 - **id**
 - **uuid**
+- **created_at**
+- **updated_at**
 - **address**
 - boundaries
 - **info**
@@ -180,5 +203,4 @@ included by default but you can opt-out of them using the `-` prefix.
 - site_owner_uuid
 - **team_id**
 - team_name
-- **created_at**
-- **updated_at**
+

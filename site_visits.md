@@ -14,70 +14,65 @@ Fetch a paginated list of site visits.
 > See the optional [response fields](#response-fields).
 
 Optional params:
+- exclude_ids: `int_or_uuid[]` => only include in the result entries **not matching any** of the given list of integers or uuids.
+- include_ids: `int_or_uuid[]` => only include in the result entries **matching any** of the given list of integers or uuids.
+- is_inducted: `boolean` => filter by the given value. (allowed values: `true`, `false`)
+- is_on_site: `boolean` => filter by the given value. (allowed values: `true`, `false`)
+- person_name: `string` => partial string search.
+- person_team_name: `string` => partial search on visitors Organisation name (company external visitors)
+- possibly_away: `boolean` => filter by the given value. (allowed values: `true`, `false`)
+- ~preset_filter~: `string` (deprecated) => one of:
+  - `admin_view`: complex filter to remove noise and focus on records admin need to see.
+- site_id: `int_or_uuid` => filter entries by given site `id` or `uuid`
+- team_id: `integer` => filter entries by given Team `id`
+- team_user_id: `int_or_uuid` => filter entries by team_user `id` or `uuid`.
+- updated_after: `date_time` => only include in the result entries updated after given date. Valid values are dates in ISO8601 format.
+- orderby: `string` => if present sorts the result the by given clause. Sorting clause must follow the pattern `<field_name> <direction>`. Where direction is one of `asc` or `desc` and `field_name` is one of the list below:
+  - `membership`
+  - `person_email`
+  - `person_name`
+  - `person_team_name`
+  - `signed_in_at`
+  - `updated_at`
 
-- exclude_ids: `int_or_uuid[]` => if param is given only allow items not matching any of the given list of integers or uuids.
-- include_ids: `int_or_uuid[]` => if param is given only allow items matching any item of the given list of integers or uuids.
-- is_inducted: `boolean` => filter by value of `is_inducted` when present. (allowed values: `true`, `false`)
-- is_on_site: `boolean` => filter by value of `is_on_site` when present. (allowed values: `true`, `false`)
-- person_name: `string` => partial search on visitors full name
-- person_team_name: `string` => partial search on visitors company (Org name for internal members)
-- possibly_away: `boolean` => filter by value of `possibly_away` when present. (allowed values: `true`, `false`)
-- preset_filter: `string` => if set to `admin_view` then it will include only results related to current team management,
-which will **exclude** entries an admin would only be able to see because he is signed in on a given site.
-- site_id: `int_or_uuid` => if present filter entries by site `id` or `uuid`.
-- team_id: `int` => if present filter entries by `team_id`.
-- team_user_id: `int_or_uuid` => if present filter entries by site `id` or `uuid`.
-- updated_after: `date_time` => if present only return entries updated after given date. Valid values are dates in ISO8601 format.
-- orderby: `membership`, `person_email`, `person_name`, `person_team_name`, `signed_in_at`, `updated_at`
-  made of `<field_name> <direction>`. Where direction is `asc` or `desc` and `field_name` is one of the list below:
-    - `membership`
-    - `person_email`
-    - `person_name`
-    - `person_team_name`
-    - `signed_in_at`
-    - `updated_at`
 
 examples:
   - `?orderby=updated_at+desc`
   - `?is_on_site=true&team_id=123&orderby=updated_at+asc`
 
-```json
-GET /api/v4/site_visits?site_id=ad48f258-cc80-11ed-bed6-367dda11fc13&updated_after=2022-05-24T19:30:30Z&orderby=updated_after+asc&fields=site_uuid,-created_at
+#### Request
 ```
-
-```json
+GET /api/v4/site_visits?site_id=7ae4b2e8-fa85-4469-9c32-ad0b54a2e727&updated_after=2022-05-24T19:30:30Z&orderby=updated_after+asc&fields=site_uuid,-created_at
+```
+#### Response
+```
 200 OK
-
+Accept-Ranges sites
+Content-Range 0-1/2
+```
+```json
 [
   {
-    "id": 1015,
+    "id": 1012,
     "uuid": "4fc0e27a-f526-11ed-bb4f-acde48001122",
-    "inducted_at": null,
     "is_signed_in": true,
-    "is_inducted": null,
-    "is_on_site": false,
-    "possibly_away": null,
+    "is_inducted": true,
+    "is_on_site": true,
+    "possibly_away": false,
     "signed_in_at": "2023-05-18 04:47:22 +1200",
-    "signed_out_at": "2023-05-18 05:47:22 +1200",
-    "site_id": 1009,
-    "site_uuid": "ad48f258-cc80-11ed-bed6-367dda11fc13",
-    "team_user_id": 1014,
-    "updated_at": "2023-05-17 14:47:22 +1200"
+    "site_id": 1006,
+    "site_uuid": "7ae4b2e8-fa85-4469-9c32-ad0b54a2e727"
   },
   {
-    "id": 3245,
-    "uuid": "4fc0e27a-f526-11ed-bb4f-ffffeeeeaaaa",
-    "inducted_at": null,
+    "id": 1019,
+    "uuid": "4fc0e27a-f526-11ed-bb4f-acde48001122",
     "is_signed_in": true,
-    "is_inducted": null,
+    "is_inducted": true,
     "is_on_site": true,
-    "possibly_away": null,
-    "signed_in_at": "2023-05-20 05:40:11 +1200",
-    "signed_out_at": null,
-    "site_id": 1009,
-    "site_uuid": "ad48f258-cc80-11ed-bed6-367dda11fc13",
-    "team_user_id": 1014,
-    "updated_at": "2023-05-18 22:12:10 +1200"
+    "possibly_away": false,
+    "signed_in_at": "2023-05-18 04:47:22 +1200",
+    "site_id": 1006,
+    "site_uuid": "7ae4b2e8-fa85-4469-9c32-ad0b54a2e727"
   }
 ]
 ```
@@ -93,11 +88,14 @@ Creates one site visit.
   - **signed_in_at**: `time`
   - signed_out_at: `time`
 
-```json
+#### Request
+```
 POST /api/v4/site_visits
-
+Content-Type application/json
+```
+```json
 {
-  "site_visit":   {
+  "site_visit": {
     "uuid": "4fc0e27a-f526-11ed-bb4f-acde48001122",
     "site_id": "ad48f258-cc80-11ed-bed6-367dda11fc13",
     "team_user_id": "b7a3a57d-9605-457a-8e54-5326b26a5e0c",
@@ -105,23 +103,20 @@ POST /api/v4/site_visits
   }
 }
 ```
-
-```json
+#### Response
+```
 201 Created
-
+```
+```json
 {
-  "id": 1015,
+  "id": 1026,
   "uuid": "4fc0e27a-f526-11ed-bb4f-acde48001122",
-  "created_at": "2023-05-17 14:47:22 +1200",
-  "inducted_at": null,
-  "is_inducted": null,
+  "is_signed_in": true,
+  "is_inducted": true,
   "is_on_site": true,
-  "possibly_away": null,
+  "possibly_away": false,
   "signed_in_at": "2023-05-18 04:47:22 +1200",
-  "signed_out_at": null,
-  "site_id": 1009,
-  "team_user_id": 1014,
-  "updated_at": "2023-05-17 14:47:22 +1200"
+  "site_id": 1006
 }
 ```
 
@@ -130,27 +125,25 @@ POST /api/v4/site_visits
 Get a site visit entry.
 > See the optional [response fields](#response-fields).
 
+#### Request
 ```
-GET /api/v4/site_visits/1015?fields=site_uuid
+GET /api/v4/site_visits/4fc0e27a-f526-11ed-bb4f-acde48001122?fields=site_uuid
+````
+#### Response
 ```
-
-```json
 200 OK
-
+```
+```json
 {
-  "id": 1015,
+  "id": 1033,
   "uuid": "4fc0e27a-f526-11ed-bb4f-acde48001122",
-  "created_at": "2023-05-17 14:47:22 +1200",
-  "inducted_at": null,
-  "is_inducted": null,
+  "is_signed_in": true,
+  "is_inducted": true,
   "is_on_site": true,
-  "possibly_away": null,
+  "possibly_away": false,
   "signed_in_at": "2023-05-18 04:47:22 +1200",
-  "signed_out_at": null,
-  "site_id": 1009,
-  "site_uuid": "ad48f258-cc80-11ed-bed6-367dda11fc13",
-  "team_user_id": 1014,
-  "updated_at": "2023-05-17 14:47:22 +1200"
+  "site_id": 1006,
+  "site_uuid": "7ae4b2e8-fa85-4469-9c32-ad0b54a2e727"
 }
 ```
 
@@ -161,16 +154,19 @@ Updates the allowed fields on one single site visit. It only updates the fields 
   - signed_out_at: `time`
 
 
+#### Request
+```
+PATCH /api/v4/site_visits/4fc0e27a-f526-11ed-bb4f-acde48001122
+Content-Type application/json
+```
 ```json
-PATCH /api/v4/site_visits/1015
-
 {
-  "site_visit":   {
+  "site_visit": {
     "signed_out_at": "2023-05-18 05:47:22 +1200"
   }
 }
 ```
-
+#### Response
 ```json
 204 No Content
 ```
@@ -207,7 +203,7 @@ POST /api/v4/site_visits/bulk_update?is_on_site=true&site_id=ad48f258-cc80-11ed-
 
 {
   "description": "Signing everyone out",
-  "site_visit":   {
+  "site_visit": {
     "is_signed_in": false,
   }
 }
@@ -234,6 +230,7 @@ included by default but you can opt-out of them using the `-` prefix.
 - **id**
 - **uuid**
 - **created_at**
+- **updated_at**
 - **inducted_at**
 - **is_inducted**
 - **is_on_site**
@@ -241,6 +238,7 @@ included by default but you can opt-out of them using the `-` prefix.
 - person_email
 - person_membership
 - person_name
+- person_phone
 - person_team_name
 - **possibly_away**
 - **signed_in_at**
@@ -250,4 +248,4 @@ included by default but you can opt-out of them using the `-` prefix.
 - **team_user_id**
 - team_user_uuid
 - **uninducted_at**
-- **updated_at**
+

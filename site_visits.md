@@ -21,7 +21,7 @@ Optional params:
 - person_name: `string` => partial string search.
 - person_team_name: `string` => partial search on visitors Organisation name (company external visitors)
 - possibly_away: `boolean` => filter by the given value. (allowed values: `true`, `false`)
-- ~preset_filter~: `string` (deprecated) => one of:
+- ~~preset_filter~~: `string` (deprecated) => one of:
   - `admin_view`: complex filter to remove noise and focus on records admin need to see.
 - site_id: `int_or_uuid` => filter entries by given site `id` or `uuid`
 - team_id: `integer` => filter entries by given Team `id`

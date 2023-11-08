@@ -49,13 +49,17 @@ Content-Range 0-1/2
     "uuid": "1b14cac0-bd7f-11ed-9b4e-acde48001122",
     "location": "POINT (174.77604159462516 -41.286319623500816)",
     "name": "Doctor Jack-Jack",
-    "updated_at": "2023-10-18 10:46:25 +1300"
+    "site_owner_email": "belen@donnelly-treutel.example",
+    "site_owner_phone": "(985) 422-1693",
+    "updated_at": "2023-11-08 17:12:41 +1300"
   },
   {
     "uuid": "1b14cac0-bd7f-11ed-9b4e-acde48001122",
     "location": "POINT (174.77604159462516 -41.286319623500816)",
     "name": "Doctor Jack-Jack",
-    "updated_at": "2023-10-18 10:46:25 +1300"
+    "site_owner_email": "cory.padberg@windler-ryan.test",
+    "site_owner_phone": "1-356-051-1299",
+    "updated_at": "2023-11-08 17:12:41 +1300"
   }
 ]
 ```
@@ -65,15 +69,18 @@ Content-Range 0-1/2
 Creates one site.
 
 ##### Input fields for create:
-  - uuid: `UUID`
-  - address: `String`
-  - boundaries: `WKT`
-  - info: `String`
-  - job_number: `String`
-  - location: `WKT Point`
-  - **name**: `String`
-  - **site_owner_id**: `record<TeamUser>` by id or uuid
-  - **team_id**: `record<Team>`
+- uuid: `UUID`
+- **name**: `string`
+- **site_owner_id**: `record<TeamUser>` by id or uuid
+- **site_owner_email**: `string`
+- **site_owner_phone**: `string`
+- location: `WKT Point`
+- **team_id**: `record<Team>`
+- info: `string`
+- job_number: `string`
+- boundaries: `rgeo`
+- address: `string`
+
 
 #### Request
 ```
@@ -109,9 +116,11 @@ Content-Type application/json
   "location": "POINT (174.77604159462516 -41.286319623500816)",
   "name": "Doctor Jack-Jack",
   "site_owner_id": 35,
+  "site_owner_email": "telma@grimes-collins.example",
+  "site_owner_phone": "269.035.9072",
   "team_id": 26,
-  "created_at": "2023-10-18 10:46:25 +1300",
-  "updated_at": "2023-10-18 10:46:25 +1300"
+  "created_at": "2023-11-08 17:12:41 +1300",
+  "updated_at": "2023-11-08 17:12:41 +1300"
 }
 ```
 
@@ -139,9 +148,11 @@ GET /api/v4/sites/1b14cac0-bd7f-11ed-9b4e-acde48001122?fields=boundaries
   "location": "POINT (174.77604159462516 -41.286319623500816)",
   "name": "Doctor Jack-Jack",
   "site_owner_id": 35,
+  "site_owner_email": "bernardo_yundt@klocko.example",
+  "site_owner_phone": "(104) 254-6851",
   "team_id": 26,
-  "created_at": "2023-10-18 10:46:25 +1300",
-  "updated_at": "2023-10-18 10:46:25 +1300"
+  "created_at": "2023-11-08 17:12:41 +1300",
+  "updated_at": "2023-11-08 17:12:41 +1300"
 }
 ```
 
@@ -150,13 +161,15 @@ GET /api/v4/sites/1b14cac0-bd7f-11ed-9b4e-acde48001122?fields=boundaries
 Updates the allowed fields on one single site. It only updates the fields sent.
 
 ##### Input fields for update:
-  - address: `String`
-  - boundaries: `WKT`
-  - info: `String`
-  - job_number: `String`
-  - location: `WKT Point`
-  - name: `String`
-  - site_owner_id: : `Number` or `UUID` of a Team User
+- **site_id**: `record<Site>`
+- name: `string`
+- site_owner_id: `record<TeamUser>` by id or uuid
+- location: `WKT Point`
+- info: `string`
+- job_number: `string`
+- boundaries: `WKT`
+- address: `string`
+
 
 #### Request
 ```
@@ -200,7 +213,10 @@ included by default but you can opt-out of them using the `-` prefix.
 - people_on_site_count
 - people_review_alert
 - sign_in_url
+- **site_owner_email**
 - **site_owner_id**
+- site_owner_name
+- **site_owner_phone**
 - site_owner_uuid
 - **team_id**
 - team_name

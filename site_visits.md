@@ -42,7 +42,7 @@ examples:
 
 #### Request
 ```
-GET /api/v4/site_visits?site_id=7ae4b2e8-fa85-4469-9c32-ad0b54a2e727&updated_after=2022-05-24T19:30:30Z&orderby=updated_after+asc&fields=site_uuid,-created_at
+GET /api/v4/site_visits?site_id=5c174e7b-6be8-3ca9-8a43-891b64ed7e10&updated_after=2022-05-24T19:30:30Z&orderby=updated_after+asc&fields=site_uuid,-created_at
 ```
 #### Response
 ```
@@ -54,25 +54,25 @@ Content-Range 0-1/2
 [
   {
     "id": 1012,
-    "uuid": "4fc0e27a-f526-11ed-bb4f-acde48001122",
+    "uuid": "82256ff7-1940-3c00-aff5-6753676d8c73",
     "is_signed_in": true,
     "is_inducted": true,
     "is_on_site": true,
     "possibly_away": false,
     "signed_in_at": "2023-05-18 04:47:22 +1200",
     "site_id": 1006,
-    "site_uuid": "7ae4b2e8-fa85-4469-9c32-ad0b54a2e727"
+    "site_uuid": "5c174e7b-6be8-3ca9-8a43-891b64ed7e10"
   },
   {
     "id": 1019,
-    "uuid": "4fc0e27a-f526-11ed-bb4f-acde48001122",
+    "uuid": "82256ff7-1940-3c00-aff5-6753676d8c73",
     "is_signed_in": true,
     "is_inducted": true,
     "is_on_site": true,
     "possibly_away": false,
     "signed_in_at": "2023-05-18 04:47:22 +1200",
     "site_id": 1006,
-    "site_uuid": "7ae4b2e8-fa85-4469-9c32-ad0b54a2e727"
+    "site_uuid": "5c174e7b-6be8-3ca9-8a43-891b64ed7e10"
   }
 ]
 ```
@@ -82,11 +82,12 @@ Content-Range 0-1/2
 Creates one site visit.
 
 ##### Input fields for create:
-  - **uuid**: `string`
-  - **team_user_id**: `record<TeamUser>` by id or uuid
-  - **site_id**: `record<Site>` by id or uuid
-  - **signed_in_at**: `time`
-  - signed_out_at: `time`
+- **uuid**: `string`
+- **team_user_id**: `record<TeamUser>` by id or uuid
+- **site_id**: `record<Site>` by id or uuid
+- signed_in_at: `time`
+- signed_out_at: `time`
+
 
 #### Request
 ```
@@ -110,7 +111,7 @@ Content-Type application/json
 ```json
 {
   "id": 1026,
-  "uuid": "4fc0e27a-f526-11ed-bb4f-acde48001122",
+  "uuid": "ec9b7575-5758-38c5-825f-53d7c3272965",
   "is_signed_in": true,
   "is_inducted": true,
   "is_on_site": true,
@@ -127,7 +128,7 @@ Get a site visit entry.
 
 #### Request
 ```
-GET /api/v4/site_visits/4fc0e27a-f526-11ed-bb4f-acde48001122?fields=site_uuid
+GET /api/v4/site_visits/ec9b7575-5758-38c5-825f-53d7c3272965?fields=site_uuid
 ````
 #### Response
 ```
@@ -136,14 +137,14 @@ GET /api/v4/site_visits/4fc0e27a-f526-11ed-bb4f-acde48001122?fields=site_uuid
 ```json
 {
   "id": 1033,
-  "uuid": "4fc0e27a-f526-11ed-bb4f-acde48001122",
+  "uuid": "ec9b7575-5758-38c5-825f-53d7c3272965",
   "is_signed_in": true,
   "is_inducted": true,
   "is_on_site": true,
   "possibly_away": false,
   "signed_in_at": "2023-05-18 04:47:22 +1200",
   "site_id": 1006,
-  "site_uuid": "7ae4b2e8-fa85-4469-9c32-ad0b54a2e727"
+  "site_uuid": "5c174e7b-6be8-3ca9-8a43-891b64ed7e10"
 }
 ```
 
@@ -151,12 +152,14 @@ GET /api/v4/site_visits/4fc0e27a-f526-11ed-bb4f-acde48001122?fields=site_uuid
 Updates the allowed fields on one single site visit. It only updates the fields sent.
 
 ##### Input fields for update:
-  - signed_out_at: `time`
+- signed_out_at: `time`
+- inducted_at: `time`
+- uninducted_at: `time`
 
 
 #### Request
 ```
-PATCH /api/v4/site_visits/4fc0e27a-f526-11ed-bb4f-acde48001122
+PATCH /api/v4/site_visits/ec9b7575-5758-38c5-825f-53d7c3272965
 Content-Type application/json
 ```
 ```json
@@ -182,20 +185,25 @@ messages.
 
 ##### Filter fields for bulk update:
 - **site_id**: `record<Site>` by id or uuid
-- exclude_ids: `int_or_uuid[]`
-- include_ids: `int_or_uuid[]`
-- is_inducted: `boolean` => To Be implemented
-- is_on_site: `boolean`
-- person_name: `string`
-- person_team_name: `string`
-- possibly_away: `boolean` => To Be implemented
-- team_user_id: `int_or_uuid`
-- updated_after: `date_time`
+- exclude_ids: `int_or_uuid[]` => only include in the result entries **not matching any** of the given list of integers or uuids.
+- include_ids: `int_or_uuid[]` => only include in the result entries **matching any** of the given list of integers or uuids.
+- is_inducted: `boolean` => filter by the given value. (allowed values: `true`, `false`)
+- is_on_site: `boolean` => filter by the given value. (allowed values: `true`, `false`)
+- person_name: `string` => partial string search.
+- person_team_name: `string` => partial search on visitors Organisation name (company external visitors)
+- possibly_away: `boolean` => filter by the given value. (allowed values: `true`, `false`)
+- preset_filter: `string` => one of:
+  - `admin_view`: complex filter to remove noise and focus on records admin need to see.
+- team_id: `integer` => filter entries by given Team `id`
+- team_user_id: `int_or_uuid` => filter entries by team_user `id` or `uuid`.
+- updated_after: `date_time` => only include in the result entries updated after given date. Valid values are dates in ISO8601 format.
+
 
 ##### Input fields for bulk update:
 - description: `string` => value to be echoed on [Async Job](async_job.md) responses
-- **site_visit**: `hash`
-  - is_signed_in: `boolean` => **only allowed to set the value to `false`.** Use [create Site Visit](#create-site-visit) if you need to sign in a person.
+- site_visit: `hash`
+  - is_signed_in: `boolean` => **only allowed to set the value to `false`.** Create Site Visit if you need to sign in a person.
+  - is_inducted: `boolean`
 
 
 ```json

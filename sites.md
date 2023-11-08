@@ -17,7 +17,7 @@ Optional params:
 - name: `string` => partial string search.
 - site_owner_id: `int_or_uuid` => filter entries by site_owner `id` or `uuid`. (Note that site_owner is a `<TeamUser>`)
 - site_owner_name: `string` => partial string search.
-- status: `string` => filter by the given value. (allowed values: `active`, `inactive`, `related`)
+- status: `string` => filter by site status. Allowed values: `active`, `inactive`, `related`. `related` includes sites from third-party Orgs which current Org has ever been active/signed_in to.
 - team_id: `integer` => filter entries by given Team `id`
 - team_name: `string` => partial string search.
 - updated_after: `date_time` => only include in the result entries updated after given date. Valid values are dates in ISO8601 format.

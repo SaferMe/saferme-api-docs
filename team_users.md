@@ -136,20 +136,29 @@ You can use the fields parameter in any of the Team Users API methods. The reque
 method will respond with the required fields accordingly. Some fields are
 included by default but you can opt-out from them on request.
 
-* **id**
-* **agreed_to_join**
-* **app_version**
-* **bluetooth_enabled**
-* channel_count
-* email
-* first_name
-* **last_active_at**
-* **last_invited_at**
-* last_name
-* **location_enabled**
-* **push_notification_enabled**
-* report_count
-* **role**
-* status
-* **supervisor_id**
-* **user_id**
+- **id**
+- **agreed_to_join**
+- **app_version**
+- **bluetooth_enabled**
+- channel_count
+- email
+- first_degree_contact_count
+- first_name
+- inventory_item_assigned
+- inventory_item_assigned_at
+- inventory_item_battery_status
+- inventory_item_item_id
+- inventory_item_last_sync_time
+- is_deletable
+- **last_active_at**
+- **last_invited_at**
+- last_name
+- **location_enabled**
+- preferred_contact
+- **push_notification_enabled**
+- report_count
+- **role**
+- status
+- **supervisor_id**
+- **user_id**
+

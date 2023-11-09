@@ -14,6 +14,8 @@ Fetch a paginated list of site visits.
 > See the optional [response fields](#response-fields).
 
 Optional params:
+- distinct: `string` => one of:
+  - `last_visitor_visit`: only returns the most recent visit per person.
 - exclude_ids: `int_or_uuid[]` => only include in the result entries **not matching any** of the given list of integers or uuids.
 - include_ids: `int_or_uuid[]` => only include in the result entries **matching any** of the given list of integers or uuids.
 - is_inducted: `boolean` => filter by the given value. (allowed values: `true`, `false`)
@@ -185,6 +187,8 @@ messages.
 
 ##### Filter fields for bulk update:
 - **site_id**: `record<Site>` by id or uuid
+- distinct: `string` => one of:
+  - `last_visitor_visit`: only returns the most recent visit per person.
 - exclude_ids: `int_or_uuid[]` => only include in the result entries **not matching any** of the given list of integers or uuids.
 - include_ids: `int_or_uuid[]` => only include in the result entries **matching any** of the given list of integers or uuids.
 - is_inducted: `boolean` => filter by the given value. (allowed values: `true`, `false`)

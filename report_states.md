@@ -88,18 +88,18 @@ You can use the fields parameter in any of the Report States API methods. The re
 method will respond with the required fields accordingly. Some fields are
 included by default but you can opt-out from them on request.
 
-* **id**
-* **account_id**
-* **assign_to_supervisor**
-* **assignable**
-* **assignment_due_timeout**
-* **auto_archive**
-* **default_assignee_id**
-* **editability**
-* **loudness**
-* **name**
-* **notify**
-* **position**
-* **timeout**
-* updated_at
-* **visibility**
+- **id**
+- **account_id**
+- **assign_to_supervisor**
+- **assignable**
+- **assignment_due_timeout**
+- **auto_archive**
+- **default_assignee_id**
+- **editability**
+- **loudness**
+- **name**
+- **notify**
+- **position**
+- **timeout**
+- updated_at
+- **visibility**

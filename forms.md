@@ -13,15 +13,15 @@ GET /api/v4/forms/:id
 ```
 
 ```
-{  
+{
   "id":1,
   "uuid": "9c21c96e-4ce5-59e6-95d5-eb475fd03440",
   "name":"Hazard on leash",
   "updated_at": "2022-04-17T11:30:27.045+12:00",
   "team_id": 1,
   "version":52,
-  "fields":[  
-    {  
+  "fields":[
+    {
       "id":13,
       "label":"Category",
       "key":"f_1_36_13",
@@ -34,7 +34,7 @@ GET /api/v4/forms/:id
       "value":null,
       "editable":true
     },
-    {  
+    {
       "id":14,
       "label":"A Check Box field",
       "key":"f_1_38_14",
@@ -47,7 +47,7 @@ GET /api/v4/forms/:id
       "value":null,
       "editable":true
     },
-    {  
+    {
       "id":17,
       "label":"Drop Down",
       "key":"f_1_48_17",
@@ -60,7 +60,7 @@ GET /api/v4/forms/:id
       "value":null,
       "editable":true
     },
-    {  
+    {
       "id":15,
       "label":"Date and time field",
       "key":"f_1_42_15",
@@ -73,7 +73,7 @@ GET /api/v4/forms/:id
       "value":null,
       "editable":true
     },
-    {  
+    {
       "id":12,
       "label":"Description",
       "key":"f_1_35_12",
@@ -86,7 +86,7 @@ GET /api/v4/forms/:id
       "value":null,
       "editable":true
     },
-    {  
+    {
       "id":11,
       "label":"Short Text Box",
       "key":"f_1_29_11",
@@ -99,7 +99,7 @@ GET /api/v4/forms/:id
       "value":null,
       "editable":true
     },
-    {  
+    {
       "id":6,
       "label":"Amazing pictures",
       "key":"f_1_8_6",
@@ -112,7 +112,7 @@ GET /api/v4/forms/:id
       "value":null,
       "editable":true
     },
-    {  
+    {
       "id":9,
       "label":"Awesome files",
       "key":"f_1_18_9",
@@ -125,7 +125,7 @@ GET /api/v4/forms/:id
       "value":null,
       "editable":true
     },
-    {  
+    {
       "id":10,
       "label":"Important files",
       "key":"f_1_19_10",
@@ -185,7 +185,7 @@ GET /api/v4/forms?team_id=2&updated_after=2022-02-28T10:45:35.081+13:00
         "is_summary": false
       }
     ]
-  },  
+  },
   ...
 ]
 ```
@@ -195,10 +195,10 @@ You can use the fields parameter in any of the Forms API methods. The requested
 method will respond with the required fields accordingly. Some fields are
 included by default but you can opt-out from them on request.
 
-* **id**
-* **uuid**
-* **name**
-* **version**
-* **team_id**
-* **updated_at**
-* **fields**
+- **id**
+- **uuid**
+- **name**
+- **version**
+- **team_id**
+- **updated_at**
+- **fields**

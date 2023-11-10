@@ -2,9 +2,9 @@
 With analytics api V4 you can get insights and metrics about the reports under specified criteria.
 
 All api endpoints require 3 parameters:
-* channel_id (integer)
-* start_date (ISO8601 formatted timestamp)
-* end_date (ISO8601 formatted timestamp)
+- channel_id (integer)
+- start_date (ISO8601 formatted timestamp)
+- end_date (ISO8601 formatted timestamp)
 
 ### Reports images API
 
@@ -151,10 +151,10 @@ GET /api/v4/analytics/reports_read?channel_id=1&start_date=2016-01-01T00:00:00Z&
 #### Available Fields
 Only `total_reads` is returned if none is selected. Otherwise only what has been asked for will be returned.
 
-* **total_reads**
-* unique_reads
-* report_readers
-* reports_seen
+- **total_reads**
+- unique_reads
+- report_readers
+- reports_seen
 
 ### User Awareness API
 ```
@@ -179,7 +179,7 @@ GET /api/v4/analytics/user_awareness?channel_id=1&start_date=2016-01-01T00:00:00
 #### Available Optional Fields
 Only `total_alerts` is returned if none is selected. Otherwise only what has been asked for will be returned.
 
-* **total_alerts**
-* alert_source_reports
-* unique_alerts
-* alerts_opened
+- **total_alerts**
+- alert_source_reports
+- unique_alerts
+- alerts_opened

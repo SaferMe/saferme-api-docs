@@ -60,10 +60,10 @@ You can use the fields parameter in any of the Async Jobs API methods. The reque
 method will respond with the required fields accordingly. Some fields are
 included by default but you can opt-out from them on request.
 
-* **id**
-* **completed?**
-* **description**
-* **success**
-* **artifact_url**
-* **result**
-* **download_filename**
+- **id**
+- **completed?**
+- **description**
+- **success**
+- **artifact_url**
+- **result**
+- **download_filename**

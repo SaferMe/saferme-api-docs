@@ -99,7 +99,7 @@ POST /api/v4/team
 ```
 
 > **Notes:**
-> - The feature_tasks_enabled in the request payload is optional, and only available to branded app admin, default to true 
+> - The feature_tasks_enabled in the request payload is optional, and only available to branded app admin, default to true
 
 
 ```

@@ -98,7 +98,7 @@ GET /api/v4/tasks?assignee_id=3&complete=true&orderby=client_created_at+desc
     "report_id": 2,
     "title": "Close open hole"
   },
-  {  
+  {
     "uuid": "a23afeff-fd03-4299-a3b9-dda998f1f999",
     "assignee_id": 3,
     "client_created_at": "2019-03-30T02:20:00.000+13:00",
@@ -150,12 +150,12 @@ You can use the fields parameter in any of the Task API methods. The requested
 method will respond with the required fields accordingly. All fields are
 included by default but you can opt-out from them on request.
 
-* **uuid**
-* **assignee_id**
-* **client_created_at**
-* **completed_at**
-* **completed_by_id**
-* **creator_id**
-* **description**
-* **report_id**
-* **title**
+- **uuid**
+- **assignee_id**
+- **client_created_at**
+- **completed_at**
+- **completed_by_id**
+- **creator_id**
+- **description**
+- **report_id**
+- **title**

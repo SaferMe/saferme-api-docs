@@ -7,15 +7,15 @@ GET /api/v4/channels/:channel_id/categories?fields=id,name,label_name,depth,pin_
 ```
 
 ```
-[  
-  {  
+[
+  {
     "id":1,
     "name":"Cleaner streams",
     "label_name":"Main category",
     "depth":0,
     "pin_color":"green",
     "pin_appearance":"default",
-    "pin_urls":{  
+    "pin_urls":{
       "at1x":"http://localhost:3000/assets/maps/pins/default/pin-green@1x.png",
       "at2x":"http://localhost:3000/assets/maps/pins/default/pin-green@2x.png",
       "at3x":"http://localhost:3000/assets/maps/pins/default/pin-green@3x.png"
@@ -24,14 +24,14 @@ GET /api/v4/channels/:channel_id/categories?fields=id,name,label_name,depth,pin_
     "account_id":1,
     "parent_id":null
   },
-  {  
+  {
     "id":2,
     "name":"Effluent runoff",
     "label_name":"Secondary category",
     "depth":1,
     "pin_color":"green",
     "pin_appearance":"default",
-    "pin_urls":{  
+    "pin_urls":{
       "at1x":"http://localhost:3000/assets/maps/pins/default/pin-green@1x.png",
       "at2x":"http://localhost:3000/assets/maps/pins/default/pin-green@2x.png",
       "at3x":"http://localhost:3000/assets/maps/pins/default/pin-green@3x.png"
@@ -40,14 +40,14 @@ GET /api/v4/channels/:channel_id/categories?fields=id,name,label_name,depth,pin_
     "account_id":1,
     "parent_id":1
   },
-  {  
+  {
     "id":3,
     "name":"From effluent pond",
     "label_name":"Tertiary category",
     "depth":2,
     "pin_color":"green",
     "pin_appearance":"default",
-    "pin_urls":{  
+    "pin_urls":{
       "at1x":"http://localhost:3000/assets/maps/pins/default/pin-green@1x.png",
       "at2x":"http://localhost:3000/assets/maps/pins/default/pin-green@2x.png",
       "at3x":"http://localhost:3000/assets/maps/pins/default/pin-green@3x.png"
@@ -65,7 +65,7 @@ GET /api/v4/channels/:channel_id/categories?fields=id,name,label_name,depth,pin_
 ```
 
 ```
-{  
+{
   "id":3,
   "name":"From effluent pond",
   "label_name":"Tertiary category",
@@ -73,7 +73,7 @@ GET /api/v4/channels/:channel_id/categories?fields=id,name,label_name,depth,pin_
   "max_subtree_extra_depth":1,
   "pin_color":"green",
   "pin_appearance":"default",
-  "pin_urls":{  
+  "pin_urls":{
     "at1x":"http://localhost:3000/assets/maps/pins/default/pin-green@1x.png",
     "at2x":"http://localhost:3000/assets/maps/pins/default/pin-green@2x.png",
     "at3x":"http://localhost:3000/assets/maps/pins/default/pin-green@3x.png"
@@ -81,7 +81,7 @@ GET /api/v4/channels/:channel_id/categories?fields=id,name,label_name,depth,pin_
   "position":1,
   "account_id":1,
   "parent_id":2,
-  "child_ids":[  
+  "child_ids":[
   ]
 }
 ```
@@ -93,15 +93,15 @@ The `id` field is default for `List` method and you have to specify it if you
 send the fields parameter. All fields are returned from the `Get` method unless
 you specify the fields parameter.
 
-* **id**
-* name
-* label_name
-* depth
-* max_subtree_extra_depth
-* pin_color
-* pin_appearance
-* pin_urls
-* position
-* account
-* parent
-* children
+- **id**
+- name
+- label_name
+- depth
+- max_subtree_extra_depth
+- pin_color
+- pin_appearance
+- pin_urls
+- position
+- account
+- parent
+- children

@@ -28,7 +28,7 @@ GET /api/v4/channels?updated_after=2022-02-28T10:45:35.081+13:00&fields=-descrip
 ```
 
 ```
-[  
+[
   {
     "id": 2,
     "uuid": "f0bea8fb-6dc8-5cd3-ac32-74de4dd36dae",

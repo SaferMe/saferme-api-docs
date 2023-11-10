@@ -829,7 +829,7 @@ where:
 - `updated_before` and `updated_after` are dates in ISO8601 format.
 - `appearance` is one of "invisible", "normal", "attention" or "loud"
 - `id_array` is a comma separated list of report_ids
-- `order[any_sortable_field]` allowed values are "asc" or "desc", sortable fields are:     
+- `order[any_sortable_field]` allowed values are "asc" or "desc", sortable fields are:
   - `assigned_at`
   - `assignee_name`
   - `channel_name`
@@ -839,7 +839,6 @@ where:
   - `reported_by`
   - `risk_score`
   - `updated_at`
-
 Combining the fields above a report search can be created as follows:
 
 ```json

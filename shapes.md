@@ -78,8 +78,8 @@ GET /api/v4/shapes?fields=branded_app,cache_key,highlight_color,metadata,normal_
 ```
 
 ```
-[  
-  {  
+[
+  {
     "id": 1,
     "branded_app_id": 1,
     "geom":"LINESTRING(0 0, 1 2)",
@@ -108,9 +108,9 @@ You can use the fields parameter in any of the Shapes API methods. The requested
 method will respond with the required fields accordingly. Some fields are
 included by default but you can opt-out from them on request.
 
-* **id**
-* cache_key
-* **geom**
-* highlight_color
-* metadata
-* normal_color
+- **id**
+- cache_key
+- **geom**
+- highlight_color
+- metadata
+- normal_color

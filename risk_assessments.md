@@ -113,15 +113,15 @@ You can use the fields parameter in any of the Risk Assessments API methods. The
 method will respond with the required fields accordingly. Some fields are
 included by default but you can opt-out from them on request.
 
-* **id**
-* **uuid**
-* **user_id**
-* **user_image**
-* **user_short_name**
-* **eliminated**
-* **likelihood**
-* **severity**
-* report_uuid
-* **risk_level**
-* **comment**
-* **created_at**
+- **id**
+- **uuid**
+- **user_id**
+- **user_image**
+- **user_short_name**
+- **eliminated**
+- **likelihood**
+- **severity**
+- report_uuid
+- **risk_level**
+- **comment**
+- **created_at**

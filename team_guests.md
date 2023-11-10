@@ -206,18 +206,18 @@ You can use the fields parameter in any of the Team Guests API methods. The requ
 method will respond with the required fields accordingly. Some fields are
 included by default but you can opt-out from them on request.
 
-* **id**
-* **uuid**
-* **company**
-* **first_name**
-* inventory_item_assigned_at
-* inventory_item_assigned
-* inventory_item_battery_status
-* inventory_item_item_id
-* inventory_item_last_sync_time
-* inventory_item_unassigned_at
-* is_deletable
-* **last_name**
-* **preferred_contact**
-* **team_id**
-* **visiting**
+- **id**
+- **uuid**
+- **company**
+- **first_name**
+- inventory_item_assigned_at
+- inventory_item_assigned
+- inventory_item_battery_status
+- inventory_item_item_id
+- inventory_item_last_sync_time
+- inventory_item_unassigned_at
+- is_deletable
+- **last_name**
+- **preferred_contact**
+- **team_id**
+- **visiting**

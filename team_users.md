@@ -53,7 +53,7 @@ GET /api/v4/teams/1/team_users?fields=first_name,last_name,email,-supervisor_id&
 ```
 
 ```
-[  
+[
   {
     "id":14,
     "agreed_to_join":true,

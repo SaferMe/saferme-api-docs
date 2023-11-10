@@ -13,13 +13,13 @@ GET /api/v4/file_attachments/upload_authorization?content_type=image/png
 ```
 
 ```
-{  
-  "upload_authorization":{  
+{
+  "upload_authorization":{
     "method":"POST",
     "key":"async_uploads/a251225f-308e-49f5-a064-7d0c54894666",
     "key_prefix":"async_uploads/a251225f-308e-49f5-a064-7d0c54894666/",
     "url":"https://uploads.prod.safer.me",
-    "fields":{  
+    "fields":{
       "key":"async_uploads/a251225f-308e-49f5-a064-7d0c54894666",
       "success_action_status":"201",
       "Content-Type": "image/png"
@@ -29,7 +29,7 @@ GET /api/v4/file_attachments/upload_authorization?content_type=image/png
       "x-amz-date":"20161013T233735Z",
       "x-amz-signature":"4903be8f334ca3a6cb4b43ff3aecd98b86bf8050e2559ec5c3a7c544e9b21687"
     },
-    "required_fields":[  
+    "required_fields":[
       "Content-Type",
       "file"
     ]

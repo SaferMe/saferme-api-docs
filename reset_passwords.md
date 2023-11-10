@@ -24,8 +24,8 @@ Body:
   "email": "test@example.com"
 }
 ```
-Responses:  
-**200** Success. Response body:  
+Responses:
+**200** Success. Response body:
 ```
 {
   "email": "test@example.com"
@@ -46,15 +46,15 @@ X-AppID
 
 Body:
 ```
-{  
+{
   "email": "test@example.com",
   "reset_token": "ABCDE",
   "password": "newpassword",
   "password_confirmation": "newpassword"
 }
 ```
-Responses:  
-**422** Invalid parameters / Passwords don't match / Incorrect token  
+Responses:
+**422** Invalid parameters / Passwords don't match / Incorrect token
 Missing Parameter:
 ```
 {

@@ -44,8 +44,8 @@ GET /api/v4/notifications?fields=-user_id&archived=false&orderby=read+asc,archiv
 ```
 
 ```
-[  
-  {  
+[
+  {
     "id": 14,
     "archived_at": null,
     "archived": false,
@@ -53,7 +53,7 @@ GET /api/v4/notifications?fields=-user_id&archived=false&orderby=read+asc,archiv
     "read": false,
     "report_id": 5
   },
-  {  
+  {
     "id": 12,
     "archived_at": null,
     "archived": false,
@@ -61,7 +61,7 @@ GET /api/v4/notifications?fields=-user_id&archived=false&orderby=read+asc,archiv
     "read": true,
     "report_id": 3
   },
-  {  
+  {
     "id": 12,
     "archived_at": null,
     "archived": true,
@@ -107,10 +107,10 @@ You can use the fields parameter in any of the Notification API methods. The req
 method will respond with the required fields accordingly. All fields are
 included by default but you can opt-out from them on request.
 
-* **id**
-* **archived_at**
-* **archived**
-* **created_at**
-* **read**
-* **report_id**
-* **user_id**
+- **id**
+- **archived_at**
+- **archived**
+- **created_at**
+- **read**
+- **report_id**
+- **user_id**

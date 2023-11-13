@@ -49,17 +49,17 @@ Content-Range 0-1/2
     "uuid": "1b14cac0-bd7f-11ed-9b4e-acde48001122",
     "location": "POINT (174.77604159462516 -41.286319623500816)",
     "name": "Doctor Jack-Jack",
-    "site_owner_email": "belen@donnelly-treutel.example",
-    "site_owner_phone": "(985) 422-1693",
-    "updated_at": "2023-11-08 17:12:41 +1300"
+    "site_owner_email": "tyson@ondricka.test",
+    "site_owner_phone": "395.223.4525",
+    "updated_at": "2023-01-19 13:11:00 +1300"
   },
   {
     "uuid": "1b14cac0-bd7f-11ed-9b4e-acde48001122",
     "location": "POINT (174.77604159462516 -41.286319623500816)",
     "name": "Doctor Jack-Jack",
-    "site_owner_email": "cory.padberg@windler-ryan.test",
-    "site_owner_phone": "1-356-051-1299",
-    "updated_at": "2023-11-08 17:12:41 +1300"
+    "site_owner_email": "luisa@kozey.example",
+    "site_owner_phone": "(448) 993-8749",
+    "updated_at": "2023-01-19 13:11:00 +1300"
   }
 ]
 ```
@@ -69,16 +69,16 @@ Content-Range 0-1/2
 Creates one site.
 
 ##### Input fields for create:
-- uuid: `UUID`
+- uuid: `uuid`
 - **name**: `string`
 - **site_owner_id**: `record<TeamUser>` by id or uuid
 - **site_owner_email**: `string`
 - **site_owner_phone**: `string`
-- location: `WKT Point`
+- location: `wkt<Point>`
 - **team_id**: `record<Team>`
 - info: `string`
 - job_number: `string`
-- boundaries: `rgeo`
+- boundaries: `wkt`
 - address: `string`
 
 
@@ -116,11 +116,11 @@ Content-Type application/json
   "location": "POINT (174.77604159462516 -41.286319623500816)",
   "name": "Doctor Jack-Jack",
   "site_owner_id": 35,
-  "site_owner_email": "telma@grimes-collins.example",
-  "site_owner_phone": "269.035.9072",
+  "site_owner_email": "dacia@rogahn.example",
+  "site_owner_phone": "265.347.0733",
   "team_id": 26,
-  "created_at": "2023-11-08 17:12:41 +1300",
-  "updated_at": "2023-11-08 17:12:41 +1300"
+  "created_at": "2023-01-19 13:11:00 +1300",
+  "updated_at": "2023-01-19 13:11:00 +1300"
 }
 ```
 
@@ -148,11 +148,11 @@ GET /api/v4/sites/1b14cac0-bd7f-11ed-9b4e-acde48001122?fields=boundaries
   "location": "POINT (174.77604159462516 -41.286319623500816)",
   "name": "Doctor Jack-Jack",
   "site_owner_id": 35,
-  "site_owner_email": "bernardo_yundt@klocko.example",
-  "site_owner_phone": "(104) 254-6851",
+  "site_owner_email": "hugh_koelpin@hahn-becker.test",
+  "site_owner_phone": "967.196.1004",
   "team_id": 26,
-  "created_at": "2023-11-08 17:12:41 +1300",
-  "updated_at": "2023-11-08 17:12:41 +1300"
+  "created_at": "2023-01-19 13:11:00 +1300",
+  "updated_at": "2023-01-19 13:11:00 +1300"
 }
 ```
 
@@ -164,10 +164,12 @@ Updates the allowed fields on one single site. It only updates the fields sent.
 - **site_id**: `record<Site>`
 - name: `string`
 - site_owner_id: `record<TeamUser>` by id or uuid
-- location: `WKT Point`
+- site_owner_email: `string`
+- site_owner_phone: `string`
+- location: `wkt<Point>`
 - info: `string`
 - job_number: `string`
-- boundaries: `WKT`
+- boundaries: `wkt`
 - address: `string`
 
 

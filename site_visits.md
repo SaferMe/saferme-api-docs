@@ -84,7 +84,7 @@ Content-Range 0-1/2
 Creates one site visit.
 
 ##### Input fields for create:
-- **uuid**: `string`
+- **uuid**: `uuid`
 - **team_user_id**: `record<TeamUser>` by id or uuid
 - **site_id**: `record<Site>` by id or uuid
 - signed_in_at: `time`

@@ -83,53 +83,74 @@ GET /api/v4/team/123?fields=is_owner_of
 }
 ```
 
-### Create a Team
+### Create a team
+Creates one team.
 
+##### Input fields for create:
+- **name**: `string`
+- industry: `string`
+- location: `string`
+- mapbox_username: `string`
+- mapbox_dataset_id: `string`
+- mapbox_access_token: `string`
+- feature_tasks_enabled: `boolean` => Only available to branded app admins. Defaults to: `true`
+
+
+#### Request
 ```
-POST /api/v4/team
-
+POST /api/v4/teams
+Content-Type application/json
+```
+```json
 {
   "team": {
-    "name": "Great worker in Action",
-    "industry": "Productivity",
-    "location": "Americas"
-    "feature_tasks_enabled": true
+    "name": "Synchronised impactful task-force",
+    "industry": "Renewables & Environment",
+    "location": "Tokelau"
   }
 }
 ```
-
-> **Notes:**
-> - The feature_tasks_enabled in the request payload is optional, and only available to branded app admin, default to true
-
-
+#### Response
 ```
+201 Created
+```
+```json
 {
-  contact_tracing_enabled: false
-  feature_tasks_enabled: true
-  form_contact_tracing_enabled: false
-  guests_enabled: false
-  id: 456
-  industry: "Productivity"
-  location: "Americas"
-  name: "Great worker in Action"
-  risk_register_enabled: true
-  sso_required: false
-  sso_team_id: "cwx_qqj8sb8"
-  user_timeout: null
-  wearables_enabled: false
+  "id": 1041,
+  "contact_tracing_enabled": false,
+  "form_contact_tracing_enabled": false,
+  "feature_tasks_enabled": true,
+  "guests_enabled": false,
+  "industry": "Renewables & Environment",
+  "location": "Tokelau",
+  "name": "Synchronised impactful task-force",
+  "risk_register_enabled": false,
+  "site_enabled": false,
+  "allow_member_managing_site": false,
+  "sso_required": false,
+  "sso_team_id": "32818bf97316",
+  "training_enabled": false,
+  "user_timeout": null,
+  "wearables_enabled": false
 }
 ```
 
+
 ### Update a Team
 Updates the allowed fields of one single team.
-Allowed fields:
-  - `feature_tasks_enabled`
-  - `industry`
-  - `location`
-  - `mapbox_access_token`
-  - `mapbox_dataset_id`
-  - `mapbox_username`
-  - `name`
+
+##### Input fields for update:
+- name: `string`
+- industry: `string`
+- location: `string`
+- is_owner_change: `boolean`
+- user_id: `record<User>`
+- feature_tasks_enabled: `boolean`
+- mapbox_username: `string`
+- mapbox_dataset_id: `string`
+- mapbox_access_token: `string`
+- allow_member_managing_site: `boolean`
+
 
 ```
 PATCH /api/v4/teams/123
@@ -225,9 +246,10 @@ method will respond with the required fields accordingly. Some fields are
 included by default but you can opt-out from them on request.
 
 - **id**
+- **allow_member_managing_site**
 - **contact_tracing_enabled**
-- **form_contact_tracing_enabled**
 - **feature_tasks_enabled**
+- **form_contact_tracing_enabled**
 - **guests_enabled**
 - **industry**
 - is_admin_of
@@ -240,7 +262,8 @@ included by default but you can opt-out from them on request.
 - **name**
 - owner_id
 - **risk_register_enabled**
-- **sso_required?**
+- **site_enabled**
+- **sso_required**
 - **sso_team_id**
 - **training_enabled**
 - **user_timeout**

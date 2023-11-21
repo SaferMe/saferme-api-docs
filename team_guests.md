@@ -11,6 +11,7 @@ With Team Guests api V4 you can:
 ### Fetch a team guest
 
 Get a team_guest. See the optional [available fields](#available-fields).
+> Deprecated endpoint. Use Team People Api instead.
 ```
 GET /api/v4/team_guests/56?fields=inventory_item_item_id,inventory_item_battery_status,-company
 ```
@@ -138,6 +139,7 @@ POST /api/v4/teams/123/team_guests/bulk_create'
 
 ### Update a Team Guest
 Updates the allowed fields of one single team guest.
+> Deprecated endpoint. Use Team People Api instead.
 Allowed fields:
   - `company`
   - `first_name`

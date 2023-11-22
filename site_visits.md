@@ -3,6 +3,7 @@ With Site Visits api V4 you can:
 
 - [List Site Visits](#list-site-visits)
 - [Create a Site Visit](#create-a-site-visit)
+- [Create a Guest Visit](#create-a-guest-visit)
 - [Fetch a Site Visit](#fetch-a-site-visit)
 - [Update a Site Visit](#update-a-site-visit)
 - [Bulk update a list of Site Visits](#bulk-update-a-list-of-site-visits)
@@ -81,7 +82,8 @@ Content-Range 0-1/2
 
 
 ### Create a site visit
-Creates one site visit.
+Creates one site visit for a member of an Org. See [Create a Guest Visit](#create-a-guest-visit) for how
+to create visits for people that are not part of the org.
 
 ##### Input fields for create:
 - **uuid**: `uuid`
@@ -114,12 +116,73 @@ Content-Type application/json
 {
   "id": 1026,
   "uuid": "ec9b7575-5758-38c5-825f-53d7c3272965",
+  "created_at": "2023-01-15 13:31:00 +1300",
+  "inducted_at": "2023-05-18 04:58:22 +1200",
   "is_signed_in": true,
   "is_inducted": true,
   "is_on_site": true,
   "possibly_away": false,
   "signed_in_at": "2023-05-18 04:47:22 +1200",
-  "site_id": 1006
+  "signed_out_at": null,
+  "site_id": 1006,
+  "team_user_id": 1025,
+  "uninducted_at": null,
+  "updated_at": "2023-01-15 13:31:00 +1300"
+}
+```
+
+
+### Create a Guest Visit
+Creates one site visit for a person that is not member of the Org.
+
+##### Input fields for creating a Guest Visit:
+- **site_id**: `record<Site>` by id or uuid
+- **uuid**: `string`
+- first_name: `string`
+- last_name: `string`
+- company: `string`
+- email: `string`
+- preferred_contact: `string`
+
+
+#### Request
+```
+POST /api/v4/site_visits/guests
+Content-Type application/json
+```
+```json
+{
+  "site_visit": {
+    "site_id": "5c174e7b-6be8-3ca9-8a43-891b64ed7e10",
+    "uuid": "d1a63d27-ce32-4be5-80a2-b825fe3670ed",
+    "first_name": "Genia",
+    "last_name": "Haag",
+    "preferred_contact": "+64278276579",
+    "email": "chase@harvey.test",
+    "company": "Torp and Sons"
+  }
+}
+```
+#### Response
+```
+201 Created
+```
+```json
+{
+  "id": 1039,
+  "uuid": "d1a63d27-ce32-4be5-80a2-b825fe3670ed",
+  "created_at": "2023-01-15 13:31:00 +1300",
+  "inducted_at": null,
+  "is_signed_in": true,
+  "is_inducted": false,
+  "is_on_site": true,
+  "possibly_away": false,
+  "signed_in_at": "2023-01-14 23:31:00 +1300",
+  "signed_out_at": null,
+  "site_id": 1033,
+  "team_user_id": 1038,
+  "uninducted_at": null,
+  "updated_at": "2023-01-15 13:31:00 +1300"
 }
 ```
 
@@ -138,7 +201,7 @@ GET /api/v4/site_visits/ec9b7575-5758-38c5-825f-53d7c3272965?fields=site_uuid
 ```
 ```json
 {
-  "id": 1033,
+  "id": 1046,
   "uuid": "ec9b7575-5758-38c5-825f-53d7c3272965",
   "is_signed_in": true,
   "is_inducted": true,

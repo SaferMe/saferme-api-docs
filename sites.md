@@ -5,6 +5,7 @@ With Sites api V4 you can:
 - [Create a Site](#create-a-site)
 - [Fetch a Site](#fetch-a-site)
 - [Update a Site](#update-a-site)
+- [Request Site PDF](#request-site-pdf)
 - [Response fields](#response-fields)
 
 
@@ -194,6 +195,42 @@ Content-Type application/json
 #### Response
 ```json
 204 No Content
+```
+
+
+### Request Site PDF
+Produce the PDF file for the given Site ID in a background process.
+
+The response for this request is an [Async Job](async_job.md) Resource with current status of the
+Background process. The background process status can be polled if you need to
+retrieve its conclusion status, result, link to dlownload the file and eventual error messages.
+
+##### Input fields for Request Site PDF:
+- description: `string` the value of this field will be echoed on [Async Job](async_job.md) responses.
+
+#### Request
+```
+POST /api/v4/sites/123/export_item
+Content-Type application/json
+```
+```json
+{
+  "description": "Pong this ping to me",
+}
+```
+#### Response
+```json
+202 Accepted
+
+{
+  "id": 987123,
+  "completed": false,
+  "description": "Pong this ping to me",
+  "success": null,
+  "artifact_url": null,
+  "result": null,
+  "download_filename": null
+}
 ```
 
 

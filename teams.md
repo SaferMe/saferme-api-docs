@@ -255,6 +255,7 @@ included by default but you can opt-out from them on request.
 - is_admin_of
 - is_manager_of
 - is_owner_of
+- is_self_serve_billing_portal_enabled
 - **location**
 - mapbox_access_token
 - mapbox_dataset_id
@@ -268,3 +269,4 @@ included by default but you can opt-out from them on request.
 - **training_enabled**
 - **user_timeout**
 - **wearables_enabled**
+

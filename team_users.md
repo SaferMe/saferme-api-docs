@@ -158,6 +158,7 @@ included by default but you can opt-out from them on request.
 - **push_notification_enabled**
 - report_count
 - **role**
+- **site_visit_terms_accepted**
 - status
 - **supervisor_id**
 - **user_id**

@@ -91,6 +91,7 @@ to create visits for people that are not part of the org.
 - **site_id**: `record<Site>` by id or uuid
 - signed_in_at: `time`
 - signed_out_at: `time`
+- site_visit_terms_accepted: `boolean` => Not required only when signing in somebody else
 
 
 #### Request

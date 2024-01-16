@@ -203,7 +203,7 @@ Produce the PDF file for the given Site ID in a background process.
 
 The response for this request is an [Async Job](async_job.md) Resource with current status of the
 Background process. The background process status can be polled if you need to
-retrieve its conclusion status, result, link to dlownload the file and eventual error messages.
+retrieve its conclusion status, result, link to download the file and eventual error messages.
 
 ##### Input fields for Request Site PDF:
 - description: `string` the value of this field will be echoed on [Async Job](async_job.md) responses.

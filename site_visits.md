@@ -214,6 +214,7 @@ GET /api/v4/site_visits/ec9b7575-5758-38c5-825f-53d7c3272965?fields=site_uuid
 }
 ```
 
+
 ### Update a Site Visit
 Updates the allowed fields on one single site visit. It only updates the fields sent.
 

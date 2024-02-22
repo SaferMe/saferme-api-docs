@@ -26,6 +26,8 @@ Optional params:
 - possibly_away: `boolean` => filter by the given value. (allowed values: `true`, `false`)
 - preset_filter: `string` => one of:
   - `admin_view`: complex filter to remove noise and focus on records admin need to see.
+- signed_in_after: `date_time` => only records for sign-ins after the given timestamp
+- signed_out_before: `date_time` => only records for visits that signgned out before the given timestamp
 - site_id: `int_or_uuid` => filter entries by given site `id` or `uuid`
 - team_id: `integer` => filter entries by given Team `id`
 - team_user_id: `int_or_uuid` => filter entries by team_user `id` or `uuid`.
@@ -263,6 +265,8 @@ messages.
 - possibly_away: `boolean` => filter by the given value. (allowed values: `true`, `false`)
 - preset_filter: `string` => one of:
   - `admin_view`: complex filter to remove noise and focus on records admin need to see.
+- signed_in_after: `date_time` => only records for sign-ins after the given timestamp
+- signed_out_before: `date_time` => only records for visits that signgned out before the given timestamp
 - team_id: `integer` => filter entries by given Team `id`
 - team_user_id: `int_or_uuid` => filter entries by team_user `id` or `uuid`.
 - updated_after: `date_time` => only include in the result entries updated after given date. Valid values are dates in ISO8601 format.

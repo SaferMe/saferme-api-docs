@@ -774,6 +774,9 @@ PATCH /api/v4/reports/49
 Report search is a asynchronous process and requires a couple of steps.
 Here you will see the first step, how to build and start a report search.
 
+
+<details>
+<summary>Deprecated params format</summary>
 The search accept two groups of parameters:
   - `filter` to specify what is included in the search
   - `order` to specify the order of the record in the resultset
@@ -841,19 +844,36 @@ where:
   - `updated_at`
 Combining the fields above a report search can be created as follows:
 
-```json
+#### Request
+```
 GET /api/v4/reports/search?filter[channels]=[1,2]&filter[updated_after]=2018-12-31T23:45:45+13:00
 ```
-
-```json
+#### Response
+```
 200 OK
-
+```
+```json
 {
   "id": 12345678,
   "url": "https://api1.safer.me/api/v4/report_searches/12345678"
 }
 ```
+</summary>
 
+#### Request
+```
+GET /api/v4/reports/search?channel_ids[]=1&channel_ids[]=2&updated_after=2018-12-31T23:45:45+13:00
+```
+#### Response
+```
+200 OK
+```
+```json
+{
+  "id": 12345678,
+  "url": "https://api1.safer.me/api/v4/report_searches/12345678"
+}
+```
 This `id` or `url` will be used to retrieve the search result using [Report Searches API](report_searches.md).
 
 

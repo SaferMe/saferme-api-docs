@@ -777,23 +777,31 @@ Here you will see the first step, how to build and start a report search.
 - -appearance: `string`
 - appearance: `string`
 - assignee_id: `integer`
+- channel_id: `integer`
 - channel_ids: `integer[]`
 - channel_type: `string`
 - created_after: `date_time`
+- created_before: `date_time`
 - new_report: `boolean`
 - preset_filter: `string`
+- report_ids: `integer[]`
+- report_search_id: `integer`
+- report_state_id: `integer`
 - report_state_ids: `integer[]`
 - resolved: `boolean`
 - site_id: `int_or_uuid`
 - team_id: `integer`
+- tile_id: `string`
 - title_query: `string`
 - updated_after: `date_time`
+- updated_before: `date_time`
 - user_id: `integer`
 - orderby: `string` => if present sorts the result the by given clause. Sorting clause must follow the pattern `<field_name> <direction>`. Where direction is one of `asc` or `desc` and `field_name` is one of the list below:
   - `assignee_name`
   - `channel_name`
   - `assigned_at`
   - `created_at`
+  - `id`
   - `report_title`
   - `risk_score`
   - `updated_at`
@@ -803,7 +811,12 @@ Here you will see the first step, how to build and start a report search.
 
 
 <details>
-<summary>Deprecated params format</summary>
+
+<summary>
+
+##### Deprecated params format
+
+</summary>
 
 The search accept two groups of parameters:
   - `filter` to specify what is included in the search

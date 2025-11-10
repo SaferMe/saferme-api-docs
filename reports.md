@@ -810,9 +810,9 @@ Here you will see the first step, how to build and start a report search.
   - `site_name`
 
 
-<details>
+<details markdown="1">
 
-<summary>
+<summary markdown="1">
 
 ##### Deprecated params format
 

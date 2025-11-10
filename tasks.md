@@ -90,7 +90,7 @@ task for the very same `uuid` then `200 ok` is returned and no data is changed.
 - **client_created_at**: `time`
 - **title**: `string`
 - **description**: `string`
-- **assignee_id**: `record<User>`
+- assignee_id: `record<User>`
 - due_at: `time`
 - report_id: `integer`
 - report_uuid: `string`

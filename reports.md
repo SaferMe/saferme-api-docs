@@ -774,6 +774,33 @@ PATCH /api/v4/reports/49
 Report search is a asynchronous process and requires a couple of steps.
 Here you will see the first step, how to build and start a report search.
 
+- -appearance: `string`
+- appearance: `string`
+- assignee_id: `integer`
+- channel_ids: `integer[]`
+- channel_type: `string`
+- created_after: `date_time`
+- new_report: `boolean`
+- preset_filter: `string`
+- report_state_ids: `integer[]`
+- resolved: `boolean`
+- site_id: `int_or_uuid`
+- team_id: `integer`
+- title_query: `string`
+- updated_after: `date_time`
+- user_id: `integer`
+- orderby: `string` => if present sorts the result the by given clause. Sorting clause must follow the pattern `<field_name> <direction>`. Where direction is one of `asc` or `desc` and `field_name` is one of the list below:
+  - `assignee_name`
+  - `channel_name`
+  - `assigned_at`
+  - `created_at`
+  - `report_title`
+  - `risk_score`
+  - `updated_at`
+  - `report_state_name`
+  - `reported_by`
+  - `site_name`
+
 
 <details>
 <summary>Deprecated params format</summary>
@@ -842,6 +869,8 @@ where:
   - `reported_by`
   - `risk_score`
   - `updated_at`
+</details>
+
 Combining the fields above a report search can be created as follows:
 
 #### Request

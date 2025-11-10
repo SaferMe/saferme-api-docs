@@ -27,7 +27,8 @@ Optional params:
 - preset_filter: `string` => one of:
   - `admin_view`: complex filter to remove noise and focus on records admin need to see.
 - signed_in_after: `date_time` => only records for sign-ins after the given timestamp
-- signed_out_before: `date_time` => only records for visits that signgned out before the given timestamp
+- signed_in_before: `date_time` => only records for visits that signed in before the given timestamp
+- signed_out_before: `date_time` => only records for visits that signed out before the given timestamp
 - site_id: `int_or_uuid` => filter entries by given site `id` or `uuid`
 - team_id: `integer` => filter entries by given Team `id`
 - team_user_id: `int_or_uuid` => filter entries by team_user `id` or `uuid`.
@@ -91,7 +92,7 @@ to create visits for people that are not part of the org.
 - **uuid**: `uuid`
 - **team_user_id**: `record<TeamUser>` by id or uuid
 - **site_id**: `record<Site>` by id or uuid
-- signed_in_at: `time`
+- **signed_in_at**: `time`
 - signed_out_at: `time`
 - site_visit_terms_accepted: `boolean` => Not required only when signing in somebody else
 
@@ -266,7 +267,8 @@ messages.
 - preset_filter: `string` => one of:
   - `admin_view`: complex filter to remove noise and focus on records admin need to see.
 - signed_in_after: `date_time` => only records for sign-ins after the given timestamp
-- signed_out_before: `date_time` => only records for visits that signgned out before the given timestamp
+- signed_in_before: `date_time` => only records for visits that signed in before the given timestamp
+- signed_out_before: `date_time` => only records for visits that signed out before the given timestamp
 - team_id: `integer` => filter entries by given Team `id`
 - team_user_id: `int_or_uuid` => filter entries by team_user `id` or `uuid`.
 - updated_after: `date_time` => only include in the result entries updated after given date. Valid values are dates in ISO8601 format.
@@ -274,6 +276,7 @@ messages.
 
 ##### Input fields for bulk update:
 - description: `string` => value to be echoed on [Async Job](async_job.md) responses
+- **filtered_by**: `object<SiteVisitFilter>`
 - site_visit: `hash`
   - is_signed_in: `boolean` => **only allowed to set the value to `false`.** Create Site Visit if you need to sign in a person.
   - is_inducted: `boolean`

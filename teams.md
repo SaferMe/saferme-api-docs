@@ -89,7 +89,7 @@ Creates one team.
 ##### Input fields for create:
 - **name**: `string`
 - industry: `string`
-- location: `string`
+- **location**: `string`
 - mapbox_username: `string`
 - mapbox_dataset_id: `string`
 - mapbox_access_token: `string`

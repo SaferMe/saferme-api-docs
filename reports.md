@@ -804,6 +804,7 @@ Here you will see the first step, how to build and start a report search.
 
 <details>
 <summary>Deprecated params format</summary>
+
 The search accept two groups of parameters:
   - `filter` to specify what is included in the search
   - `order` to specify the order of the record in the resultset
@@ -869,6 +870,7 @@ where:
   - `reported_by`
   - `risk_score`
   - `updated_at`
+
 </details>
 
 Combining the fields above a report search can be created as follows:

@@ -871,8 +871,6 @@ where:
   - `risk_score`
   - `updated_at`
 
-</details>
-
 Combining the fields above a report search can be created as follows:
 
 #### Request
@@ -889,7 +887,8 @@ GET /api/v4/reports/search?filter[channels]=[1,2]&filter[updated_after]=2018-12-
   "url": "https://api1.safer.me/api/v4/report_searches/12345678"
 }
 ```
-</summary>
+
+</details>
 
 #### Request
 ```
